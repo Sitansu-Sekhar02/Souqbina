@@ -1,0 +1,173 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black_trans">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dialog_status"
+            android:layout_gravity="center">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:id="@+id/tvAlertMsg">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/select_status"
+                    android:textColor="#A8A8A8"
+                    android:textSize="12dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:text="@string/undo_lastaction"
+                    android:textColor="#FFC200"
+                    android:textAllCaps="true"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/orderRl"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tvAlertMsg"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/circleY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_group_cirle_yellow"/>
+                <TextView
+                    android:id="@+id/Tvvendor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/circleY"
+                    android:text="@string/order_pickedup"
+                    android:textColor="#3D3C44"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+            <View
+                android:id="@+id/view1"
+                android:layout_width="2dp"
+                android:layout_height="60dp"
+                android:background="@color/grey"
+                android:layout_below="@+id/orderRl"
+                android:layout_marginLeft="35dp"/>
+        <RelativeLayout
+                    android:id="@+id/onWayRl"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/view1"
+                    android:layout_marginLeft="25dp"
+                    android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/circleG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_component_circle_grey"/>
+                <TextView
+                    android:id="@+id/Tvondway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:textSize="16dp"
+                    android:layout_toRightOf="@id/circleG"
+                    android:text="@string/on_theway"
+                    android:textStyle="bold"
+                    android:textColor="#3D3C44"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:text="@string/select"
+                android:textColor="#FFC200"
+                android:textAllCaps="true"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="2dp"
+                android:layout_height="60dp"
+                android:background="@color/grey"
+                android:layout_below="@+id/onWayRl"
+                android:layout_marginLeft="35dp"/>
+            <RelativeLayout
+                android:id="@+id/orderDelivr"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/view2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/circleB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_component_circle"/>
+                <TextView
+                    android:id="@+id/TvorderDel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:textSize="14dp"
+                    android:layout_toRightOf="@id/circleB"
+                    android:text="@string/order_delivered"
+                    android:textStyle="bold"
+                    android:textColor="#676767"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:text="@string/select"
+                    android:textColor="#D6D6D6"
+                    android:textAllCaps="true"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/splash_above_pn"/>
+
+        </RelativeLayout>
+            <RelativeLayout
+                android:layout_below="@id/loginMain"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="68dp"
+                android:background="#FFC200">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_repeat_grid_5"/>
+
+            </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/helloaccount"
+            android:layout_below="@id/image"
+            android:layout_width="match_parent"
+            android:layout_marginTop="76dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hello"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#2C2B2B"
+                android:text="@string/sign_in"/>
+
+        </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/loginMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/helloaccount"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="60dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/number"
+                    android:layout_margin="5dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlined_text_input_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#B5B5B5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/outlined_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_group_mobile"
+                            android:hint="@string/mobile_no"
+                            android:inputType="number"
+                            android:maxLength="10"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="5dp"
+                    android:layout_below="@id/number">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#B5B5B5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_group_lock"
+                            android:inputType="textPassword"
+                            android:hint="@string/password" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/BtnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_below="@id/pass"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="32dp"
+                    app:backgroundTint="@null"
+                    android:textSize="16dp"
+                    android:background="@drawable/button_bg"
+                    android:text="@string/login_account"/>
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>
