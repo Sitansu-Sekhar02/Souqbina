@@ -1,0 +1,32 @@
+{
+  "response": [
+    {
+      "id": "1",
+      "name": "Face"
+    },
+    {
+      "id": "2",
+      "name": "Hair"
+    },
+    {
+      "id": "3",
+      "name": "Massage"
+    },
+    {
+      "id": "4",
+      "name": "Nail"
+    },
+    {
+      "id": "5",
+      "name": "Tailor"
+    },
+    {
+      "id": "47",
+      "name": "Fitness"
+    },
+    {
+       "id": "48",
+       "name": "Packages"
+    }
+  ]
+}

@@ -22,10 +22,9 @@
 
         </RelativeLayout>
             <RelativeLayout
-                android:layout_below="@id/loginMain"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_marginTop="68dp"
+                android:layout_alignParentBottom="true"
                 android:background="#FFC200">
                 <ImageView
                     android:layout_width="match_parent"
@@ -45,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hello"/>
-            <TextView
+            <com.sa.souqbinadriver.view.AppTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
@@ -65,8 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:id="@+id/number"
-                    android:layout_margin="5dp">
+                    android:id="@+id/number">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/outlined_text_input_layout"
@@ -78,7 +76,7 @@
                         app:layout_constraintRight_toRightOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/outlined_edit_text"
+                            android:id="@+id/etMobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_group_mobile"
@@ -92,8 +90,8 @@
                     android:id="@+id/pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="bottom"
-                    android:layout_margin="5dp"
                     android:layout_below="@id/number">
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -105,15 +103,16 @@
                         app:layout_constraintRight_toRightOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_group_lock"
-                            android:inputType="textPassword"
-                            android:hint="@string/password" />
+                            android:hint="@string/password"
+                            android:inputType="textPassword" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
-                <Button
+                <com.sa.souqbinadriver.view.AppButton
                     android:id="@+id/BtnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -123,6 +122,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="32dp"
                     app:backgroundTint="@null"
+                    android:textColor="@color/white"
                     android:textSize="16dp"
                     android:background="@drawable/button_bg"
                     android:text="@string/login_account"/>

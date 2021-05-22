@@ -14,10 +14,10 @@
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
-                   android:background="#3BDCD9D9"
+                   android:background="@color/white"
                 android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize" />
-            <TextView
+            <com.sa.souqbinadriver.view.AppTextView
                     android:layout_gravity="right|top"
                     android:text="1"
                     android:textSize="@dimen/_10sdp"

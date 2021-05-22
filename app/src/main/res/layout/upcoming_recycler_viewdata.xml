@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <com.google.android.material.imageview.ShapeableImageView
+            <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="19dp"
                 android:src="@drawable/ic_group_a"
@@ -29,14 +29,14 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tvScld"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/schedule"
                     android:textColor="#000000"
                     android:textSize="14dp" />
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/scld_date"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tvmember"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     android:textStyle="bold"
                     android:singleLine="true"
                     android:textSize="12dp" />
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/TvseeProfile"
                     android:layout_width="6dp"
                     android:gravity="center"
@@ -70,7 +70,7 @@
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
 
-            <TextView
+            <com.sa.souqbinadriver.view.AppTextView
                 android:layout_marginTop="5dp"
                 android:layout_width="231dp"
                 android:textSize="12dp"

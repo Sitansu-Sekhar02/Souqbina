@@ -22,14 +22,13 @@
                     android:layout_width="102dp"
                     android:layout_height="102dp"
                     android:background="@drawable/layout_bg">
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/ivProfimeImage"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
-                        android:padding="3dp"
-                        android:src="@drawable/profile_img" />
+                        android:padding="3dp" />
 
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:id="@+id/tvEdit"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -57,20 +56,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/first_name"
                         android:textColor="#5A5A5A"
                         android:textSize="12dp"/>
-                    <TextView
+
+                    <com.sa.souqbinadriver.view.AppTextView
+                        android:id="@+id/tv_firstname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14dp"
                         android:layout_marginTop="5dp"
+                        android:text="@string/abdul"
                         android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:text="@string/abdul"/>
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -79,13 +80,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="109dp"
                     android:orientation="vertical">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/last_name"
                         android:textColor="#5A5A5A"
                         android:textSize="12dp"/>
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
+                        android:id="@+id/tv_lastName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
@@ -103,13 +105,14 @@
                     android:layout_marginTop="36dp"
                     android:layout_below="@id/profileNameDetails"
                     android:orientation="vertical">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/mobile_no"
                         android:textColor="#5A5A5A"
                         android:textSize="12dp"/>
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
+                        android:id="@+id/tv_mobileNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
@@ -126,13 +129,14 @@
                     android:layout_marginTop="36dp"
                     android:layout_below="@id/mblno"
                     android:orientation="vertical">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/email"
                         android:textColor="#5A5A5A"
                         android:textSize="12dp"/>
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
+                        android:id="@+id/tv_emailId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
@@ -142,7 +146,7 @@
                         android:text="rehman@example.com"/>
 
                 </LinearLayout>
-                <Button
+                <com.sa.souqbinadriver.view.AppButton
                     android:layout_below="@id/email"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"

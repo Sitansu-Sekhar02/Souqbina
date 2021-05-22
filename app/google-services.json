@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "940339193431",
+    "project_id": "souqbina-driver",
+    "storage_bucket": "souqbina-driver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940339193431:android:a1c272e699a0153eebe512",
+        "android_client_info": {
+          "package_name": "com.sa.souqbinadriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940339193431-05bg09nk6jc3b5fgjkrr3vscgvs49g8n.apps.googleusercontent.com",
+          "client_type": 3,
+          "android_info": {
+            "package_name": "com.sa.driver.souqbina",
+            "certificate_hash": "cf06d32dbac3855db10c0dbc02bd071af915c879"
+          }
+        },
+        {
+          "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg2ac9OmcYfUgjVj9wpXDoouPZnF_D20M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940339193431-05bg09nk6jc3b5fgjkrr3vscgvs49g8n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172892305349-hggre0i2q4g07noa7qoqf3ib65ol2jcf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sb.souqbinauser"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

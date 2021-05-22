@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_margin="5dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <com.github.siyamed.shapeimageview.ShapeImageView
             android:id="@+id/profile_image"
             android:layout_width="45dp"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tvScld"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tvMobl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:singleLine="true"/>
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tvMobl"

@@ -21,7 +21,7 @@
                 android:background="@color/white"
                 android:layout_marginTop="5dp"
                 android:gravity="center">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tvTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="#000000"
                     android:textSize="14dp" />
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/scld_date"
@@ -38,7 +38,7 @@
                     android:layout_marginLeft="3dp"
                     android:textStyle="bold"
                     android:textSize="14dp"/>
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10:20 pm"
@@ -58,7 +58,7 @@
             android:background="@color/white"
             android:orientation="vertical"
             android:gravity="center_vertical">
-            <TextView
+            <com.sa.souqbinadriver.view.AppTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/vender_details"
@@ -72,7 +72,7 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapeableImageView
+                <ImageView
                     android:id="@+id/profile_image"
                     android:layout_width="45dp"
                     android:layout_gravity="center"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:id="@+id/tvScld"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -106,14 +106,14 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_height="wrap_content">
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:id="@+id/tvMobl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/mobile"
                         android:textColor="#5A5A5A"
                         android:singleLine="true"/>
-                    <TextView
+                    <com.sa.souqbinadriver.view.AppTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tvMobl"
@@ -146,7 +146,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp">
 
-                    <com.google.android.material.imageview.ShapeableImageView
+                    <ImageView
                         android:id="@+id/ImgA"
                         android:layout_width="19dp"
                         android:layout_height="23dp"
@@ -166,7 +166,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:id="@+id/tvmember"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
 
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:layout_width="238dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -196,7 +196,7 @@
                         android:layout_marginLeft="10dp"
                         android:background="@drawable/line" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
+                    <ImageView
                         android:id="@+id/ImgB"
                         android:layout_width="19dp"
                         android:layout_height="23dp"
@@ -216,7 +216,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:singleLine="true"
@@ -225,7 +225,7 @@
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
 
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:layout_width="238dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -250,7 +250,7 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:gravity="center_vertical">
-                <TextView
+                <com.sa.souqbinadriver.view.AppTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/customer_details"
@@ -264,7 +264,7 @@
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.imageview.ShapeableImageView
+                    <ImageView
                         android:layout_width="45dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
@@ -281,7 +281,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:gravity="center">
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/construction_name"
@@ -296,14 +296,14 @@
                             android:layout_width="wrap_content"
                             android:layout_marginTop="5dp"
                             android:layout_height="wrap_content">
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:id="@+id/tvCusMobl"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/mobile"
                                 android:textColor="#5A5A5A"
                                 android:singleLine="true"/>
-                            <TextView
+                            <com.sa.souqbinadriver.view.AppTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@id/tvCusMobl"
@@ -339,7 +339,7 @@
                             android:layout_width="21dp"
                             android:layout_height="23dp"
                             android:src="@drawable/ic_group_orders"/>
-                        <TextView
+                        <com.sa.souqbinadriver.view.AppTextView
                             android:layout_toRightOf="@id/ordrs"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
