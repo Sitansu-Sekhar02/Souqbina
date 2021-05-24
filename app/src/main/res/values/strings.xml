@@ -322,5 +322,7 @@
     <string name="please_enter_valid_otp">Please Enter Valid OTP</string>
     <string name="sorry_u_have_not_register_with_us">Sorry,You Have Not Registered With Us</string>
     <string name="GoogleAPIKey">AIzaSyB9wXo_mbTsC2XTeJcIMVPwzuLQPxFQ8S0</string>
+    <string name="loading_profile">Loading Profile</string>
+    <string name="loggin">Logging...</string>
 
 </resources>

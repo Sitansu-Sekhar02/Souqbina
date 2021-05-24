@@ -38,11 +38,12 @@
                 android:layout_height="102dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/layout_bg">
+               >
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/nav_profile_image"
                     android:layout_width="96dp"
+                    android:background="@drawable/layout_bg"
                     android:layout_height="96dp"
                     android:layout_gravity="center"
                     android:padding="3dp" />

@@ -27,11 +27,13 @@ import com.sa.souqbinadriver.services.model.HomeIndexModel;
 import com.sa.souqbinadriver.services.model.IndexModel;
 import com.sa.souqbinadriver.services.model.KeyValueListModel;
 import com.sa.souqbinadriver.services.model.LoginModel;
+import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NewsListModel;
 import com.sa.souqbinadriver.services.model.NotificationListModel;
 import com.sa.souqbinadriver.services.model.OrderSubmitModel;
 import com.sa.souqbinadriver.services.model.PlanListModel;
 import com.sa.souqbinadriver.services.model.PostModel;
+import com.sa.souqbinadriver.services.model.ProfileMainModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.sa.souqbinadriver.services.model.PushNotificationModel;
 import com.sa.souqbinadriver.services.model.RegisterModel;
@@ -226,7 +228,7 @@ public class ServicesMethodsManager {
             } else {
                 mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }
-        } else if (obj instanceof LoginModel || obj instanceof ProfileModel) {
+        } else if (obj instanceof LoginModel) {
             StatusMainModel model = new StatusMainModel();
             if (model.toObject(resp.toString())) {
                 mUiCallBack.OnSuccessFromServer(model);
@@ -237,6 +239,20 @@ public class ServicesMethodsManager {
                 } else {
                     mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
                 }
+            }
+        }  else if (obj instanceof ProfileMainModel) {
+            ProfileMainModel profileModel = new ProfileMainModel();
+            if (profileModel.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(profileModel);
+            } else {
+                    mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
+        } else if (obj instanceof LogoutModel) {
+            StatusMainModel model = new StatusMainModel();
+            if (model.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(model);
+            } else {
+                    mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }
         } else if ( obj instanceof DriverTaskUpdateMethodModel) {
                 DriverTaskModel driverTaskModel = new DriverTaskModel();
@@ -472,9 +488,9 @@ public class ServicesMethodsManager {
     }
 
 
-    public void logout(Context context, ServerResponseInterface mCallInterface, String TAG) {
+    public void logout(Context context, LogoutModel logoutModel, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
-        postData(context, new StatusModel(), ServerConstants.URL_LogoutUser, null, TAG);
+        postData(context, logoutModel, ServerConstants.URL_LogoutUser, null, TAG);
     }
 
     public void updateUser(Context context, ProfileModel profileModel, ServerResponseInterface mCallInterface, String TAG) {
@@ -492,7 +508,7 @@ public class ServicesMethodsManager {
         setCallbacks(mCallInterface);
         String query = null;
         String url = ServerConstants.URL_GetProfile;
-        getData(context, new ProfileModel(), url, query, TAG);
+        getData(context, new ProfileMainModel(), url, query, TAG);
     }
 
     public void changePassword(Context context, ChangePasswordModel changePasswordModel, ServerResponseInterface mCallInterface, String TAG) {

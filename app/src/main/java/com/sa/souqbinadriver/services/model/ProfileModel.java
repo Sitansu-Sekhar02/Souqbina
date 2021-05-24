@@ -11,6 +11,7 @@ public class ProfileModel implements Serializable {
     private final String TAG = "ProfileModel";
     private final String
             ID = "id",
+            USER_ID="user_id",
             FIRST_NAME = "first_name",
             FULL_NAME = "full_name",
             LAST_NAME = "last_name",
@@ -22,15 +23,25 @@ public class ProfileModel implements Serializable {
             PHONE = "mobile_number",
             ADDRESS = "address",
             IMAGE = "image",
-            PROFILE_IMAGE = "profile_img",
+            PROFILE_IMAGE = "profile_image",
             CITY = "city",
             CITY_ID = "city_id",
             CITY_NAME = "city_name",
             ORDER_COUNT = "order_count",
-            CATEGORY = "category";
+            CATEGORY = "category",
+            COUNTRY_CODE = "country_code",
+            WALLET="wallet",
+            LOGISTIC_ID="logistic_id",
+            DRIVER_LOGIN_ID="driver_login_id",
+            VEHICLE_NUMBER="vehicle_number",
+            DRIVING_LICENCE="driving_license",
+            NATIONAL_ID="national_id",
+            VEHICLE_DOCUMENT="vehicle_document";
+
 
     String
             id = null,
+             user_id=null,
             fullname = null,
             tinNumber = null,
             orderCount = null,
@@ -43,7 +54,18 @@ public class ProfileModel implements Serializable {
             image = null,
             profileImg = null,
             cityId = null,
-            cityName = null;
+            cityName = null,
+             country_code=null,
+            wallet=null,
+            logistic_id=null,
+            driver_login_id=null,
+            vehicle_number=null,
+            driving_licence=null,
+            national_id=null,
+            vehicle_document=null;
+
+
+
 
     AddressModel address = new AddressModel();
 
@@ -64,6 +86,14 @@ public class ProfileModel implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getEmail() {
@@ -194,6 +224,70 @@ public class ProfileModel implements Serializable {
         this.cityName = cityName;
     }
 
+    public String getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
+    }
+
+    public String getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(String wallet) {
+        this.wallet = wallet;
+    }
+
+    public String getLogistic_id() {
+        return logistic_id;
+    }
+
+    public void setLogistic_id(String logistic_id) {
+        this.logistic_id = logistic_id;
+    }
+
+    public String getDriver_login_id() {
+        return driver_login_id;
+    }
+
+    public void setDriver_login_id(String driver_login_id) {
+        this.driver_login_id = driver_login_id;
+    }
+
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
+    }
+
+    public String getDriving_licence() {
+        return driving_licence;
+    }
+
+    public void setDriving_licence(String driving_licence) {
+        this.driving_licence = driving_licence;
+    }
+
+    public String getNational_id() {
+        return national_id;
+    }
+
+    public void setNational_id(String national_id) {
+        this.national_id = national_id;
+    }
+
+    public String getVehicle_document() {
+        return vehicle_document;
+    }
+
+    public void setVehicle_document(String vehicle_document) {
+        this.vehicle_document = vehicle_document;
+    }
+
     public ProfileCategoryListModel getProfileCategoryListModel() {
         return profileCategoryListModel;
     }
@@ -207,6 +301,9 @@ public class ProfileModel implements Serializable {
             JSONObject json = new JSONObject(jsonObject);
             if (json.has(ID)) {
                 id = json.getString(ID);
+            }
+            if (json.has(USER_ID)) {
+                user_id = json.getString(USER_ID);
             }
 
             if (json.has(FIRST_NAME)) {
@@ -250,6 +347,23 @@ public class ProfileModel implements Serializable {
             }
             if (json.has(PROFILE_IMAGE)) {
                 profileImg = json.getString(PROFILE_IMAGE);
+            }
+            if (json.has(COUNTRY_CODE)) {
+                country_code = json.getString(COUNTRY_CODE);
+            }  if (json.has(WALLET)) {
+                wallet = json.getString(WALLET);
+            }  if (json.has(LOGISTIC_ID)) {
+                logistic_id = json.getString(LOGISTIC_ID);
+            }  if (json.has(DRIVER_LOGIN_ID)) {
+                driver_login_id = json.getString(DRIVER_LOGIN_ID);
+            }  if (json.has(DRIVING_LICENCE)) {
+                driving_licence = json.getString(DRIVING_LICENCE);
+            }  if (json.has(VEHICLE_NUMBER)) {
+                vehicle_number = json.getString(VEHICLE_NUMBER);
+            }  if (json.has(VEHICLE_DOCUMENT)) {
+                vehicle_document = json.getString(VEHICLE_DOCUMENT);
+            } if (json.has(NATIONAL_ID)) {
+                national_id = json.getString(NATIONAL_ID);
             }
 
             /*get Address*/
@@ -304,6 +418,7 @@ public class ProfileModel implements Serializable {
         try {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(ID, id);
+            jsonMain.put(USER_ID,user_id);
             jsonMain.put(FIRST_NAME, firstName);
             jsonMain.put(LAST_NAME, lastName);
             jsonMain.put(FULL_NAME, fullname);
@@ -320,6 +435,15 @@ public class ProfileModel implements Serializable {
             jsonMain.put(IMAGE, image);//new JSONObject(image.toString()));
             jsonMain.put(ORDER_COUNT, orderCount);
             jsonMain.put(PROFILE_IMAGE, profileImg);
+            jsonMain.put(WALLET, wallet);
+            jsonMain.put(COUNTRY_CODE, country_code);
+            jsonMain.put(LOGISTIC_ID, logistic_id);
+            jsonMain.put(DRIVER_LOGIN_ID, driver_login_id);
+            jsonMain.put(DRIVING_LICENCE, driving_licence);
+            jsonMain.put(VEHICLE_NUMBER, vehicle_number);
+            jsonMain.put(VEHICLE_DOCUMENT, vehicle_document);
+            jsonMain.put(NATIONAL_ID, national_id);
+
             jsonMain.put(CATEGORY, profileCategoryListModel != null ? new JSONArray(profileCategoryListModel.toString(true)) : new JSONArray());
             returnString = jsonMain.toString();
         } catch (Exception ex) {

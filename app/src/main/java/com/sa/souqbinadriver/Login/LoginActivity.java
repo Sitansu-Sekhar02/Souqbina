@@ -28,6 +28,7 @@ import com.sa.souqbinadriver.global.GlobalVariables;
 import com.sa.souqbinadriver.services.ServerResponseInterface;
 import com.sa.souqbinadriver.services.ServicesMethodsManager;
 import com.sa.souqbinadriver.services.model.LoginModel;
+import com.sa.souqbinadriver.services.model.ProfileMainModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.sa.souqbinadriver.services.model.StatusMainModel;
 import com.sa.souqbinadriver.services.model.StatusModel;
@@ -144,7 +145,7 @@ public  class LoginActivity extends AppCompatActivity {
 
 
     private void loginUser(final Context context, final LoginModel model) {
-        GlobalFunctions.showProgress( context, "Logging..." );
+        GlobalFunctions.showProgress( context, getString(R.string.loggin) );
         ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
         servicesMethodsManager.loginUser( context, model, new ServerResponseInterface() {
             @Override
@@ -222,23 +223,18 @@ public  class LoginActivity extends AppCompatActivity {
     }
 
     private void getProfile() {
-        GlobalFunctions.showProgress(this.context, "Profile..." );
+        GlobalFunctions.showProgress(context, getString(R.string.loading_profile) );// it should not be hardcoded string ok??
         ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
-        ProfileModel model=new ProfileModel();
 
-       /* servicesMethodsManager.getProfile(this.context, model, new ServerResponseInterface() {
+        servicesMethodsManager.getProfile(context,new ServerResponseInterface() {
             @Override
             public void OnSuccessFromServer(Object arg0) {
                 //                hideLoading();
                 GlobalFunctions.hideProgress();
                 Log.d( TAG, "Response : " + arg0.toString() );
                 //ProfileDetails(arg0);
-                valitProfileOutput(arg0);
-                *//*GlobalFunctions.closeAllActivities();
-                ProfileModel profileModel = ( ProfileModel ) model;
-                GlobalFunctions.setProfile( context, profileModel );
-                Intent intent = new Intent( context, MainActivity.class );
-                startActivity( intent );*//*
+                validateProfileOutput(arg0); //naming convention of method should be proper ?
+
             }
 
             @Override
@@ -256,21 +252,19 @@ public  class LoginActivity extends AppCompatActivity {
                 GlobalFunctions.displayMessaage(LoginActivity.this.context, mainView, msg );
                 Log.d( TAG, "Error : " + msg );
             }
-        }, "ProfileFragment" );*/
+        }, "ProfileFragment" );
     }
 
-    private void valitProfileOutput(Object arg0) {
-        if (arg0 instanceof StatusMainModel) {
-            StatusMainModel statusMainModel = (StatusMainModel) arg0;
-            StatusModel statusModel = statusMainModel.getStatusModel();
-            if (statusMainModel.isStatus()) {
+    private void validateProfileOutput(Object arg0) {
+         if (arg0 instanceof ProfileMainModel){
 
-                Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
-                getProfile();
-            } else {
-                GlobalFunctions.displayErrorDialog(context, statusModel.getMessage());
-            }
+            GlobalFunctions.closeAllActivities();
+             ProfileMainModel profileMainModel = ( ProfileMainModel ) arg0;
+            ProfileModel profileModel = profileMainModel.getProfileModel();
+            GlobalFunctions.setProfile( context, profileModel );
+            Intent intent = new Intent( context, MainActivity.class );
+            startActivity( intent );
+
         }
 
     }

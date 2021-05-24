@@ -25,6 +25,7 @@ import com.sa.souqbinadriver.R;
 import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.services.ServerResponseInterface;
 import com.sa.souqbinadriver.services.ServicesMethodsManager;
+import com.sa.souqbinadriver.services.model.ProfileMainModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.squareup.picasso.Picasso;
 
@@ -71,7 +72,7 @@ public class ProfileFragment extends Fragment {
         activity = getActivity();
         context = getActivity();
 
-        //name_tv = ( TextView ) view.findViewById( R.id.name_tv );
+       // name_tv = ( TextView ) view.findViewById( R.id.name_tv );
 
         first_name_etv = view.findViewById( R.id.tv_firstname );
         last_name_etv =  view.findViewById( R.id.tv_lastName );
@@ -113,9 +114,9 @@ public class ProfileFragment extends Fragment {
         MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Intent i = new Intent(getActivity(), MainActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 startActivity(i);
-                getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);*/
+                getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
                 onBackPressed();
 
             }
@@ -137,7 +138,7 @@ public class ProfileFragment extends Fragment {
             public void OnSuccessFromServer(Object arg0) {
                 GlobalFunctions.hideProgress();
                 Log.d( TAG, "Response : " + arg0.toString() );
-                setDetails( ( ProfileModel ) arg0 );
+                setDetails( arg0);
             }
 
             @Override
@@ -166,13 +167,17 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void setDetails(ProfileModel profile) {
-        GlobalFunctions.setProfile( context, profile );
+    private void setDetails(Object arg0) {
+        GlobalFunctions.closeAllActivities();
+        ProfileMainModel profileMainModel = ( ProfileMainModel ) arg0;
+        ProfileModel profileModel = profileMainModel.getProfileModel();
+        GlobalFunctions.setProfile( context, profileModel );
+        //GlobalFunctions.setProfile( context, profile );
         if (context != null && isAdded()) {
             detail = GlobalFunctions.getProfile( context );
             setThisPage();
         }
-        ProfileModel model = ( ProfileModel ) profile;
+       // ProfileModel model = ( ProfileModel ) profile;
     }
 
     private void setThisPage() {
@@ -182,8 +187,8 @@ public class ProfileFragment extends Fragment {
 
                 Log.d( "heckDetail",""+ detail );
 
-                String fullName = detail.getFirstName() + " " + detail.getLastName();
-                name_tv.setText( fullName );
+               // String fullName = detail.getFirstName() + " " + detail.getLastName();
+               // name_tv.setText( fullName );
                 first_name_etv.setText( detail.getFirstName() );
                 last_name_etv.setText( detail.getLastName() );
                 mobile_etv.setText( detail.getPhone() );

@@ -1058,25 +1058,24 @@ public class GlobalFunctions {
     public static Map<String, String> getHeader(Context context, String serviceURL){
         Map<String, String> headers = new HashMap<String, String>();
         String authorization = getAuthenticationPassword(context, serviceURL);
-        Log.d(TAG, "Authorization : "+authorization);
+        Log.d(TAG, "Authorization : " + authorization);
         headers.put(GlobalVariables.CONTENT_TYPE, GlobalVariables.CONTENT_TYPE_VALUE);
         headers.put(GlobalVariables.AUTHORIZATION, authorization);
         headers.put(GlobalVariables.ACCEPT_LANGUAGE, getLanguage(context).toString());
         headers.put("Cache-Control", "no-cache");
-        headers.put("Cookie", getSharedPreferenceString(context, GlobalVariables.SHARED_PREFERENCE_COOKIE));
+        headers.put("Token", getSharedPreferenceString(context, GlobalVariables.SHARED_PREFERENCE_TOKEN));
         Log.d(TAG, "Header : "+headers);
         return headers;
     }
     public static Map<String, String> postHeader(Context context, String serviceURL){
         Map<String, String> headers = new HashMap<String, String>();
         String authorization = getAuthenticationPassword(context, serviceURL);
-        Log.d(TAG, "Authorization : "+authorization);
+        Log.d(TAG, "Authorization : " + authorization);
         headers.put(GlobalVariables.CONTENT_TYPE, GlobalVariables.CONTENT_TYPE_VALUE);
         headers.put(GlobalVariables.AUTHORIZATION, authorization);
         headers.put(GlobalVariables.ACCEPT_LANGUAGE, getLanguage(context).toString());
         headers.put("Cache-Control", "no-cache");
-        headers.put("Cookie", getSharedPreferenceString(context, GlobalVariables.SHARED_PREFERENCE_COOKIE));
-//        headers.put("Header", headers.toString());
+        headers.put("Token", getSharedPreferenceString(context, GlobalVariables.SHARED_PREFERENCE_TOKEN));
         Log.d(TAG, "Header : "+headers);
         return headers;
     }

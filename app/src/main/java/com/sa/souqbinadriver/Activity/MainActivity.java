@@ -56,9 +56,11 @@ import com.sa.souqbinadriver.services.ServerResponseInterface;
 import com.sa.souqbinadriver.services.ServicesMethodsManager;
 import com.sa.souqbinadriver.services.model.CountryModel;
 import com.sa.souqbinadriver.services.model.KeyValueModel;
+import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NotificationModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.sa.souqbinadriver.services.model.PushNotificationModel;
+import com.sa.souqbinadriver.services.model.StatusMainModel;
 import com.sa.souqbinadriver.services.model.StatusModel;
 import com.sa.souqbinadriver.view.AlertDialog;
 import com.squareup.picasso.Picasso;
@@ -258,6 +260,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+        mainView=toolbar;
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
@@ -431,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 try {
 
                     String
-                            fullName = profileModel.getFirstName() + " " + profileModel.getFirstName();
+                            fullName = profileModel.getFirstName() + " " + profileModel.getLastName();
                             header_name_tv.setText( fullName != null ? fullName : getString( R.string.guest ) );
                            header_email_tv.setText( profileModel.getEmail() != null ? profileModel.getEmail() : getString( R.string.email ) );
                            header_phone_tv.setText( profileModel.getPhone() != null ? profileModel.getPhone() : getString( R.string.mobile_no) );
@@ -597,7 +602,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onClick(View v) {
                         alertDialog.dismiss();
                         //Logout the Application
-                        logoutUser( mainContext );
+                        LogoutModel logoutModel=new LogoutModel();
+                        logoutModel.setUuid(GlobalFunctions.getUniqueID(activity));
+                        logoutUser( mainContext ,logoutModel);
                     }
                 } );
                 alertDialog.setNegativeButton( activity.getString( R.string.cancel ), new View.OnClickListener() {
@@ -615,10 +622,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void logoutUser(final  Context mainContext) {
+    private void logoutUser(final  Context mainContext,final LogoutModel logoutModel) {
         GlobalFunctions.showProgress( mainContext, getString( R.string.logingout ) );
         ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
-        servicesMethodsManager.logout( mainContext, new ServerResponseInterface() {
+        servicesMethodsManager.logout( mainContext,logoutModel, new ServerResponseInterface() {
             @Override
             public void OnSuccessFromServer(Object arg0) {
                 GlobalFunctions.hideProgress();
@@ -645,18 +652,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void validateOutput(Object arg0) {
-        if (arg0 instanceof StatusModel) {
-            StatusModel statusModel = ( StatusModel ) arg0;
+        if (arg0 instanceof StatusMainModel) {
+            StatusMainModel statusMainModel = ( StatusMainModel ) arg0;
+            StatusModel statusModel = statusMainModel.getStatusModel();
             //globalFunctions.displayMessaage(activity, mainView, statusModel.getMessage());
-            if (statusModel.isStatus()) {
+            if (statusMainModel.isStatus()) {
                 /*Logout success, Clear all cache and reload the home page*/
 
+                globalFunctions.logoutApplication( mainContext );
+                GlobalFunctions.closeAllActivities();
+                RestartEntireApp( mainContext, false );
+
             }
-//            analyticsReport.logout(detail);
-            globalFunctions.logoutApplication( mainContext );
-            /*Intent intent = new Intent(activity, MainActivity.class);
-            startActivity(intent);*/
-            (( MainActivity ) activity).RestartEntireApp( mainContext, false );
         }
 
     }
