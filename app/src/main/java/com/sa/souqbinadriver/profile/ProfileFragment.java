@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,8 @@ import com.sa.souqbinadriver.services.ServerResponseInterface;
 import com.sa.souqbinadriver.services.ServicesMethodsManager;
 import com.sa.souqbinadriver.services.model.ProfileMainModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
+import com.sa.souqbinadriver.services.model.StatusModel;
+import com.sa.souqbinadriver.view.AlertDialog;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,7 +39,7 @@ public class ProfileFragment extends Fragment {
     public static final String TAG ="ProfileFragment" ;
     public static final String BUNDLE_KEY_CITY_HOUSE_TYPE_FRAGMENT_ORDER_SUBMIT_MODEL = "BundleKeyCreateRideFragmentOrderSubmit";
 
-    private static Activity activity;
+    Activity activity;
     Context context;
     View mainView;
     TextView name_tv, therapist_tv, update_button, email_ev;
@@ -67,6 +70,7 @@ public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView( inflater, container, savedInstanceState );
         view = inflater.inflate(R.layout.activity_my_profile, container, false);
 
         activity = getActivity();
@@ -85,42 +89,6 @@ public class ProfileFragment extends Fragment {
         profile_image = ( CircleImageView ) view.findViewById( R.id.ivProfimeImage );
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getActivity().getWindow();
-            window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
-            window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-//            window.setStatusBarColor(ContextCompat.getColor(this, R.color.ColorStatusBar));
-        }
-        view.setFocusableInTouchMode(true);
-        view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        Intent i = new Intent(getActivity(), MainActivity.class);
-                        startActivity(i);
-                        getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
-
-        MainActivity.iv_home.setVisibility(View.GONE);
-        MainActivity.iv_menu.setImageResource(R.drawable.ic_group_back);
-        MainActivity.tvHeaderText.setText(getString(R.string.my_profile));
-        MainActivity.iv_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), MainActivity.class);
-                startActivity(i);
-                getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
-                onBackPressed();
-
-            }
-        });
         getProfile();
         mainView=first_name_etv;
 
@@ -205,23 +173,83 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void onBackPressed() {
-        closeThisActivity();
-        super.getActivity().onBackPressed();
+    @Override
+    public void onResume() {
+        /* getProfile();*/
+        // MainActivity.setTitleResourseID(0);
+        (( ProfileMainActivity ) activity).setTitle( getString( R.string.my_profile ), R.mipmap.app_icon, 0 );
+        super.onResume();
     }
-    public void closeThisActivity() {
 
-        if (activity != null) {
-            activity.finish();
-            //activity.overridePendingTransition(R.anim.zoom_in,R.anim.zoom_out);
+    private void checkChangePasswordAfter(Object model) {
+        if (model instanceof StatusModel) {
+            StatusModel statusModel = ( StatusModel ) model;
+//            GlobalFunctions.displayMessaage(context, mainView, statusModel.getMessage());
+            if (statusModel.isStatus()) {
+                showAlertDialog( context, statusModel.getMessage() );
+            }
         }
     }
 
-    public void replaceFragmentWithAnimation(Fragment fragment) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.commit();
+    private void showAlertDialog(final Context context, final String message) {
+        final AlertDialog alertDialog = new AlertDialog( context );
+        alertDialog.setCancelable( false );
+        alertDialog.setIcon( R.mipmap.app_icon );
+        alertDialog.setTitle( getString( R.string.app_name ) );
+        alertDialog.setMessage( message );
+        alertDialog.setPositiveButton( getString( R.string.ok ), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                //logoutUser( context );
+            }
+        } );
+
+        alertDialog.show();
+    }
+
+/*
+    private void logoutUser(Context context) {
+        GlobalFunctions.showProgress( context, getString( R.string.logingout ) );
+        ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
+        servicesMethodsManager.logout( context, new ServerResponseInterface() {
+            @Override
+            public void OnSuccessFromServer(Object arg0) {
+                GlobalFunctions.hideProgress();
+                Log.d( TAG, "Response : " + arg0.toString() );
+                validateOutput( arg0 );
+            }
+
+            @Override
+            public void OnFailureFromServer(String msg) {
+                GlobalFunctions.hideProgress();
+                Toast.makeText( context, msg, Toast.LENGTH_SHORT ).show();
+                //GlobalFunctions.displayMessaage(context, mainView, msg);
+                Log.d( TAG, "Failure : " + msg );
+            }
+
+            @Override
+            public void OnError(String msg) {
+                GlobalFunctions.hideProgress();
+                Toast.makeText( context, msg, Toast.LENGTH_SHORT ).show();
+                //GlobalFunctions.displayMessaage(context, mainView, msg);
+                Log.d( TAG, "Error : " + msg );
+            }
+        }, "Logout_User" );
+    }
+*/
+
+    private void validateOutput(Object arg0) {
+        if (arg0 instanceof StatusModel) {
+            StatusModel statusModel = ( StatusModel ) arg0;
+            GlobalFunctions.displayMessaage( context, mainView, statusModel.getMessage() );
+            if (statusModel.isStatus()) {
+                /*Logout success, Clear all cache and reload the home page*/
+
+            }
+            GlobalFunctions.logoutApplication( context );
+            // MainActivity.RestartEntireApp(context);
+        }
     }
 
 

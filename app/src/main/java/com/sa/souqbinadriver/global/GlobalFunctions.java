@@ -41,9 +41,12 @@ import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
 import com.sa.souqbinadriver.Activity.AppController;
 import com.sa.souqbinadriver.Activity.MainActivity;
+import com.sa.souqbinadriver.Login.LoginActivity;
 import com.sa.souqbinadriver.R;
 import com.sa.souqbinadriver.addon.PasswordValidator;
 import com.sa.souqbinadriver.navigation.NavigationDrawerFragment;
+import com.sa.souqbinadriver.profile.ProfileFragment;
+import com.sa.souqbinadriver.profile.ProfileMainActivity;
 import com.sa.souqbinadriver.services.model.AddressModel;
 import com.sa.souqbinadriver.services.model.CountryModel;
 import com.sa.souqbinadriver.services.model.KeyValueListModel;
@@ -1114,9 +1117,9 @@ public class GlobalFunctions {
     }
 
     public static void closeAllActivities(){
-        //LoginActivity.closeThisActivity();
-       // ProfileFragment.closeThisActivity();
-       // MainActivity.closeThisActivity();
+        LoginActivity.closeThisActivity();
+        ProfileMainActivity.closeThisActivity();
+        MainActivity.closeThisActivity();
       //  CitySelectingActivity.closeThisActivity();
 
     }

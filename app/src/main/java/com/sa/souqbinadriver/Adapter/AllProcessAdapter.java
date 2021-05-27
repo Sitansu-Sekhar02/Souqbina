@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.sa.souqbinadriver.completed.order.CompletedOrderFragment;
-import com.sa.souqbinadriver.ongoing.order.OngoingOrderFragment;
-import com.sa.souqbinadriver.upcoming.order.UpcomingOrderFragment;
+import com.sa.souqbinadriver.completedorder.CompletedOrderFragment;
+import com.sa.souqbinadriver.ongoingorder.OngoingOrderFragment;
+import com.sa.souqbinadriver.upcomingorder.UpcomingOrderFragment;
 
 public class AllProcessAdapter extends FragmentPagerAdapter {
     Context context;

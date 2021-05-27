@@ -2,11 +2,13 @@ package com.sa.souqbinadriver.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -15,7 +17,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.ValueAnimator;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -31,6 +33,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -52,6 +55,7 @@ import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.global.GlobalVariables;
 import com.sa.souqbinadriver.profile.ProfileFragment;
 import com.sa.souqbinadriver.R;
+import com.sa.souqbinadriver.profile.ProfileMainActivity;
 import com.sa.souqbinadriver.services.ServerResponseInterface;
 import com.sa.souqbinadriver.services.ServicesMethodsManager;
 import com.sa.souqbinadriver.services.model.CountryModel;
@@ -71,6 +75,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    public static final String BUNDLE_DEEPLINK_URL = "BundleDeepLinkURL";
+    public static final String BUNDLE_MAIN_NOTIFICATION_MODEL = "BundleMainModelNotificationModel";
     public static int backPressed = 0;
     public static ImageView iv_menu,iv_share,iv_home;
     public static Context mainContext = null;
@@ -84,8 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     LinearLayout nav_header;
     public static TextView iv_Notification;
     TextView Logout;
-    public static final String BUNDLE_DEEPLINK_URL = "BundleDeepLinkURL";
-    public static final String BUNDLE_MAIN_NOTIFICATION_MODEL = "BundleMainModelNotificationModel";
     private LayoutInflater layoutInflater;
     public static String TAG = "MainActivity";
     public static LocationServices locServices = null;
@@ -173,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         //restoreToolbar();
     }
-    private static void restoreToolbar() {
+   /* private static void restoreToolbar() {
         //toolbar = (Toolbar) findViewById(R.id.tool_bar);
         Log.d( TAG, "Restore Tool Bar" );
         if (actionBar != null) {
@@ -193,8 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //actionBar.setTitle("");
             actionBar.setDisplayHomeAsUpEnabled( true );
         }
-
-    }
+    }*/
 
     public static void closeThisActivity() {
         if (activity != null) {
@@ -206,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public static void stopLocationService() {
+
         activity.stopService( locationintent );
     }
 
@@ -248,27 +252,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         globalFunctions = AppController.getInstance().getGlobalFunctions();
         globalVariables = AppController.getInstance().getGlobalVariables();
         analyticsReport = new AnalyticsReport();
+       // nav_header=navigationHeaderView.findViewById(R.id.Profilebutton);
+
 
         initialize();
 
-        drawer.closeDrawer(GravityCompat.START);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //drawer.closeDrawer(GravityCompat.START);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+
+      //  Drawable navIconDrawable = ResourcesCompat.getDrawable( getResources(), R.drawable.ic_group_menu, getTheme() );
+
+
+        toolbar = ( Toolbar ) findViewById( R.id.tool_bar ); // Attaching the layout to the toolbar object
+       //toolbar.setPadding(0, GlobalFunctions.getStatusBarHeight(mainContext), 0, 0);
+      //  toolbar.setContentInsetsAbsolute( 0, 0 );
+      //  toolbar.setNavigationIcon( navIconDrawable );
+        ///toolbar_title = ( TextView ) toolbar.findViewById( R.id.toolbar_title );
+       //toolbar_logo = ( ImageView ) toolbar.findViewById( R.id.tool_bar_logo );
+      //  toolbar_title.setVisibility( View.GONE );
+      //  toolbar_logo.setVisibility( View.VISIBLE );
 
 
         mainView=toolbar;
+        setSupportActionBar( toolbar );
+        actionBar = getSupportActionBar();
+       // actionBar.setHomeAsUpIndicator( navIconDrawable );
+        setOptionsMenuVisiblity( false );
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        gravity = globalFunctions.getLanguage( context ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
+        drawer = ( DrawerLayout ) findViewById( R.id.drawer_layout );
+        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close );
+        toggle.setDrawerIndicatorEnabled( false );
+       // toggle.setHomeAsUpIndicator( navIconDrawable );
+       /* toggle.setToolbarNavigationClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawer.isDrawerVisible( gravity )) {
+                    drawer.closeDrawer( gravity );
+                } else {
+                    drawer.openDrawer( gravity );
+                }
+            }
+        } );*/
+        drawer.addDrawerListener( toggle );
+        toggle.syncState();
+
+        navigationView = ( NavigationView ) findViewById( R.id.nav_view );
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            navigationView.setPointerIcon(PointerIcon.load(getResources(), R.drawable.ic_menu));
+        }*/
+        navigationView.setNavigationItemSelectedListener( this );
+        navigationHeaderView = navigationView.getHeaderView( 0 );
+
+      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
             window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-            window.setStatusBarColor( ContextCompat.getColor( this, R.color.sends ) );
-        }
+            window.setStatusBarColor( ContextCompat.getColor( this, R.color.white ) );
+        }*/
 
         String token = FirebaseInstanceId.getInstance().getToken();
         if (token != null) {
@@ -286,23 +330,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gravity = globalFunctions.getLanguage( context ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
 
 
-        if (navigationView != null) {
+       /* if (navigationView != null) {
             Menu menu = navigationView.getMenu();
-           /* if (preferences.get("login").equalsIgnoreCase("yes")) {
+           *//* if (preferences.get("login").equalsIgnoreCase("yes")) {
 
                 menu.findItem(R.id.logout).setTitle("Login");
             } else {
                 menu.findItem(R.id.logout).setTitle("Logout");
-            }*/
+            }*//*
             navigationView.setNavigationItemSelectedListener(this);
-        }
+        }*/
+
 
         mainActivityFM.addOnBackStackChangedListener( new FragmentManager.OnBackStackChangedListener() {
 
             @Override
             public void onBackStackChanged() {
                 if (mainActivityFM != null) {
-                    Fragment currentFragment = mainActivityFM.findFragmentById( R.id.fragment_container );
+                    Fragment currentFragment = mainActivityFM.findFragmentById( R.id.container );
                     if (currentFragment != null) {
                         currentFragment.onResume();
                     }
@@ -312,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        //replaceFragmentWithAnimation(new FragmentAllProcess());
+       // replaceFragmentWithAnimation(new FragmentAllProcess());
         Fragment AllFragment=new FragmentAllProcess();
         replaceFragment( AllFragment, FragmentAllProcess.TAG, getString( R.string.app_name ), 0, 0 );
 
@@ -331,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             FragmentTransaction ft = mainActivityFM.beginTransaction();
             ft.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
             //ft.setCustomAnimations(R.anim.slide_out_left, R.anim.slide_out_right);
-            ft.add( R.id.fragment_container, allFragment, tag ).addToBackStack( tag ).commitAllowingStateLoss();
+            ft.add( R.id.container, allFragment, tag ).addToBackStack( tag ).commitAllowingStateLoss();
         }
     }
 
@@ -363,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (ActivityCompat.shouldShowRequestPermissionRationale( activity, android.Manifest.permission.INTERNET ) && ActivityCompat.shouldShowRequestPermissionRationale( activity, android.Manifest.permission.ACCESS_NETWORK_STATE ) && ActivityCompat.shouldShowRequestPermissionRationale( activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE ) && ActivityCompat.shouldShowRequestPermissionRationale( activity, android.Manifest.permission.CAMERA ) || ActivityCompat.shouldShowRequestPermissionRationale( activity, android.Manifest.permission.CALL_PHONE )) {
                 Fragment homeFragment = null;
                 homeFragment = new FragmentAllProcess();
-                mainActivityFM.beginTransaction().replace( R.id.fragment_container, homeFragment, "" ).commitAllowingStateLoss();
+                mainActivityFM.beginTransaction().replace( R.id.container, homeFragment, "" ).commitAllowingStateLoss();
             } else {
                 ActivityCompat.requestPermissions( activity, new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.INTERNET, android.Manifest.permission.ACCESS_NETWORK_STATE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CALL_PHONE}, globalVariables.PERMISSIONS_REQUEST_PRIMARY );
             }
@@ -416,6 +461,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void setOptionsMenuVisiblity(boolean showMenu) {
+        if (menu == null)
+            return;
+        //menu.setGroupVisible(R.id.menu, showMenu);
+    }
+
     private void setNavigationHeaders() {
         if (navigationHeaderView != null && mainContext != null) {
             TextView
@@ -424,11 +475,70 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
               TextView
                       header_phone_tv = ( TextView ) navigationHeaderView.findViewById( R.id.nav_tv_userNumber );
 
+              LinearLayout
+                     nav_header=navigationHeaderView.findViewById(R.id.Profilebutton);
+
+              TextView
+                      logout=navigationHeaderView.findViewById(R.id.Logout);
+
+                                logout.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                                            drawer.closeDrawer(GravityCompat.START);
+                                            final AlertDialog alertDialog = new AlertDialog( activity );
+                                            alertDialog.setCancelable( false );
+                                            alertDialog.setIcon( R.mipmap.app_icon );
+                                            alertDialog.setTitle( activity.getString( R.string.app_name ) );
+                                            alertDialog.setMessage( activity.getResources().getString( R.string.appLogoutText ));
+                                            alertDialog.setPositiveButton( activity.getString( R.string.yes ), new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    alertDialog.dismiss();
+                                                    //Logout the Application
+                                                    LogoutModel logoutModel=new LogoutModel();
+                                                    logoutModel.setUuid(GlobalFunctions.getUniqueID(activity));
+                                                    logoutUser( mainContext ,logoutModel);
+                                                }
+                                            } );
+                                            alertDialog.setNegativeButton( activity.getString( R.string.cancel ), new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+
+                                                    alertDialog.dismiss();
+                                                }
+                                            } );
+
+                                            alertDialog.show();
+                                        }
+                                    });
 
 
-            ImageView
+
+
+
+             ImageView
                     // header_close_iv = (ImageView) navigationHeaderView.findViewById(R.id.navigation_header_close_iv),
                     header_app_iv = ( ImageView ) navigationHeaderView.findViewById( R.id.nav_profile_image );
+
+            nav_header.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                    drawer.closeDrawer(GravityCompat.START);
+
+                    Intent intent = new Intent( mainContext, ProfileMainActivity.class );
+                    startActivity( intent );
+
+                  //  Fragment profileFragment = null;
+                   // profileFragment = ProfileFragment.newInstance();
+                   // replaceFragment(profileFragment, ProfileFragment.TAG, "", 0, 0);
+
+                    //  Fragment profilefragment=new ProfileFragment();
+                    //  replaceFragment( profilefragment, ProfileFragment.TAG, getString( R.string.app_name ), 0, 0 );
+                    //replaceFragmentWithAnimation(new ProfileFragment());
+                }
+            });
 
 
             ProfileModel profileModel = globalFunctions.getProfile( context );
@@ -443,7 +553,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     try {
                         if (profileModel.getProfileImg() != null || !profileModel.getProfileImg().equals( "null" ) || !profileModel.getProfileImg().equalsIgnoreCase( "" )) {
-                            Picasso.with( mainContext ).load(profileModel.getProfileImg() ).placeholder( R.drawable.profile_img ).into( header_app_iv );
+                            Picasso.with( mainContext ).load(profileModel.getProfileImg() ).placeholder( R.drawable.ic_baseline_person_24 ).into( header_app_iv );
                         }
                     } catch (Exception e) {
                     }
@@ -536,7 +646,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         System.exit( 0 );
     }
     public void stimulateOnResumeFunction() {
-        mainActivityFM.findFragmentById( R.id.fragment_container ).onResume();
+        mainActivityFM.findFragmentById( R.id.container ).onResume();
     }
 
     public void releseFragments() {
@@ -565,29 +675,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         iv_menu.setOnClickListener(this);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = ( NavigationView ) findViewById( R.id.nav_view );
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            navigationView.setPointerIcon(PointerIcon.load(getResources(), R.drawable.ic_menu));
+        }*/
+      //  navigationView.setNavigationItemSelectedListener( this );
+      //  navigationHeaderView = navigationView.getHeaderView( 0 );
         //navigationview
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener( this );
-        navigationHeaderView=navigationView.getHeaderView(0);
+        //navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView.setNavigationItemSelectedListener( this );
+       // navigationHeaderView=navigationView.getHeaderView(0);
 
 
-        nav_header=navigationHeaderView.findViewById(R.id.Profilebutton);
-        Logout=navigationHeaderView.findViewById(R.id.Logout);
+       // Logout=navigationHeaderView.findViewById(R.id.Logout);
 
 
-        nav_header.setOnClickListener(new View.OnClickListener() {
+       /* nav_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
-                Fragment profilefragment=new ProfileFragment();
-                replaceFragment( profilefragment, ProfileFragment.TAG, getString( R.string.app_name ), 0, 0 );
+
+                Fragment profileFragment = null;
+                profileFragment = ProfileFragment.newInstance();
+                replaceFragment(profileFragment, ProfileFragment.TAG, "", 0, 0);
+
+              //  Fragment profilefragment=new ProfileFragment();
+              //  replaceFragment( profilefragment, ProfileFragment.TAG, getString( R.string.app_name ), 0, 0 );
                 //replaceFragmentWithAnimation(new ProfileFragment());
             }
-        });
-        Logout.setOnClickListener(new View.OnClickListener() {
+        });*/
+        /*Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -618,7 +737,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 alertDialog.show();
             }
         });
-
+*/
 
     }
 
@@ -669,6 +788,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -686,7 +806,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void replaceFragmentWithAnimation(Fragment fragment) {
         FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(R.id.fragment_container, fragment);
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -700,23 +821,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-       /* backPressed = backPressed + 1;
-        if (backPressed == 1) {
-            Toast.makeText(MainActivity.this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-            new CountDownTimer(5000, 1000) { // adjust the milli seconds here
-                public void onTick(long millisUntilFinished) {
-                }
-                public void onFinish() { backPressed = 0;
-                }
-            }.start();
-        }
-        if (backPressed == 2) {
-            backPressed = 0;
-            finishAffinity();
-            android.os.Process.killProcess(android.os.Process.myPid());
-        }*/
         if (mainActivityFM != null) {
-            String currentFragment = mainActivityFM.findFragmentById( R.id.fragment_container ).getClass().getName();
+            String currentFragment = mainActivityFM.findFragmentById( R.id.container ).getClass().getName();
             String homeFragmentName = FragmentAllProcess.class.getName();
             DrawerLayout drawer = ( DrawerLayout ) findViewById( R.id.drawer_layout );
             if (drawer.isDrawerOpen( GravityCompat.START )) {
@@ -751,7 +857,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             } else {
                 super.onBackPressed();
-                stimulateOnResumeFunction();
+               stimulateOnResumeFunction();
             }
         } else {
             super.onBackPressed();

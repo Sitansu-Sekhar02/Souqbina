@@ -63,7 +63,7 @@
     <string name="Parsingerror">Parsing error!</string>
     <string name="ConnectionTimeOut">Connection TimeOut!</string>
     <string name="pleasewait">Please wait... <br>while we load your data</br></string>
-    <string name="loading">Loading</string>
+    <string name="loading">Loading...</string>
     <!--Network Static messages-->
     <string name="NetworkError">No Network Available</string>
     <string name="ServerError">Server Response Timeout</string>
@@ -203,6 +203,8 @@
     <string name="tryAgain">Try Again</string>
     <string name="emptyList">Empty List</string>
     <string name="emptyListMessage">No records to display.</string>
+    <string name="no_completed_order">No Completed orders.</string>
+
     <string name="customer">Customer</string>
     <string name="theripast">Therapist</string>
     <string name="location">Location</string>

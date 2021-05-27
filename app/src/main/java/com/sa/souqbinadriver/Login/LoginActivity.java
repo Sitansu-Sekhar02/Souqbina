@@ -126,7 +126,7 @@ public  class LoginActivity extends AppCompatActivity {
             } else if (!globalFunctions.isPhoneNumberValid( mobileNo )) {
                 //                mobNo_ev.setText( "" );
                 etMobile.setError( getString( R.string.mobileNoNotValid ) );
-                etMobile.setFocusableInTouchMode( true );
+                etMobile.setFocusableInTouchMode( true);
                 etMobile.requestFocus();
                 // GlobalFunctions.displayMessaage(context, mainView, getString(R.string.mobileNumberNotValid));
             } /*else if (selected_country_code.isEmpty()) {
@@ -267,6 +267,18 @@ public  class LoginActivity extends AppCompatActivity {
 
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+        closeThisActivity();
+        super.onBackPressed();
+    }
+
+    public static void closeThisActivity() {
+        if (activity != null) {
+            activity.finish();
+            //activity.overridePendingTransition(R.anim.zoom_in,R.anim.zoom_out);
+        }
     }
 }
 

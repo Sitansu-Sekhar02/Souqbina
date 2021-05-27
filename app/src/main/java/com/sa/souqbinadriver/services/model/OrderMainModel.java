@@ -2,6 +2,7 @@ package com.sa.souqbinadriver.services.model;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -13,20 +14,21 @@ public class OrderMainModel implements Serializable {
             STATUS              = "status_bool",
             MESSAGE             = "status";
 
-    ProfileModel
-            profileModel      = null;
+    OrderListModel
+            orderListModel      = null;
 
     String message = null;
     boolean isStatus=false;
 
     public OrderMainModel(){}
 
-    public ProfileModel getProfileModel() {
-        return profileModel;
+
+    public OrderListModel getOrderListModel() {
+        return orderListModel;
     }
 
-    public void setProfileModel(ProfileModel profileModel) {
-        this.profileModel = profileModel;
+    public void setOrderListModel(OrderListModel orderListModel) {
+        this.orderListModel = orderListModel;
     }
 
     public boolean isStatus() {
@@ -52,11 +54,11 @@ public class OrderMainModel implements Serializable {
             if(json.has(STATUS)){this.isStatus = json.getBoolean(STATUS);}
 
             if(json.has(RESPONSE)){
-                ProfileModel statusModel = new ProfileModel();
-                JSONObject jsonObject1 = new JSONObject();
-                jsonObject1 = json.getJSONObject(RESPONSE);
-                if(jsonObject1 != null){statusModel.toObject(jsonObject1.toString());}
-                profileModel = statusModel;
+                OrderListModel orderDetailListModel = new OrderListModel();
+                JSONArray jsonArray = new JSONArray();
+                jsonArray = json.getJSONArray(RESPONSE);
+                if(jsonArray!=null){orderDetailListModel.toObject(jsonArray);}
+                this.orderListModel = orderDetailListModel;
             }
 
             return true;
@@ -72,7 +74,7 @@ public class OrderMainModel implements Serializable {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(STATUS, isStatus);
             jsonMain.put(MESSAGE, message);
-            jsonMain.put(RESPONSE, profileModel != null ? new JSONObject(this.profileModel.toString()) : new JSONObject());
+            jsonMain.put(RESPONSE, this.orderListModel!=null?new JSONObject(this.orderListModel.toString()):new JSONObject());
 
             returnString = jsonMain.toString();
         }

@@ -18,6 +18,8 @@ public class ServerConstants {
     public static final String URL_GetConfirmedAppointmentsList      = BASE_URL + "booking_display.php";
     public static final String URL_BookingStatusUpdate  = BASE_URL + "booking_status_update.php";
     public static final String URL_LogoutUser           = SERVER_URL + "logout.php";
+    public static final String URL_GetOrderList           = SERVER_URL + "select_orders.php";
+
     public static final String URL_UpdateProfile        = BASE_URL + "get_profile.php";
     public static final String URL_GetProfile           = SERVER_URL + "get_profile.php";
     public static final String URL_GetCityList          = BASE_URL + "city_list.php";

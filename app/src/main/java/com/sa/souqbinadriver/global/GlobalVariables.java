@@ -554,7 +554,7 @@ public class GlobalVariables {
 
     public final static String CONTENT_TYPE_VALUE      ="application/json; charset=UTF-8";
 
-    public static final int LIST_REQUEST_SIZE           = 10;
+    public static final int LIST_REQUEST_SIZE           = 100;
 
     public static final int BOOKING_PLACED                  = 3;
     public static final int BOOKING_CONFIRMED               = 4;
@@ -655,6 +655,12 @@ public class GlobalVariables {
 
                HOUSE_TYPE_APARTMENT               = 1,
                HOUSE_TYPE_INDEPENDENT_HOUSE       = 2;
+
+
+    public static final String
+            ORDER_TYPE_COMPLETED               = "3",
+            ORDER_TYPE_UPCOMING                = "1",
+            ORDER_TYPE_ON_GOING                = "2";
 
     //Profile Photo Variables
     public static String PROFILE_PICTURE_FOLDER    = "Profile";

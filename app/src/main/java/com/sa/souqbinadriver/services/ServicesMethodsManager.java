@@ -30,6 +30,9 @@ import com.sa.souqbinadriver.services.model.LoginModel;
 import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NewsListModel;
 import com.sa.souqbinadriver.services.model.NotificationListModel;
+import com.sa.souqbinadriver.services.model.OrderListModel;
+import com.sa.souqbinadriver.services.model.OrderMainModel;
+import com.sa.souqbinadriver.services.model.OrderModel;
 import com.sa.souqbinadriver.services.model.OrderSubmitModel;
 import com.sa.souqbinadriver.services.model.PlanListModel;
 import com.sa.souqbinadriver.services.model.PostModel;
@@ -160,6 +163,16 @@ public class ServicesMethodsManager {
         getData(context, new NewsListModel(), URL, query, TAG);
     }
 
+    public void getorderDetails(Context context,String order_vendor_product_id, ServerResponseInterface mCallInterface, String TAG) {
+        setCallbacks(mCallInterface);
+        String query = null;
+       // OrderModel orderModel=new OrderModel();
+        query = query != null ? query + "&order_vendor_product_id=" + order_vendor_product_id : "order_vendor_product_id=" + order_vendor_product_id;
+
+       // query = query!=null? query+"&order_id="+orderModel.getOrder_id() : "order_id="+orderModel.getOrder_id();
+        String URL = ServerConstants.URL_GetOrderList;
+        getData(context,new OrderListModel() , URL, query, TAG);
+    }
     public void getPlanList(Context context, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
         String query = null;
@@ -247,7 +260,26 @@ public class ServicesMethodsManager {
             } else {
                     mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }
-        } else if (obj instanceof LogoutModel) {
+        } else if (obj instanceof OrderMainModel) {
+            OrderMainModel orderMainModel = new OrderMainModel();
+            if (orderMainModel.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(orderMainModel);
+            } else {
+                mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
+        } else if (obj instanceof OrderModel) {
+            OrderMainModel model = new OrderMainModel();
+            if (model.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(model);
+            } else {
+                OrderModel orderModel = new OrderModel();
+                if (orderModel.toObject(resp.toString())) {
+                    mUiCallBack.OnSuccessFromServer(orderModel);
+                } else {
+                    mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+                }
+            }
+        }else if (obj instanceof LogoutModel) {
             StatusMainModel model = new StatusMainModel();
             if (model.toObject(resp.toString())) {
                 mUiCallBack.OnSuccessFromServer(model);
@@ -463,6 +495,16 @@ public class ServicesMethodsManager {
         // postData(context, new CategoryListModel(), URL, query, TAG);
         postData(context, genderModel, URL, query, TAG);
     }
+    public void getOrderList(Context context, @NonNull int index, @NonNull int size,@Nullable String status, ServerResponseInterface mCallInterface, String TAG) {
+        setCallbacks(mCallInterface);
+        String query = null;
+        query = query != null ? query + "&index=" + index : "index=" + index;
+        query = query != null ? query + "&size=" + size : "size=" + size;
+        query = query != null ? query + "&status=" + status : "status=" + status;
+
+        getData(context, new OrderMainModel(), ServerConstants.URL_GetOrderList, query, TAG);
+    }
+
 
     public void getMyAppointments(Context context, @NonNull int index, @NonNull int size, @NonNull int status, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
