@@ -136,7 +136,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setDetails(Object arg0) {
-        GlobalFunctions.closeAllActivities();
         ProfileMainModel profileMainModel = ( ProfileMainModel ) arg0;
         ProfileModel profileModel = profileMainModel.getProfileModel();
         GlobalFunctions.setProfile( context, profileModel );

@@ -30,6 +30,7 @@ import com.sa.souqbinadriver.services.model.LoginModel;
 import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NewsListModel;
 import com.sa.souqbinadriver.services.model.NotificationListModel;
+import com.sa.souqbinadriver.services.model.OrderDetailMainModel;
 import com.sa.souqbinadriver.services.model.OrderListModel;
 import com.sa.souqbinadriver.services.model.OrderMainModel;
 import com.sa.souqbinadriver.services.model.OrderModel;
@@ -171,7 +172,7 @@ public class ServicesMethodsManager {
 
        // query = query!=null? query+"&order_id="+orderModel.getOrder_id() : "order_id="+orderModel.getOrder_id();
         String URL = ServerConstants.URL_GetOrderList;
-        getData(context,new OrderListModel() , URL, query, TAG);
+        getData(context,new OrderDetailMainModel(), URL, query, TAG);
     }
     public void getPlanList(Context context, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
@@ -262,6 +263,13 @@ public class ServicesMethodsManager {
             }
         } else if (obj instanceof OrderMainModel) {
             OrderMainModel orderMainModel = new OrderMainModel();
+            if (orderMainModel.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(orderMainModel);
+            } else {
+                mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
+        }else if (obj instanceof OrderDetailMainModel) {
+            OrderDetailMainModel orderMainModel = new OrderDetailMainModel();
             if (orderMainModel.toObject(resp.toString())) {
                 mUiCallBack.OnSuccessFromServer(orderMainModel);
             } else {

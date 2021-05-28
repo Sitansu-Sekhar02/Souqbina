@@ -7,28 +7,28 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-public class OrderMainModel implements Serializable {
-    private final String TAG = "OrderMainModel";
+public class OrderDetailMainModel implements Serializable {
+    private final String TAG = "OrderDetailMainModel";
     private final String
             RESPONSE            = "response",
             STATUS              = "status_bool",
             MESSAGE             = "status";
 
-    OrderListModel
-            orderListModel      = null;
+    OrderModel
+            orderModel      = null;
 
     String message = null;
     boolean isStatus=false;
 
-    public OrderMainModel(){}
+    public OrderDetailMainModel(){}
 
 
-    public OrderListModel getOrderListModel() {
-        return orderListModel;
+    public OrderModel getOrderModel() {
+        return orderModel;
     }
 
-    public void setOrderListModel(OrderListModel orderListModel) {
-        this.orderListModel = orderListModel;
+    public void setOrderModel(OrderModel orderModel) {
+        this.orderModel = orderModel;
     }
 
     public boolean isStatus() {
@@ -54,12 +54,13 @@ public class OrderMainModel implements Serializable {
             if(json.has(STATUS)){this.isStatus = json.getBoolean(STATUS);}
 
             if(json.has(RESPONSE)){
-                OrderListModel orderDetailListModel = new OrderListModel();
-                JSONArray jsonArray = new JSONArray();
-                jsonArray = json.getJSONArray(RESPONSE);
-                if(jsonArray!=null){orderDetailListModel.toObject(jsonArray);}
-                this.orderListModel = orderDetailListModel;
+                OrderModel statusModel = new OrderModel();
+                JSONObject jsonObject1 = new JSONObject();
+                jsonObject1 = json.getJSONObject(RESPONSE);
+                if(jsonObject1 != null){statusModel.toObject(jsonObject1.toString());}
+                orderModel = statusModel;
             }
+
 
             return true;
         }catch(Exception ex){
@@ -74,7 +75,7 @@ public class OrderMainModel implements Serializable {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(STATUS, isStatus);
             jsonMain.put(MESSAGE, message);
-            jsonMain.put(RESPONSE, this.orderListModel != null? new JSONArray(this.orderListModel.toString(true)) : new JSONArray());
+            jsonMain.put(RESPONSE, this.orderModel != null? new JSONObject(this.orderModel.toString()) : new JSONObject());
 
             returnString = jsonMain.toString();
         }

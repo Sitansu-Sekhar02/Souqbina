@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sa.souqbinadriver.R;
+import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.services.model.OrderModel;
 
 import java.util.List;
@@ -42,11 +43,9 @@ public class UpcomingOrderDetailsListAdapter extends RecyclerView.Adapter<Upcomi
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final OrderModel model = mModel.get(position);
-            String order_vendor_product_id=mModel.get(position).getOrder_vendor_product_id();
-            Log.e("order_vendor_product_id","order_vendor_product_id"+order_vendor_product_id);
 
             if (model.getScheduled_for() != null) {
-                holder.scheduled_datetime.setText(model.getScheduled_for());
+                holder.scheduled_datetime.setText(GlobalFunctions.getDateFormat(model.getScheduled_for()));
             }
             if (model.getPickup_address() != null) {
                 holder.tv_Address.setText((model.getPickup_address()));

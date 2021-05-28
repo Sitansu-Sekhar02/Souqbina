@@ -16,7 +16,7 @@ public class OrderModel implements Serializable {
     private final String TAG = "OrderModel";
 
     private final String
-                    INDEX                        =      "index",
+                    INDEX                        = "index",
                     SIZE                         ="size",
                     ORDER_NUMBER                  = "order_number",
                     ORDER_VENDOR_PRODUCT_ID      = "order_vendor_product_id",
@@ -29,17 +29,22 @@ public class OrderModel implements Serializable {
                     VENDOR_NUMBER                = "vendor_number",
                     VENDOR_FIRSTNAME             = "vendor_fname",
                     VENDOR_LASTNAME              = "vendor_lname",
+                    VENDOR_FULLNAME              = "vendor_fullname",
+                    CALL_VENDOR                    = "call_vendor",
+
                     USER_IMAGE                   = "user_image",
                     USER_NUMBER                  = "user_number",
                     USER_FIRSTNAME               = "user_fname",
                     USER_LASTNAME                = "user_lname",
+                    USER_FULLNAME                = "user_fullname",
+                    CALL_USER                     = "call_lname",
                     PICKUP_ADDRESS               = "pickup_address",
                     PICKUP_LATITUDE              = "pickup_latitude",
                     PICKUP_LONGITUDE             = "pickup_longitude",
                     DROP_ADDRESS                 = "drop_address",
                     DROP_LATITUDE                = "drop_latitude",
                     DROP_LONGITUDE                = "drop_longitude",
-                    PRODUCT_TITLE                   = "product_title",
+                    PRODUCT_TITLE                 = "product_title",
                     QUANTITY                     = "quantity",
                     PRODUCT_IMAGE                = "product_image",
                     DELIVERY_ON                 = "delivery_on",
@@ -67,7 +72,11 @@ public class OrderModel implements Serializable {
             vendor_image        = null,
             vendor_number        = null,
             vendor_fname        = null,
+            call_vendor        = null,
+            user_fullname        = null,
+            call_user        = null,
             vendor_lname        = null,
+            vendor_fullname       = null,
             user_image          = null,
             user_number         = null,
             user_fname          = null,
@@ -142,6 +151,14 @@ public class OrderModel implements Serializable {
 
     public void setOrder_vendor_product_id(String order_vendor_product_id) {
         this.order_vendor_product_id = order_vendor_product_id;
+    }
+
+    public String getVendor_fullname() {
+        return vendor_fullname;
+    }
+
+    public void setVendor_fullname(String vendor_fullname) {
+        this.vendor_fullname = vendor_fullname;
     }
 
     public String getOrder_id() {
@@ -329,6 +346,30 @@ public class OrderModel implements Serializable {
         this.order_details = order_details;
     }
 
+    public String getCall_vendor() {
+        return call_vendor;
+    }
+
+    public void setCall_vendor(String call_vendor) {
+        this.call_vendor = call_vendor;
+    }
+
+    public String getUser_fullname() {
+        return user_fullname;
+    }
+
+    public void setUser_fullname(String user_fullname) {
+        this.user_fullname = user_fullname;
+    }
+
+    public String getCall_user() {
+        return call_user;
+    }
+
+    public void setCall_user(String call_user) {
+        this.call_user = call_user;
+    }
+
     public OrderSendAddressModel getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -360,6 +401,7 @@ public class OrderModel implements Serializable {
     public void setCreated_on(String created_on) {
         this.created_on = created_on;
     }
+
 
     public String getDelivery_on() {
         return delivery_on;
@@ -435,7 +477,16 @@ public class OrderModel implements Serializable {
                 product_image = json.getString(PRODUCT_IMAGE);
             }if (json.has(DELIVERY_ON)) {
                 delivery_on = json.getString(DELIVERY_ON);
+            }if (json.has(VENDOR_FULLNAME)) {
+                vendor_fullname =json.getString(VENDOR_FULLNAME);
+            }if (json.has(CALL_VENDOR)) {
+                call_vendor =json.getString(CALL_VENDOR);
+            }if (json.has(USER_FULLNAME)) {
+                vendor_fullname =json.getString(USER_FULLNAME);
+            }if (json.has(CALL_USER)) {
+                call_user =json.getString(CALL_USER);
             }
+
 
 
             if(json.has(ORDER_STATUS_HISTORY)){
@@ -489,6 +540,10 @@ public class OrderModel implements Serializable {
             jsonMain.put(PRODUCT_IMAGE, product_image);
             jsonMain.put(PRODUCT_TITLE, product_title);
             jsonMain.put(DELIVERY_ON,delivery_on);
+            jsonMain.put(DELIVERY_ON,delivery_on);
+            jsonMain.put(CALL_VENDOR,call_vendor);
+            jsonMain.put(USER_FULLNAME,user_fullname);
+            jsonMain.put(CALL_USER,call_user);
 
 
             jsonMain.put(ORDER_STATUS_HISTORY, this.orderStatusListModel!=null?new JSONObject(this.orderStatusListModel.toString()):new JSONObject());

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:progressActivity="http://schemas.android.com/tools"
     android:background="#F2F2F2">
     <include
         android:id="@+id/tool_bar"
@@ -36,16 +37,17 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="#000000"
                     android:textSize="14dp" />
+
                 <com.sa.souqbinadriver.view.AppTextView
                     android:id="@+id/tv_Schedule_date_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/scld_date"
-                    android:layout_toRightOf="@+id/tvTxt"
-                    android:textColor="#000000"
                     android:layout_marginLeft="3dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"/>
+                    android:layout_toRightOf="@+id/tvTxt"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         <LinearLayout
             android:id="@+id/button"
@@ -75,7 +77,6 @@
                     android:layout_width="45dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/mask_group_details"
                     android:layout_height="45dp" />
 
             <RelativeLayout
@@ -92,7 +93,7 @@
                         android:id="@+id/tv_vendor_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/construction_name"
+                        android:text=""
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:textSize="14dp" />
@@ -119,7 +120,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_toRightOf="@id/tvMobl"
                         android:singleLine="true"
-                        android:text="+971 9811212121"
+                        android:text=""
                         android:textColor="#2C2B2B" />
 
                 </RelativeLayout>
@@ -190,7 +191,7 @@
                                 android:layout_width="136dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="@string/address"
+                                android:text=""
                                 android:textColor="#5A5A5A"
                                 android:textSize="12dp" />
 
@@ -254,7 +255,7 @@
                                 android:layout_width="136dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="@string/address"
+                                android:text=""
                                 android:textColor="#5A5A5A"
                                 android:textSize="12dp" />
 
@@ -325,7 +326,7 @@
                                 android:id="@+id/tv_customer_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/construction_name"
+                                android:text=""
                                 android:textColor="#000000"
                                 android:textStyle="bold"
                                 android:textSize="14dp" />
@@ -350,7 +351,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@id/tvCusMobl"
                                 android:layout_marginLeft="3dp"
-                                android:text="+971 9811212121"
+                                android:text=""
                                 android:textColor="#2C2B2B"
                                 android:singleLine="true"/>
 
@@ -374,7 +375,7 @@
             <RelativeLayout
                 android:id="@+id/RlmainOrderd"
                 android:layout_width="match_parent"
-                android:layout_height="191dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/customerDetails"
                 android:background="@color/white">
@@ -402,23 +403,47 @@
                             android:text="@string/order_desc"/>
 
                     </RelativeLayout>
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.vlonjatg.progressactivity.ProgressLinearLayout
+                        android:id="@+id/details_progressActivity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/orderDescripion"
+                        app:emptyTitleTextColor="@color/green_light"
+                        app:errorContentTextColor="@color/app_fontColor"
+                        app:errorTitleTextColor="@color/app_fontColor"
+                        progressActivity:emptyBackgroundColor="@color/transparent"
+                        progressActivity:errorBackgroundColor="@color/transparent"
+                        progressActivity:loadingBackgroundColor="@color/transparent"
+                        progressActivity:loadingProgressBarColor="@color/green_light">
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/swipe_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/product_desc_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="5dp">
                     </androidx.recyclerview.widget.RecyclerView>
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                    </com.vlonjatg.progressactivity.ProgressLinearLayout>
 
                 </RelativeLayout>
 
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/RlStatus"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:background="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/RlmainOrderd">
+                <include layout="@layout/bottom_sheet_persistent" />
+
                 <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/rl_status_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp">
@@ -446,6 +471,7 @@
                     </LinearLayout>
 
                     <com.sa.souqbinadriver.view.AppTextView
+                        android:id="@+id/tv_update_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="17dp"
@@ -455,7 +481,9 @@
                         android:layout_centerInParent="true"
                         android:textAllCaps="true"
                         android:layout_alignParentRight="true"/>
+
                 </RelativeLayout>
+
 
             </RelativeLayout>
 

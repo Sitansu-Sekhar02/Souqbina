@@ -326,5 +326,6 @@
     <string name="GoogleAPIKey">AIzaSyB9wXo_mbTsC2XTeJcIMVPwzuLQPxFQ8S0</string>
     <string name="loading_profile">Loading Profile</string>
     <string name="loggin">Logging...</string>
+    <string name="no_product">No product found</string>
 
 </resources>

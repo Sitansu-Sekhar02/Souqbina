@@ -49,7 +49,7 @@ public class CompletedOrderListAdapter extends RecyclerView.Adapter<CompletedOrd
                 holder.scheduled_datetime.setText(model.getScheduled_for());
             }
             if (model.getPickup_address() != null) {
-                holder.tv_Address.setText((model.getPickup_address()));
+                holder.tv_Address.setText((model.getDrop_address()));
             }
 
 

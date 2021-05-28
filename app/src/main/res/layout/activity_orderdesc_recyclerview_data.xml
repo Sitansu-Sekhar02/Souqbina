@@ -10,12 +10,11 @@
         android:orientation="horizontal"
         android:layout_margin="5dp">
 
-        <com.github.siyamed.shapeimageview.ShapeImageView
-            android:id="@+id/profile_image"
+        <ImageView
+            android:id="@+id/prodcut_image"
             android:layout_width="45dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/pipe"
             android:layout_height="45dp" />
 
         <RelativeLayout
@@ -29,10 +28,10 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <com.sa.souqbinadriver.view.AppTextView
-                    android:id="@+id/tvScld"
+                    android:id="@+id/tv_product_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/item_name"
+                    android:text=""
                     android:textColor="#5A5A5A"
                     android:textSize="14dp" />
 
@@ -53,11 +52,12 @@
                     android:textStyle="bold"
                     android:singleLine="true"/>
                 <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tv_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tvMobl"
                     android:layout_marginLeft="3dp"
-                    android:text="121"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="14dp"

@@ -225,20 +225,6 @@ public class UpcomingOrderFragment extends Fragment {
     }
 
 
-    public void replaceFragmentWithAnimation(Fragment fragment, String order_vendor_product_id) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        Bundle bundle = new Bundle();
-        bundle.putString("order_vendor_product_id", order_vendor_product_id);
-        fragment.setArguments(bundle);
-        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(R.id.container, fragment);
-        transaction.commit();
-    }
-
-
-
-
-
 }
 
 

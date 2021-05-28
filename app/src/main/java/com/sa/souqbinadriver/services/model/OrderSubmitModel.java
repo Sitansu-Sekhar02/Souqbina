@@ -109,12 +109,16 @@ public class OrderSubmitModel implements Serializable {
     public boolean toObject(String jsonObject){
         try{
             JSONObject json = new JSONObject(jsonObject);
+
             if(json.has(CITY)){
-                CityModel modelLocal = new CityModel();
-                if(modelLocal.toObject(json.getJSONObject(CITY).toString())){
-                    this.cityModel = modelLocal;
-                }
+                CityModel statusModel = new CityModel();
+                JSONObject jsonObject1 = new JSONObject();
+                jsonObject1 = json.getJSONObject(CITY);
+                if(jsonObject1 != null){statusModel.toObject(jsonObject1.toString());}
+                cityModel = statusModel;
             }
+
+
             if(json.has(RESIDENCE_TYPE)){
                 KeyValueModel modelLocal = new KeyValueModel();
                 if(modelLocal.toObject(json.getJSONObject(RESIDENCE_TYPE).toString())){

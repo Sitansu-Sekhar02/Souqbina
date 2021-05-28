@@ -116,6 +116,21 @@ public class GlobalFunctions {
         return date;
     }
 
+    public static String getDateFormat(String date1) {
+        String date = null;
+        try {
+            SimpleDateFormat spf = new SimpleDateFormat(GlobalVariables.DATE_TIME_SERVER_FORMAT);
+            Date newDate = spf.parse(date1);
+            spf = new SimpleDateFormat("dd MMM yyyy");
+            date = spf.format(newDate);
+            System.out.println(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+
     public static int getNavigationSelectedPosition(){
         return navigationSelectedPosition;
     }
@@ -1429,5 +1444,31 @@ public class GlobalFunctions {
             return null;
         }
         return json;
+    }
+
+    public static boolean isNotNullValue(String value) {
+        boolean result = false;
+        if (value != null && !value.isEmpty() && !value.equals("null") && !value.isEmpty() && value.trim()
+                .length() > 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean isNotZeroValue(String value) {
+        boolean result = false;
+        try {
+            double temp = Double.parseDouble(value);
+            if (temp > 0) {
+                result = true;
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
     }
 }
