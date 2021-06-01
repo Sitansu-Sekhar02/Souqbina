@@ -1,6 +1,8 @@
-package com.sa.souqbinadriver.completedorder;
+package com.sa.souqbinadriver.upcomingorder;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sa.souqbinadriver.R;
+import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.services.model.OrderModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CompletedOrderProductDescriptionListAdapter extends RecyclerView.Adapter<CompletedOrderProductDescriptionListAdapter.ViewHolder> {
+public class ProductDescriptionListAdapter extends RecyclerView.Adapter<ProductDescriptionListAdapter.ViewHolder> {
 
 
-        public static final String TAG = "CompletedOrderProductDescriptionListAdapter";
+        public static final String TAG = "ProductDescriptionListAdapter";
 
-            private List<OrderModel> mModel;
+            private List<OrderModel> modelList;
             private final Activity activity;
 
-        public CompletedOrderProductDescriptionListAdapter(List<OrderModel> mModel, Activity activity) {
-            this.mModel = mModel;
+        public ProductDescriptionListAdapter(List<OrderModel> mModel, Activity activity) {
+            this.modelList = mModel;
             this.activity = activity;
         }
 
@@ -39,18 +42,21 @@ public class CompletedOrderProductDescriptionListAdapter extends RecyclerView.Ad
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            final OrderModel model = mModel.get(position);
 
-            if (model.getProduct_title() != null) {
-                holder.product_name.setText(model.getProduct_title());
+
+
+            if (GlobalFunctions.isNotNullValue(modelList.get(position).getProduct_title())) {
+                holder.product_name.setText(modelList.get(position).getProduct_title());
+                Log.e("product_name",""+modelList.get(position).getProduct_title());
+
             }
-            if (model.getQuantity() != null) {
-                holder.product_quantity.setText((model.getQuantity()));
+            if (GlobalFunctions.isNotNullValue(modelList.get(position).getQuantity())) {
+                holder.product_quantity.setText((modelList.get(position).getQuantity()));
 
             }
             try {
-                if (model.getProduct_image() != null || !model.getProduct_image().equals( "null" ) || !model.getProduct_image().equalsIgnoreCase( "" )) {
-                    Picasso.with( activity ).load( model.getProduct_image() ).placeholder( R.drawable.ic_baseline_image_24).into( holder.product_image );
+                if (GlobalFunctions.isNotNullValue(modelList.get(position).getProduct_image())  || ! modelList.get(position).getProduct_image().equals( "null" ) || !modelList.get(position).getProduct_image().equalsIgnoreCase( "" )) {
+                    Picasso.with( activity ).load( modelList.get(position).getProduct_image() ).placeholder( R.drawable.ic_baseline_image_24).into( holder.product_image );
                 }
             } catch (Exception e) {
             }
@@ -58,9 +64,14 @@ public class CompletedOrderProductDescriptionListAdapter extends RecyclerView.Ad
 
         }
 
+        @SuppressLint("LongLogTag")
         @Override
         public int getItemCount() {
-            return mModel.size();
+            Log.d(TAG, "getItemCount: list DATA-----" + modelList.size());
+            return (modelList == null) ? 0 : modelList.size();
+
+            //return modelList.size();
+
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {

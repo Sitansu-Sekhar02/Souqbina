@@ -112,7 +112,7 @@ public class UpcomingOrderFragment extends Fragment {
     }
 
     private void loadOrderList() {
-       // GlobalFunctions.showProgress( context, getString( R.string.loading ));
+        //GlobalFunctions.showProgress( context, getString( R.string.loading ));
         ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
         servicesMethodsManager.getOrderList( context,index,GlobalVariables.LIST_REQUEST_SIZE,GlobalVariables.ORDER_TYPE_UPCOMING, new ServerResponseInterface() {
             @Override
@@ -187,7 +187,7 @@ public class UpcomingOrderFragment extends Fragment {
 
     private void initRecyclerView() {
         adapter = new UpcomingOrderDetailsListAdapter(list, activity);
-        recyclerView.setLayoutManager( linearLayoutManager );
+        recyclerView.setLayoutManager( linearLayoutManager);
         recyclerView.setAdapter( adapter );
         recyclerView.setHasFixedSize( true );
     }

@@ -27,6 +27,16 @@ public class OrderStatus implements Serializable {
 
     public OrderStatus(){}
 
+    List<OrderStatus> statusList = new ArrayList<OrderStatus>();
+
+    public List<OrderStatus> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(List<OrderStatus> statusList) {
+        this.statusList = statusList;
+    }
+
     public String getId() {
         return id;
     }
@@ -75,6 +85,8 @@ public class OrderStatus implements Serializable {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(ID, this.id);
             jsonMain.put(STATUS_TITLE, status_title);
+            jsonMain.put(CREATED_ON, created_on);
+
             returnString = jsonMain.toString();
         }
         catch (Exception ex){

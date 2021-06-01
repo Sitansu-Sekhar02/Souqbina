@@ -164,7 +164,7 @@ public class ProfileFragment extends Fragment {
 
                 try {
                     if (detail.getProfileImg() != null || !detail.getProfileImg().equals( "null" ) || !detail.getProfileImg().equalsIgnoreCase( "" )) {
-                        Picasso.with( context ).load( detail.getProfileImg() ).placeholder( R.drawable.profile_img ).into( profile_image );
+                        Picasso.with( context ).load( detail.getProfileImg() ).placeholder( R.drawable.ic_baseline_person_24 ).into( profile_image );
                     }
                 } catch (Exception e) {
                 }

@@ -1,89 +1,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <RelativeLayout
+            android:id="@+id/tvAlertMsg"
             android:layout_width="match_parent"
-            android:background="@color/white"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/select_status"
+                android:textColor="#A8A8A8"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:gravity="center"
+                android:text="@string/undo_lastaction"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/circle_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <RelativeLayout
-                android:visibility="gone"
-                android:layout_width="match_parent"
+
+            <ImageView
+                android:id="@+id/image_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_group_cirle_yellow" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="2dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/image_circle"
+                android:layout_marginLeft="8dp"
+                android:background="@color/grey" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/orderRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/circle_image">
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_status_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:gravity="center"
-                android:layout_marginTop="15dp"
-                android:id="@+id/tvAlertMsg">
-                <com.sa.souqbinadriver.view.AppTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:text="@string/select_status"
-                    android:textColor="#A8A8A8"
-                    android:textSize="12dp" />
-                <com.sa.souqbinadriver.view.AppTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="25dp"
-                    android:text="@string/undo_lastaction"
-                    android:textColor="#FFC200"
-                    android:textAllCaps="true"
-                    android:textSize="12dp" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/circle_image"
+                android:text="@string/order_pickedup"
+                android:textColor="@color/app_fontBlackColor"
+                android:textSize="14dp" />
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_update"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/image_circle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_group_cirle_yellow"/>
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="60dp"
-                    android:background="@color/grey"
-                    android:layout_below="@+id/image_circle"
-                    android:layout_marginLeft="10dp"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/orderRl"
-                android:layout_width="match_parent"
-                android:layout_toRightOf="@+id/circle_image"
-                android:layout_height="wrap_content">
-
-                <com.sa.souqbinadriver.view.AppTextView
-                    android:id="@+id/tv_status_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginLeft="25dp"
-                    android:text="@string/order_pickedup"
-                    android:textColor="#3D3C44"
-                    android:textSize="14dp" />
-                <com.sa.souqbinadriver.view.AppTextView
-                    android:id="@+id/tv_update"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="25dp"
-                    android:text="@string/select"
-                    android:textColor="#FFC200"
-                    android:textAllCaps="true"
-                    android:textSize="12dp" />
-            </RelativeLayout>
-
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:gravity="center"
+                android:text="@string/select"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:textStyle="bold" />
         </RelativeLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>

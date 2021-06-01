@@ -17,6 +17,7 @@ public class OrderDetailMainModel implements Serializable {
     OrderModel
             orderModel      = null;
 
+
     String message = null;
     boolean isStatus=false;
 

@@ -2,36 +2,37 @@ package com.sa.souqbinadriver.services.model;
 
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.Serializable;
 
-public class OrderMainModel implements Serializable {
-    private final String TAG = "OrderMainModel";
+public class LatlongMainModel implements Serializable {
+    private final String TAG = "StatusMainModel";
+
     private final String
             RESPONSE            = "response",
             STATUS              = "status_bool",
             MESSAGE             = "status";
 
-    OrderListModel
-            orderListModel      = null;
+    LatlongModel
+            latlongModel      = null;
 
+
+    String statusMessage = null;
 
     String message = null;
     boolean isStatus=false;
 
-    public OrderMainModel(){}
-
-
-
-    public OrderListModel getOrderListModel() {
-        return orderListModel;
+    public LatlongModel getLatlongModel() {
+        return latlongModel;
     }
 
-    public void setOrderListModel(OrderListModel orderListModel) {
-        this.orderListModel = orderListModel;
+    public void setLatlongModel(LatlongModel latlongModel) {
+        this.latlongModel = latlongModel;
     }
+
+    public LatlongMainModel(){}
+
 
     public boolean isStatus() {
         return isStatus;
@@ -49,6 +50,14 @@ public class OrderMainModel implements Serializable {
         this.message = message;
     }
 
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
+
     public boolean toObject(String jsonObjectString){
         try{
             JSONObject json = new JSONObject(jsonObjectString);
@@ -56,11 +65,11 @@ public class OrderMainModel implements Serializable {
             if(json.has(STATUS)){this.isStatus = json.getBoolean(STATUS);}
 
             if(json.has(RESPONSE)){
-                OrderListModel orderDetailListModel = new OrderListModel();
-                JSONArray jsonArray = new JSONArray();
-                jsonArray = json.getJSONArray(RESPONSE);
-                if(jsonArray!=null){orderDetailListModel.toObject(jsonArray);}
-                this.orderListModel = orderDetailListModel;
+                LatlongModel tmpstatusModel = new LatlongModel();
+                JSONObject jsonObject1 = new JSONObject();
+                jsonObject1 = json.getJSONObject(RESPONSE);
+                if(jsonObject1 != null){tmpstatusModel.toObject(jsonObject1.toString());}
+                latlongModel = tmpstatusModel;
             }
 
             return true;
@@ -76,7 +85,7 @@ public class OrderMainModel implements Serializable {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(STATUS, isStatus);
             jsonMain.put(MESSAGE, message);
-            jsonMain.put(RESPONSE, this.orderListModel != null? new JSONArray(this.orderListModel.toString(true)) : new JSONArray());
+            jsonMain.put(RESPONSE, latlongModel != null ? new JSONObject(this.latlongModel.toString()) : new JSONObject());
 
             returnString = jsonMain.toString();
         }

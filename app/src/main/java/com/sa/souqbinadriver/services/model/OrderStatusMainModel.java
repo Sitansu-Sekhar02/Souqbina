@@ -7,30 +7,27 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-public class OrderMainModel implements Serializable {
+public class OrderStatusMainModel implements Serializable {
     private final String TAG = "OrderMainModel";
     private final String
             RESPONSE            = "response",
             STATUS              = "status_bool",
             MESSAGE             = "status";
 
-    OrderListModel
-            orderListModel      = null;
-
+    OrderStatusListModel
+            orderStatusListModel      = null;
 
     String message = null;
     boolean isStatus=false;
 
-    public OrderMainModel(){}
+    public OrderStatusMainModel(){}
 
-
-
-    public OrderListModel getOrderListModel() {
-        return orderListModel;
+    public OrderStatusListModel getOrderStatusListModel() {
+        return orderStatusListModel;
     }
 
-    public void setOrderListModel(OrderListModel orderListModel) {
-        this.orderListModel = orderListModel;
+    public void setOrderStatusListModel(OrderStatusListModel orderStatusListModel) {
+        this.orderStatusListModel = orderStatusListModel;
     }
 
     public boolean isStatus() {
@@ -56,11 +53,11 @@ public class OrderMainModel implements Serializable {
             if(json.has(STATUS)){this.isStatus = json.getBoolean(STATUS);}
 
             if(json.has(RESPONSE)){
-                OrderListModel orderDetailListModel = new OrderListModel();
+                OrderStatusListModel orderDetailListModel = new OrderStatusListModel();
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = json.getJSONArray(RESPONSE);
                 if(jsonArray!=null){orderDetailListModel.toObject(jsonArray);}
-                this.orderListModel = orderDetailListModel;
+                this.orderStatusListModel = orderDetailListModel;
             }
 
             return true;
@@ -76,7 +73,7 @@ public class OrderMainModel implements Serializable {
             JSONObject jsonMain = new JSONObject();
             jsonMain.put(STATUS, isStatus);
             jsonMain.put(MESSAGE, message);
-            jsonMain.put(RESPONSE, this.orderListModel != null? new JSONArray(this.orderListModel.toString(true)) : new JSONArray());
+            jsonMain.put(RESPONSE, this.orderStatusListModel != null? new JSONArray(this.orderStatusListModel.toString(true)) : new JSONArray());
 
             returnString = jsonMain.toString();
         }

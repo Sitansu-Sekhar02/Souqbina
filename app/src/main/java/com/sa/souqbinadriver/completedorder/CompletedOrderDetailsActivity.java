@@ -2,38 +2,28 @@ package com.sa.souqbinadriver.completedorder;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.sa.souqbinadriver.Activity.MainActivity;
 import com.sa.souqbinadriver.R;
 import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.global.GlobalVariables;
@@ -42,7 +32,9 @@ import com.sa.souqbinadriver.services.ServicesMethodsManager;
 import com.sa.souqbinadriver.services.model.OrderDetailMainModel;
 import com.sa.souqbinadriver.services.model.OrderListModel;
 import com.sa.souqbinadriver.services.model.OrderModel;
-import com.sa.souqbinadriver.upcomingorder.UpcomingOrderProductDescriptionListAdapter;
+import com.sa.souqbinadriver.services.model.OrderStatus;
+import com.sa.souqbinadriver.upcomingorder.ProductDescriptionListAdapter;
+import com.sa.souqbinadriver.upcomingorder.UpdateStatusInterface;
 import com.squareup.picasso.Picasso;
 import com.vlonjatg.progressactivity.ProgressLinearLayout;
 
@@ -50,13 +42,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CompletedOrderDetailsActivity extends AppCompatActivity {
+public class CompletedOrderDetailsActivity extends AppCompatActivity implements  UpdateStatusInterface {
 
     public static final String
             TAG = "CompletedOrderDetailsActivity",
             BUNDLE_COMPLETED_ORDER_DETAILS_MODEL = "BundleCompletedOrderDetailsActivity";
 
 
+    private UpdateStatusInterface mInterface;
     Context context = null;
 
     static Activity activity = null;
@@ -71,11 +64,13 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
     static TextView toolbar_title;
 
     static ImageView toolbar_logo, tool_bar_back_icon;
-    ImageView vendor_image, customer_image;
+    ImageView vendor_image, customer_image, product_image;
+    TextView product_title, product_quantity;
 
     TextView tvSchedule_date;
     TextView tv_VendorName, tv_vendorMMobile;
     TextView tv_CustomerName, tv_CustomerMMobile;
+    private UpdateStatusInterface listner;
 
     ProgressLinearLayout progressActivity;
     RecyclerView recyclerView;
@@ -84,7 +79,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
     SwipeRefreshLayout swipe_container;
     List<OrderModel> list = new ArrayList<>();
     LinearLayoutManager linearLayoutManager;
-    private UpcomingOrderProductDescriptionListAdapter adapter;
+    ProductDescriptionListAdapter adapter;
 
     OrderListModel detail = null;
     int index = 0;
@@ -116,6 +111,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
         activity = this;
         window = getWindow();
         fragmentManager = getSupportFragmentManager();
+        listner=this;
 
 
         tvSchedule_date = findViewById(R.id.tv_Schedule_date_time);
@@ -125,24 +121,27 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
         tv_CustomerMMobile = findViewById(R.id.tv_customer_mobile_number);
         vendor_image = findViewById(R.id.vendor_image);
         customer_image = findViewById(R.id.tv_customer_image);
-        progressActivity =findViewById( R.id.details_progressActivity );
-        swipe_container = findViewById( R.id.swipe_container );
+       // progressActivity =findViewById( R.id.details_progressActivity );
+       // swipe_container = findViewById( R.id.swipe_container );
         linearLayoutManager = new LinearLayoutManager( activity );
 
-        recyclerView=findViewById(R.id.product_desc_recyclerview);
-        recyclerView.setAdapter(adapter);
+        product_image = findViewById(R.id.product_image);
+        product_title = findViewById(R.id.tv_product_title);
+        product_quantity = findViewById(R.id.tv_quantity);
+       // recyclerView=findViewById(R.id.product_desc_recyclerview);
+        //recyclerView.setAdapter(adapter);
         // Log.e("adapter count",""+recyclerView.getAdapter().getItemCount()) ;
 
 
         mainView = tvSchedule_date;
 
-        swipe_container.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
+        /*swipe_container.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 productDescription();
             }
-        } );
-
+        });
+*/
 
         if (getIntent().hasExtra(BUNDLE_COMPLETED_ORDER_DETAILS_MODEL)) {
             orderModel = (OrderModel) getIntent().getSerializableExtra(BUNDLE_COMPLETED_ORDER_DETAILS_MODEL);
@@ -164,7 +163,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
         getOrderDetails();
 
         //set product description in recyclerview
-        productDescription();
+       // productDescription();
 
 
 
@@ -196,9 +195,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
 
     }
 
-    private void productDescription() {
 
-    }
 
     private void getOrderDetails() {
         //GlobalFunctions.showProgress( context, getString( R.string.loading ));
@@ -243,29 +240,53 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
                 tvSchedule_date.setText(GlobalFunctions.getDateFormat(orderModel.getScheduled_for()));
             }
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_image())) {
-                Picasso.with(context).load(orderModel.getVendor_image()).placeholder(R.drawable.mask_group_details).into(vendor_image);
+                Picasso.with(context).load(orderModel.getVendor_image()).placeholder(R.drawable.ic_baseline_person_24).into(vendor_image);
 
 
             }
-            String
-                    fullName = orderModel.getVendor_fname() + " " + orderModel.getVendor_lname();
-            tv_VendorName.setText(fullName);
+            if (GlobalFunctions.isNotNullValue(orderModel.getVendor_fname())) {
+                String VendorfullName = orderModel.getVendor_fname();
+                if (GlobalFunctions.isNotNullValue(orderModel.getVendor_lname())) {
+                    VendorfullName = VendorfullName + " " + orderModel.getVendor_lname();
+                    tv_VendorName.setText(VendorfullName);
 
+                } else {
+                    tv_VendorName.setText(VendorfullName);
+                }
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getUser_fname())) {
+                String UserfullName = orderModel.getUser_fname();
+                if (GlobalFunctions.isNotNullValue(orderModel.getUser_lname())) {
+                    UserfullName = UserfullName + " " + orderModel.getUser_lname();
+                    tv_CustomerName.setText(UserfullName);
+
+                } else {
+                    tv_CustomerName.setText(UserfullName);
+                }
+            }
+
+            if (GlobalFunctions.isNotNullValue(orderModel.getUser_image())) {
+                Picasso.with(context).load(orderModel.getUser_image()).placeholder(R.drawable.ic_baseline_person_24).into(customer_image);
+            }
+
+
+            if (GlobalFunctions.isNotNullValue(orderModel.getProduct_image())) {
+                Picasso.with(context).load(orderModel.getProduct_image()).placeholder(R.drawable.ic_baseline_image_24).into(product_image);
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getProduct_title())) {
+                product_title.setText(orderModel.getProduct_title());
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getQuantity())) {
+                product_quantity.setText(orderModel.getQuantity());
+            }
 
         }
 
-
-        if (GlobalFunctions.isNotNullValue(orderModel.getUser_image())) {
-            Picasso.with(context).load(orderModel.getUser_image()).placeholder(R.drawable.ic_baseline_person_24).into(customer_image);
-        }
-        String
-                fullName = orderModel.getUser_fname() + " " + orderModel.getUser_lname();
-        tv_CustomerName.setText(fullName);
 
 
     }
     private void initRecyclerView() {
-        adapter = new UpcomingOrderProductDescriptionListAdapter(list, activity);
+        adapter = new ProductDescriptionListAdapter(list, activity);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter( adapter );
         recyclerView.setHasFixedSize( true );
@@ -350,6 +371,9 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void OnItemClickListener(OrderStatus position) {
+       // UpdateStatus();
 
-
+    }
 }

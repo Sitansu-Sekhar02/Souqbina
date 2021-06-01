@@ -11,7 +11,7 @@
         android:layout_margin="5dp">
 
         <ImageView
-            android:id="@+id/prodcut_image"
+            android:id="@+id/product_image"
             android:layout_width="45dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"

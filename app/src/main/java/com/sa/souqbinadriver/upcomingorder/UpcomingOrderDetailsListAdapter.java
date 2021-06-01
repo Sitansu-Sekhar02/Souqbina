@@ -27,10 +27,10 @@ public class UpcomingOrderDetailsListAdapter extends RecyclerView.Adapter<Upcomi
             private List<OrderModel> mModel;
             private final Activity activity;
 
-    public UpcomingOrderDetailsListAdapter(List<OrderModel> mModel, Activity activity) {
-        this.mModel = mModel;
-        this.activity = activity;
-    }
+        public UpcomingOrderDetailsListAdapter(List<OrderModel> mModel, Activity activity) {
+            this.mModel = mModel;
+            this.activity = activity;
+        }
 
         @NonNull
         @Override
@@ -44,10 +44,10 @@ public class UpcomingOrderDetailsListAdapter extends RecyclerView.Adapter<Upcomi
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final OrderModel model = mModel.get(position);
 
-            if (model.getScheduled_for() != null) {
+            if (GlobalFunctions.isNotNullValue(model.getScheduled_for() )) {
                 holder.scheduled_datetime.setText(GlobalFunctions.getDateFormat(model.getScheduled_for()));
             }
-            if (model.getPickup_address() != null) {
+            if (GlobalFunctions.isNotNullValue(model.getPickup_address() )) {
                 holder.tv_Address.setText((model.getPickup_address()));
             }
 

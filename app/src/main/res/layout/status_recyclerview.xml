@@ -1,69 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:progressActivity="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/black_trans"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
-    app:layout_behavior="@string/bottom_sheet_behavior"
-    android:id="@+id/bottom_sheet">
-    <RelativeLayout
-        android:id="@+id/rl_status_update"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    app:layout_behavior="@string/bottom_sheet_behavior">
 
-            <com.sa.souqbinadriver.view.AppTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/status"
-                android:textColor="#A8A8A8"
-                android:singleLine="true"
-                android:textSize="12dp" />
-
-
-        <com.sa.souqbinadriver.view.AppTextView
-            android:id="@+id/tv_update_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="17dp"
-            android:textColor="#FFC200"
-            android:textStyle="bold"
-            android:text="@string/update_status"
-            android:layout_centerInParent="true"
-            android:textAllCaps="true"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-
-
-    <com.vlonjatg.progressactivity.ProgressLinearLayout
-        android:id="@+id/details_progressActivity"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:emptyTitleTextColor="@color/green_light"
-        app:errorContentTextColor="@color/app_fontColor"
-        android:layout_below="@+id/rl_status_update"
-        android:layout_marginLeft="10dp"
-        app:errorTitleTextColor="@color/app_fontColor"
-        progressActivity:emptyBackgroundColor="@color/transparent"
-        progressActivity:errorBackgroundColor="@color/transparent"
-        progressActivity:loadingBackgroundColor="@color/transparent"
-        progressActivity:loadingProgressBarColor="@color/green_light">
+        android:layout_gravity="top">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_container"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/dialog_status">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/statusupdate_recyclerview_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:id="@+id/rl_status_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </com.vlonjatg.progressactivity.ProgressLinearLayout>
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:text="@string/status"
+                    android:textColor="#A8A8A8"
+                    android:textSize="12dp" />
+
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tv_update_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/update_status"
+                    android:textAllCaps="true"
+                    android:textColor="#FFC200"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
 
-</RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/statusupdate_recyclerview_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/rl_status_update"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+

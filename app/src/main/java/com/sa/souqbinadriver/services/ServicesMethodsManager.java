@@ -26,6 +26,8 @@ import com.sa.souqbinadriver.services.model.GenderModel;
 import com.sa.souqbinadriver.services.model.HomeIndexModel;
 import com.sa.souqbinadriver.services.model.IndexModel;
 import com.sa.souqbinadriver.services.model.KeyValueListModel;
+import com.sa.souqbinadriver.services.model.LatlongMainModel;
+import com.sa.souqbinadriver.services.model.LatlongModel;
 import com.sa.souqbinadriver.services.model.LoginModel;
 import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NewsListModel;
@@ -34,6 +36,9 @@ import com.sa.souqbinadriver.services.model.OrderDetailMainModel;
 import com.sa.souqbinadriver.services.model.OrderListModel;
 import com.sa.souqbinadriver.services.model.OrderMainModel;
 import com.sa.souqbinadriver.services.model.OrderModel;
+import com.sa.souqbinadriver.services.model.OrderStatus;
+import com.sa.souqbinadriver.services.model.OrderStatusMainModel;
+import com.sa.souqbinadriver.services.model.OrderStatusUpdateModel;
 import com.sa.souqbinadriver.services.model.OrderSubmitModel;
 import com.sa.souqbinadriver.services.model.PlanListModel;
 import com.sa.souqbinadriver.services.model.PostModel;
@@ -174,6 +179,20 @@ public class ServicesMethodsManager {
         String URL = ServerConstants.URL_GetOrderList;
         getData(context,new OrderDetailMainModel(), URL, query, TAG);
     }
+    public void getStatusUpdate(Context context, OrderStatusUpdateModel orderStatusUpdateModel, ServerResponseInterface mCallInterface, String TAG) {
+        setCallbacks(mCallInterface);
+        String query = null;
+
+        String URL = ServerConstants.URL_OrderStatusUpdate;
+        postData(context,orderStatusUpdateModel, URL, query, TAG);
+    }
+    public void getLatlongUpdate(Context context,LatlongMainModel latlongMainModel, ServerResponseInterface mCallInterface, String TAG) {
+        setCallbacks(mCallInterface);
+        String query = null;
+
+        String URL = ServerConstants.URL_LatlongUpdate;
+        postData(context, latlongMainModel, URL, query, TAG);
+    }
     public void getPlanList(Context context, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
         String query = null;
@@ -272,6 +291,13 @@ public class ServicesMethodsManager {
             OrderDetailMainModel orderMainModel = new OrderDetailMainModel();
             if (orderMainModel.toObject(resp.toString())) {
                 mUiCallBack.OnSuccessFromServer(orderMainModel);
+            } else {
+                mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
+        }else if (obj instanceof OrderStatusUpdateModel) {
+            StatusMainModel statusMainModel = new StatusMainModel();
+            if (statusMainModel.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(statusMainModel);
             } else {
                 mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }

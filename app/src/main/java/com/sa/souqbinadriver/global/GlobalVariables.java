@@ -662,6 +662,11 @@ public class GlobalVariables {
             ORDER_TYPE_UPCOMING                = "1",
             ORDER_TYPE_ON_GOING                = "2";
 
+    public static final String
+            ORDER_DISPATCHED                   = "103",
+            ORDER_ON_THE_WAY                   = "104",
+            ORDER_DELIVERED                    = "106";
+
     //Profile Photo Variables
     public static String PROFILE_PICTURE_FOLDER    = "Profile";
     public static String PROFILE_PICTURE_NAME      = "profile_picture.png";

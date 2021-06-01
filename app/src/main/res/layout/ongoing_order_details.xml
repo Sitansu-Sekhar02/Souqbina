@@ -114,7 +114,7 @@
                         android:id="@+id/tv_vendor_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/construction_name"
+                        android:text=""
                         android:textColor="#000000"
                         android:textStyle="bold"
                         android:textSize="14dp" />
@@ -139,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/tvMobl"
                         android:layout_marginLeft="3dp"
-                        android:text="+971 9811212121"
+                        android:text=""
                         android:textColor="#2C2B2B"
                         android:singleLine="true"/>
 
@@ -209,7 +209,7 @@
                                 android:textSize="12dp"
                                 android:textColor="#171717"
                                 android:layout_height="wrap_content"
-                                android:text="@string/address"/>
+                                android:text=""/>
 
                         </LinearLayout>
 
@@ -268,7 +268,7 @@
                                 android:textSize="12dp"
                                 android:textColor="#171717"
                                 android:layout_height="wrap_content"
-                                android:text="@string/address"/>
+                                android:text=""/>
 
                         </LinearLayout>
 
@@ -336,7 +336,7 @@
                                 android:id="@+id/tv_customer_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/construction_name"
+                                android:text=""
                                 android:textColor="#000000"
                                 android:textStyle="bold"
                                 android:textSize="14dp" />
@@ -361,7 +361,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@id/tvCusMobl"
                                 android:layout_marginLeft="3dp"
-                                android:text="+971 9811212121"
+                                android:text=""
                                 android:textColor="#2C2B2B"
                                 android:singleLine="true"/>
 
@@ -391,7 +391,7 @@
                 android:background="@color/white">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp">
                     <RelativeLayout
                         android:id="@+id/orderDescripion"
@@ -413,31 +413,98 @@
                             android:text="@string/order_desc"/>
 
                     </RelativeLayout>
-                    <com.vlonjatg.progressactivity.ProgressLinearLayout
-                        android:id="@+id/details_progressActivity"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/orderDescripion"
-                        app:emptyTitleTextColor="@color/green_light"
-                        app:errorContentTextColor="@color/app_fontColor"
-                        app:errorTitleTextColor="@color/app_fontColor"
-                        progressActivity:emptyBackgroundColor="@color/transparent"
-                        progressActivity:errorBackgroundColor="@color/transparent"
-                        progressActivity:loadingBackgroundColor="@color/transparent"
-                        progressActivity:loadingProgressBarColor="@color/green_light">
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/orderDescripion"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
 
-                        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                            android:id="@+id/swipe_container"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/product_image"
+                            android:layout_width="45dp"
+                            android:layout_gravity="center"
+                            android:layout_height="45dp" />
 
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/ongoing_recyclerview_list"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="5dp"></androidx.recyclerview.widget.RecyclerView>
-                        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-                    </com.vlonjatg.progressactivity.ProgressLinearLayout>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp">
+                            <LinearLayout
+                                android:id="@+id/rl_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center">
+                                <com.sa.souqbinadriver.view.AppTextView
+                                    android:id="@+id/tv_product_title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:singleLine="true"
+                                    android:textColor="#5A5A5A"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_below="@+id/rl_description"
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_height="wrap_content">
+                                <com.sa.souqbinadriver.view.AppTextView
+                                    android:id="@+id/tv_qty"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/qty"
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold"
+                                    android:singleLine="true"/>
+                                <com.sa.souqbinadriver.view.AppTextView
+                                    android:id="@+id/tv_quantity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/tv_qty"
+                                    android:layout_marginLeft="3dp"
+                                    android:text=""
+                                    android:textStyle="bold"
+                                    android:textColor="#000000"
+                                    android:textSize="14dp"
+                                    android:singleLine="true"/>
+
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!-- <com.vlonjatg.progressactivity.ProgressLinearLayout
+                         android:id="@+id/details_progressActivity"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_below="@id/orderDescripion"
+                         app:emptyTitleTextColor="@color/green_light"
+                         app:errorContentTextColor="@color/app_fontColor"
+                         app:errorTitleTextColor="@color/app_fontColor"
+                         progressActivity:emptyBackgroundColor="@color/transparent"
+                         progressActivity:errorBackgroundColor="@color/transparent"
+                         progressActivity:loadingBackgroundColor="@color/transparent"
+                         progressActivity:loadingProgressBarColor="@color/green_light">
+
+                         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                             android:id="@+id/swipe_container"
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent">
+
+                             <androidx.recyclerview.widget.RecyclerView
+                                 android:id="@+id/ongoing_recyclerview_list"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:layout_marginTop="5dp"></androidx.recyclerview.widget.RecyclerView>
+                         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                     </com.vlonjatg.progressactivity.ProgressLinearLayout>-->
+
 
                 </RelativeLayout>
 

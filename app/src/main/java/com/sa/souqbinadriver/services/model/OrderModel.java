@@ -51,13 +51,8 @@ public class OrderModel implements Serializable {
                     ORDER_STATUS_HISTORY        = "order_status_history";
 
 
-
-
-
-
-
     private String
-            id                  = null,
+             id                  = null,
              index              =null,
              size               =null,
             order_number        = null,

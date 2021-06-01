@@ -12,31 +12,42 @@ android:background="@color/white">
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tvjob"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/status"
                 android:textColor="#A8A8A8"
                 android:singleLine="true"
                 android:textSize="12dp" />
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_update_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="17dp"
+                android:textColor="#FFC200"
+                android:textStyle="bold"
+                android:text="@string/update_status"
+                android:textAllCaps="true"
+                android:layout_alignParentRight="true"/>
 
-        </LinearLayout>
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_statusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/tvjob"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:text="" />
 
-        <com.sa.souqbinadriver.view.AppTextView
-            android:id="@+id/tv_update_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="17dp"
-            android:textColor="#FFC200"
-            android:textStyle="bold"
-            android:text="@string/update_status"
-            android:layout_centerInParent="true"
-            android:textAllCaps="true"
-            android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
