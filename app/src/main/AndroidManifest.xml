@@ -36,7 +36,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:largeHeap="true"
         tools:replace="android:icon, android:label"
-        android:theme="@style/Theme.Souqbina">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".Activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -134,6 +134,8 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="42fa7eea4c01a2b87570f569df4730c8d1d0f619" />
+
+        <service android:name=".location_service.LocationMonitoringService" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

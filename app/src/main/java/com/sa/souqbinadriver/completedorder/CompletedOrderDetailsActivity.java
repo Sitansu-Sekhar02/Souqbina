@@ -191,10 +191,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.black_trans));
         }
 
-
-
     }
-
 
 
     private void getOrderDetails() {
@@ -264,11 +261,13 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
                     tv_CustomerName.setText(UserfullName);
                 }
             }
+            if (GlobalFunctions.isNotNullValue(orderModel.getOrder_vendor_product_id())) {
+                order_vendor_product_id=orderModel.getOrder_vendor_product_id();
+            }
 
             if (GlobalFunctions.isNotNullValue(orderModel.getUser_image())) {
                 Picasso.with(context).load(orderModel.getUser_image()).placeholder(R.drawable.ic_baseline_person_24).into(customer_image);
             }
-
 
             if (GlobalFunctions.isNotNullValue(orderModel.getProduct_image())) {
                 Picasso.with(context).load(orderModel.getProduct_image()).placeholder(R.drawable.ic_baseline_image_24).into(product_image);

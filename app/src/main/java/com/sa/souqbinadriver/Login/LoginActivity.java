@@ -131,7 +131,8 @@ public  class LoginActivity extends AppCompatActivity {
                 // GlobalFunctions.displayMessaage(context, mainView, getString(R.string.mobileNumberNotValid));
             } /*else if (selected_country_code.isEmpty()) {
                             globalFunctions.displayMessaage( activity, mainView, getString( R.string.countryCodeNONotValid ) );
-                        }*/ else {
+                        }*/
+            else {
                 LoginModel loginModel = new LoginModel();
                 loginModel.setEmail_id( mobileNo );
                 //loginModel.setCountryCode( selected_country_code );

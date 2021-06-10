@@ -32,13 +32,13 @@ public class SplashActivity extends AppCompatActivity {
 
         globalFunctions = AppController.getInstance().getGlobalFunctions();
         globalVariables = AppController.getInstance().getGlobalVariables();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.ColorStatusBar));
         }
-
+*/
         GlobalVariables.LANGUAGE mCurrentLocale = GlobalFunctions.getLanguage(this);
 
         Log.d("Splash Screen", "Language Selected (SplashScreen) : "+mCurrentLocale);

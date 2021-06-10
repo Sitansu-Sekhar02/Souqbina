@@ -307,12 +307,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener( this );
         navigationHeaderView = navigationView.getHeaderView( 0 );
 
-      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
             window.addFlags( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
             window.clearFlags( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-            window.setStatusBarColor( ContextCompat.getColor( this, R.color.white ) );
-        }*/
+            window.setStatusBarColor( ContextCompat.getColor( this, R.color.black_trans ) );
+        }
 
         String token = FirebaseInstanceId.getInstance().getToken();
         if (token != null) {
@@ -329,17 +329,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         gravity = globalFunctions.getLanguage( context ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
 
-
-       /* if (navigationView != null) {
-            Menu menu = navigationView.getMenu();
-           *//* if (preferences.get("login").equalsIgnoreCase("yes")) {
-
-                menu.findItem(R.id.logout).setTitle("Login");
-            } else {
-                menu.findItem(R.id.logout).setTitle("Logout");
-            }*//*
-            navigationView.setNavigationItemSelectedListener(this);
-        }*/
 
 
         mainActivityFM.addOnBackStackChangedListener( new FragmentManager.OnBackStackChangedListener() {

@@ -35,6 +35,9 @@ public class GlobalVariables {
     public static final int WAY_TO_CUSYOMER_LOCATION   = 24;
     public static final int COMPLETE                   = 25;
 
+    public static final int LOCATION_INTERVAL         = 10000;
+    public static final int FASTEST_LOCATION_INTERVAL = 5000;
+
     public static synchronized GlobalVariables getInstance(){
         if(thisInstance == null){thisInstance = new GlobalVariables();}
         return thisInstance;

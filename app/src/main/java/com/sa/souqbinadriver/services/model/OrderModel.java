@@ -25,6 +25,7 @@ public class OrderModel implements Serializable {
                     ORDER_DETAILS_ID             = "order_detail_id",
                     SCHEDULED_FOR                = "scheduled_for",
                     STATUS_TITLE                 = "status_title",
+                    STATUS                       = "status",
                     VENDOR_IMAGE                 = "vendor_image",
                     VENDOR_NUMBER                = "vendor_number",
                     VENDOR_FIRSTNAME             = "vendor_fname",
@@ -64,6 +65,7 @@ public class OrderModel implements Serializable {
             scheduled_for       = null,
             order_detail_id     = null,
             status_title        = null,
+            status              = null,
             vendor_image        = null,
             vendor_number        = null,
             vendor_fname        = null,
@@ -85,8 +87,7 @@ public class OrderModel implements Serializable {
             product_title       = null,
             quantity             = null,
             product_image        = null,
-            status               =null,
-            delivery_on        = null;
+            delivery_on          = null;
 
 
 
@@ -414,6 +415,10 @@ public class OrderModel implements Serializable {
         this.orderStatusListModel = orderStatusListModel;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public boolean toObject(String jsonObject){
         try{
             JSONObject json = new JSONObject(jsonObject);
@@ -478,8 +483,12 @@ public class OrderModel implements Serializable {
                 call_vendor =json.getString(CALL_VENDOR);
             }if (json.has(USER_FULLNAME)) {
                 vendor_fullname =json.getString(USER_FULLNAME);
-            }if (json.has(CALL_USER)) {
+            }
+            if (json.has(CALL_USER)) {
                 call_user =json.getString(CALL_USER);
+            }
+            if (json.has(STATUS)) {
+                status =json.getString(STATUS);
             }
 
 
@@ -517,6 +526,7 @@ public class OrderModel implements Serializable {
             jsonMain.put(ORDER_DETAILS_ID, order_detail_id);
             jsonMain.put(SCHEDULED_FOR, scheduled_for);
             jsonMain.put(STATUS_TITLE, status_title);
+            jsonMain.put(STATUS, status);
             jsonMain.put(VENDOR_IMAGE, vendor_image);
             jsonMain.put(VENDOR_FIRSTNAME, vendor_fname);
             jsonMain.put(VENDOR_LASTNAME, vendor_lname);

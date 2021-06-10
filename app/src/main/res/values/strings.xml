@@ -328,4 +328,8 @@
     <string name="loggin">Logging...</string>
     <string name="no_product">No product found</string>
 
+    <string name="no_internet">No Internet</string>
+    <string name="no_google_playservice_available">No google play services available</string>
+    <string name="permission_rationale">Please grant location permission to start the service</string>
+
 </resources>

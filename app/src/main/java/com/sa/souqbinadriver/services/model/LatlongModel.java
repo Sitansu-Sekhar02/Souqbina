@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class LatlongModel implements Serializable {
-    private final String TAG = "StatusModel";
+    private final String TAG = "LatlongModel";
 
     private final String
             ORDER_VENDOR_PRODUCT_ID = "order_vendor_product_id",

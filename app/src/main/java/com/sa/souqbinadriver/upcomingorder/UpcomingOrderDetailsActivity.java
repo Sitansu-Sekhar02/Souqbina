@@ -32,7 +32,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.sa.souqbinadriver.Activity.AppController;
-import com.sa.souqbinadriver.BackgroundServive.GPSTracker;
 import com.sa.souqbinadriver.R;
 import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.global.GlobalVariables;
@@ -600,6 +599,9 @@ public class UpcomingOrderDetailsActivity extends AppCompatActivity  implements 
                 } else {
                     tv_CustomerName.setText(UserfullName);
                 }
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getOrder_vendor_product_id())) {
+                order_vendor_product_id=orderModel.getOrder_vendor_product_id();
             }
 
 

@@ -186,12 +186,12 @@ public class ServicesMethodsManager {
         String URL = ServerConstants.URL_OrderStatusUpdate;
         postData(context,orderStatusUpdateModel, URL, query, TAG);
     }
-    public void getLatlongUpdate(Context context,LatlongMainModel latlongMainModel, ServerResponseInterface mCallInterface, String TAG) {
+    public void updateLatLong(Context context,LatlongModel latlongModel, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
         String query = null;
 
         String URL = ServerConstants.URL_LatlongUpdate;
-        postData(context, latlongMainModel, URL, query, TAG);
+        postData(context, latlongModel, URL, query, TAG);
     }
     public void getPlanList(Context context, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
@@ -295,6 +295,13 @@ public class ServicesMethodsManager {
                 mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }
         }else if (obj instanceof OrderStatusUpdateModel) {
+            StatusMainModel statusMainModel = new StatusMainModel();
+            if (statusMainModel.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(statusMainModel);
+            } else {
+                mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
+        }else if (obj instanceof LatlongModel) {
             StatusMainModel statusMainModel = new StatusMainModel();
             if (statusMainModel.toObject(resp.toString())) {
                 mUiCallBack.OnSuccessFromServer(statusMainModel);
