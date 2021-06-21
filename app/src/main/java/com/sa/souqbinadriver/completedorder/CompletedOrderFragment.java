@@ -71,9 +71,11 @@ public class CompletedOrderFragment extends Fragment {
         progressActivity = view.findViewById( R.id.details_progressActivity );
         swipe_container = view.findViewById( R.id.swipe_container );
 
-        recyclerView.setAdapter(adapter);
+
         mainView = recyclerView;
         loadOrderList();
+        recyclerView.setAdapter(adapter);
+
 
         swipe_container.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -153,14 +155,11 @@ public class CompletedOrderFragment extends Fragment {
         }, "Order List" );
     }
 
-
-
     private void showContent() {
         if (progressActivity != null) {
             progressActivity.showContent();
         }
     }
-
 
     private void showEmptyPage() {
         if (progressActivity != null) {

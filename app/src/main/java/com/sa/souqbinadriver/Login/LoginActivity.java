@@ -47,6 +47,8 @@ public  class LoginActivity extends AppCompatActivity {
     StringRequest request;
     static Activity activity;
     View mainView;
+    private CountryCodePicker country_code_picker;
+
 
     EditText mobileNumber_etv, password_etv;
     TextView sendActivation_tv;
@@ -82,6 +84,18 @@ public  class LoginActivity extends AppCompatActivity {
         login=findViewById(R.id.BtnLogin);
         etMobile=findViewById(R.id.etMobile);
         etPassword=findViewById(R.id.etPassword);
+        country_code_picker = (CountryCodePicker) findViewById(R.id.country_code_picker);
+
+        country_code_picker.setCountryForPhoneCode(+91);
+        country_code_picker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                selected_country_code = country_code_picker.getSelectedCountryCodeWithPlus();
+                etMobile.setText("");
+            }
+        });
+
+        country_code_picker.registerCarrierNumberEditText(etMobile);
 
         context = this;
         activity = this;
@@ -97,6 +111,13 @@ public  class LoginActivity extends AppCompatActivity {
         }
         mainView = etMobile;
 
+        country_code_picker.setPhoneNumberValidityChangeListener(new CountryCodePicker.PhoneNumberValidityChangeListener() {
+            @Override
+            public void onValidityChanged(boolean isValidNumber) {
+            }
+        });
+
+        selected_country_code = country_code_picker.getSelectedCountryCodeWithPlus();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,13 +150,18 @@ public  class LoginActivity extends AppCompatActivity {
                 etMobile.setFocusableInTouchMode( true);
                 etMobile.requestFocus();
                 // GlobalFunctions.displayMessaage(context, mainView, getString(R.string.mobileNumberNotValid));
-            } /*else if (selected_country_code.isEmpty()) {
-                            globalFunctions.displayMessaage( activity, mainView, getString( R.string.countryCodeNONotValid ) );
-                        }*/
-            else {
+            } else if (selected_country_code.isEmpty()) {
+                globalFunctions.displayMessaage( activity, mainView, getString( R.string.countryCodeNONotValid ) );
+            }else if (!country_code_picker.isValidFullNumber()) {
+//                mobile_number_etv.setText("");
+                globalFunctions.displayMessaage(activity, mainView, getString(R.string.please_enetr_valid_number));
+                etMobile.setSelection(etMobile.getText().length());
+                etMobile.setFocusableInTouchMode(true);
+                etMobile.requestFocus();
+            } else {
                 LoginModel loginModel = new LoginModel();
                 loginModel.setEmail_id( mobileNo );
-                //loginModel.setCountryCode( selected_country_code );
+                loginModel.setCountryCode( selected_country_code );
                 loginModel.setPassword( password );
 
                 loginUser( context, loginModel );

@@ -529,6 +529,32 @@ public class GlobalVariables {
     public static String RESPONSE_HTTP_RECORD_EXIST        = "409";
     public static String RESPONSE_HTTP_BAD_REQUEST_5       = "5";
 
+
+    public static final String UPLOAD_PROFILE_PHOTO_PATH         = "Souqbina/user_profile";
+    public static final String UPLOAD_LICENSE_PHOTO_PATH         = "Souqbina/insert/professional_license";
+    public static final String UPLOAD_SCIENTIFIC_DOC_PHOTO_PATH  = "Souqbina/insert/scientific_documents";
+    public static final String UPLOAD_AD_PHOTO_PATH              = "Souqbina/insert_ad/ad";
+    public static final String UPLOAD_COMMERCIAL_REG_PHOTO_PATH  = "Souqbina/insert/commercial_registration";
+    public static final String UPLOAD_CERTIFICATE_PHOTO_PATH     = "Souqbina/insert/certificates";
+
+    public static final String UPLOAD_GALLERY_PHOTO_PATH        = "Souqbina/insert/gallery";
+    public static final String UPLOAD_VIDEO_THUMBNAIL_PATH      = "Souqbina/insert_video_thumbnail";
+    public static final String UPLOAD_BANNER_IMAGE_PATH         = "Souqbina/profile/banner";
+
+    public static final String UPLOAD_GALLERY_PHOTO_PATH_CODE         = "4";
+    public static final String UPLOAD_VIDEO_THUMBNAIL_PHOTO_PATH_CODE  = "20";
+    public static final String UPLOAD_AD_IMAGE_PATH_CODE              = "12";
+    public static final String UPLOAD_VIDEO_PATH_CODE                 = "12";
+    public static final String UPLOAD_BANNER_IMAGE_PATH_CODE          = "15";
+    public static final String UPLOAD_PROFILE_PHOTO_PATH_CODE         = "1";
+    public static final String UPLOAD_LICENSE_PHOTO_PATH_CODE         = "2";
+    public static final String UPLOAD_IDENTIFICATION_PHOTO_PATH_CODE  = "3";
+    public static final String UPLOAD_COVER_PHOTO_PATH_CODE           = "5";
+    public static final String UPLOAD_COMMERCIAL_REG_PHOTO_PATH_CODE  = "6";
+    public static final String UPLOAD_SCIENTIFIC_DOC_PHOTO_PATH_CODE  = "7";
+    public static final String UPLOAD_CERTIFICATE_PHOTO_PATH_CODE     = "8";
+
+
     public static String MIN_REQURIED_QUANTITY = "0";
     public static int MIN_REQURIED_QUANTITY_INT = 0;
 

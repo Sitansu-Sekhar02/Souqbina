@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="login_text">#2C2B2B</color>
+
     <color name="grey">#DADAD7D7</color>
     <color name="grey_light">#F5F5F5</color>
     <color name="red">#FF3B3B</color>
@@ -34,6 +36,7 @@
         <item>@color/colorAccent</item>
     </array>
 
+    <color name="grey_lighter">#D6DBDB</color>
 
 
     <color name="yellow_deep">#FFB400</color>

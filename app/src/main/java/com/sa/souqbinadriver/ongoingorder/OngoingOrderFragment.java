@@ -100,13 +100,14 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
     ImageView vendor_image, customer_image, product_image;
     TextView product_title, product_quantity;
 
-    TextView tvSchedule_date;
+    TextView tvSchedule_date,order_id;
     TextView tv_statusTitle;
     TextView tv_VendorName, tv_vendorMMobile, tv_vendorCall;
     TextView tv_CustomerName, tv_CustomerMMobile, tv_CustomerCall;
     TextView tv_pickAddress, tv_dropAddress, tv_pickDirection, tv_dropDirection;
 
     LinearLayout empty_order;
+    RelativeLayout details_page;
 
     ProgressLinearLayout progressActivity;
     RecyclerView recyclerView;
@@ -154,6 +155,7 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
 
 
         tvSchedule_date = view.findViewById(R.id.tv_Schedule_date_time);
+        order_id = view.findViewById(R.id.tv_order_id);
         tv_VendorName = view.findViewById(R.id.tv_vendor_name);
         tv_vendorMMobile = view.findViewById(R.id.tv_vendor_mobile);
         tv_vendorCall = view.findViewById(R.id.tv_vendor_call);
@@ -167,6 +169,7 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
         vendor_image = view.findViewById(R.id.vendor_image);
         customer_image = view.findViewById(R.id.tv_customer_image);
         empty_order = view.findViewById(R.id.ongoing_order_empty);
+        details_page = view.findViewById(R.id.ongoingOrder_details);
         tv_statusTitle = view.findViewById(R.id.tv_statusTitle);
         activity = getActivity();
         context = getActivity();
@@ -324,6 +327,7 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
     }
 
     private void showEmptyPage() {
+        details_page.setVisibility(View.GONE);
         empty_order.setVisibility(View.VISIBLE);
 
     }
@@ -347,40 +351,6 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
             return true;
         }
     }
-    private void updateLatlong(LatlongMainModel latlongModel) {
-        /*ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
-        servicesMethodsManager.getLatlongUpdate(context, latlongModel, new ServerResponseInterface() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void OnSuccessFromServer(Object arg0) {
-                Log.d(TAG, "Response Update : " + arg0.toString());
-                //LatlongMainModel latlongMainModel = (LatlongMainModel) arg0;
-               // LatlongModel latlongModel = latlongMainModel.getLatlongModel();
-               *//* if (statusMainModel.isStatus()){
-                    GlobalFunctions.displayDialog(activity,statusModel.getMessage());
-                    getOrderDetails();
-                }else {
-                    GlobalFunctions.displayMessaage(activity,mainView,statusModel.getMessage());
-                }*//*
-
-            }
-
-            @SuppressLint("LongLogTag")
-            @Override
-            public void OnFailureFromServer(String msg) {
-                Log.d(TAG, "Failure : " + msg);
-                GlobalFunctions.displayMessaage(context, mainView, msg);
-            }
-
-            @SuppressLint("LongLogTag")
-            @Override
-            public void OnError(String msg) {
-                GlobalFunctions.hideProgress();
-                Log.d(TAG, "Error : " + msg);
-                GlobalFunctions.displayMessaage(context, mainView, msg);
-            }
-        }, "Order List");*/
-    }
 
     private void setThisPage(OrderModel orderModel) {
 
@@ -392,6 +362,9 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
 
             if (GlobalFunctions.isNotNullValue(orderModel.getScheduled_for())) {
                 tvSchedule_date.setText(GlobalFunctions.getDateFormat(orderModel.getScheduled_for()));
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getOrder_id())) {
+                order_id.setText("#"+orderModel.getOrder_id());
             }
 
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_image())) {

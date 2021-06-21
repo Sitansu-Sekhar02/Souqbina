@@ -30,6 +30,7 @@
 
                     <com.sa.souqbinadriver.view.AppTextView
                         android:id="@+id/tvEdit"
+                        android:visibility="gone"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
@@ -147,6 +148,7 @@
 
                 </LinearLayout>
                 <com.sa.souqbinadriver.view.AppButton
+                    android:id="@+id/btn_editProfile"
                     android:layout_below="@id/email"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"

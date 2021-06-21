@@ -36,6 +36,7 @@ public class ProfileModel implements Serializable {
             VEHICLE_NUMBER="vehicle_number",
             DRIVING_LICENCE="driving_license",
             NATIONAL_ID="national_id",
+            ORDERS="orders",
             VEHICLE_DOCUMENT="vehicle_document";
 
 
@@ -62,6 +63,7 @@ public class ProfileModel implements Serializable {
             vehicle_number=null,
             driving_licence=null,
             national_id=null,
+            orders=null,
             vehicle_document=null;
 
 
@@ -280,6 +282,14 @@ public class ProfileModel implements Serializable {
         this.national_id = national_id;
     }
 
+    public String getOrders() {
+        return orders;
+    }
+
+    public void setOrders(String orders) {
+        this.orders = orders;
+    }
+
     public String getVehicle_document() {
         return vehicle_document;
     }
@@ -362,7 +372,9 @@ public class ProfileModel implements Serializable {
                 vehicle_number = json.getString(VEHICLE_NUMBER);
             }  if (json.has(VEHICLE_DOCUMENT)) {
                 vehicle_document = json.getString(VEHICLE_DOCUMENT);
-            } if (json.has(NATIONAL_ID)) {
+            } if (json.has(ORDERS)) {
+                orders = json.getString(ORDERS);
+            }  if (json.has(NATIONAL_ID)) {
                 national_id = json.getString(NATIONAL_ID);
             }
 
@@ -442,6 +454,7 @@ public class ProfileModel implements Serializable {
             jsonMain.put(DRIVING_LICENCE, driving_licence);
             jsonMain.put(VEHICLE_NUMBER, vehicle_number);
             jsonMain.put(VEHICLE_DOCUMENT, vehicle_document);
+            jsonMain.put(ORDERS, orders);
             jsonMain.put(NATIONAL_ID, national_id);
 
             jsonMain.put(CATEGORY, profileCategoryListModel != null ? new JSONArray(profileCategoryListModel.toString(true)) : new JSONArray());

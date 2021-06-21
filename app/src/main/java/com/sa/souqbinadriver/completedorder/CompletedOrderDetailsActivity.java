@@ -67,9 +67,11 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
     ImageView vendor_image, customer_image, product_image;
     TextView product_title, product_quantity;
 
-    TextView tvSchedule_date;
+    TextView tvSchedule_date,order_id;
     TextView tv_VendorName, tv_vendorMMobile;
     TextView tv_CustomerName, tv_CustomerMMobile;
+    TextView tv_pickAddress, tv_dropAddress, tv_pickDirection, tv_dropDirection;
+
     private UpdateStatusInterface listner;
 
     ProgressLinearLayout progressActivity;
@@ -115,12 +117,15 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
 
 
         tvSchedule_date = findViewById(R.id.tv_Schedule_date_time);
+        order_id = findViewById(R.id.tv_order_id);
         tv_VendorName = findViewById(R.id.tv_vendor_name);
         tv_vendorMMobile = findViewById(R.id.tv_vendor_mobile);
         tv_CustomerName = findViewById(R.id.tv_customer_name);
         tv_CustomerMMobile = findViewById(R.id.tv_customer_mobile_number);
         vendor_image = findViewById(R.id.vendor_image);
-        customer_image = findViewById(R.id.tv_customer_image);
+        customer_image = findViewById(R.id.iv_customer_image);
+        tv_pickAddress = findViewById(R.id.tv_pick_address);
+        tv_dropAddress = findViewById(R.id.tv_drop_address);
        // progressActivity =findViewById( R.id.details_progressActivity );
        // swipe_container = findViewById( R.id.swipe_container );
         linearLayoutManager = new LinearLayoutManager( activity );
@@ -166,7 +171,6 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
        // productDescription();
 
 
-
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         // toolbar.setPadding(0, GlobalFunctions.getStatusBarHeight(context), 0, 0);
         tool_bar_back_icon = (ImageView) toolbar.findViewById(R.id.tool_bar_back_icon);
@@ -190,6 +194,9 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.black_trans));
         }
+
+        setTitle(getString(R.string.completed_order_details), 0, 0);
+
 
     }
 
@@ -234,7 +241,10 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
     private void setOrderDetails(OrderModel orderModel) {
         if (orderModel != null && context != null) {
             if (GlobalFunctions.isNotNullValue(orderModel.getScheduled_for())) {
-                tvSchedule_date.setText(GlobalFunctions.getDateFormat(orderModel.getScheduled_for()));
+                tvSchedule_date.setText(GlobalFunctions.getDateTimeFormat(orderModel.getScheduled_for()));
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getOrder_id())) {
+                order_id.setText("#"+orderModel.getOrder_id());
             }
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_image())) {
                 Picasso.with(context).load(orderModel.getVendor_image()).placeholder(R.drawable.ic_baseline_person_24).into(vendor_image);
@@ -264,6 +274,22 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             if (GlobalFunctions.isNotNullValue(orderModel.getOrder_vendor_product_id())) {
                 order_vendor_product_id=orderModel.getOrder_vendor_product_id();
             }
+            if (GlobalFunctions.isNotNullValue(orderModel.getUser_number())) {
+                tv_CustomerMMobile.setText(orderModel.getUser_number());
+
+            }
+
+            if (GlobalFunctions.isNotNullValue(orderModel.getVendor_number())) {
+                tv_vendorMMobile.setText(orderModel.getVendor_number());
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getDrop_address())) {
+                tv_dropAddress.setText(orderModel.getDrop_address());
+            }
+
+
+            if (GlobalFunctions.isNotNullValue(orderModel.getPickup_address())) {
+                tv_pickAddress.setText(orderModel.getPickup_address());
+            }
 
             if (GlobalFunctions.isNotNullValue(orderModel.getUser_image())) {
                 Picasso.with(context).load(orderModel.getUser_image()).placeholder(R.drawable.ic_baseline_person_24).into(customer_image);
@@ -280,8 +306,6 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             }
 
         }
-
-
 
     }
     private void initRecyclerView() {

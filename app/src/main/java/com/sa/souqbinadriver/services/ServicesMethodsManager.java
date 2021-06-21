@@ -254,6 +254,15 @@ public class ServicesMethodsManager {
                     mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
                 }
             }
+        }else if (obj instanceof ProfileModel) {
+            ProfileMainModel model = new ProfileMainModel();
+            if (model.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(model);
+            } else {
+
+                    mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+
+            }
         } else if (obj instanceof KeyValueListModel) {
             KeyValueListModel model = new KeyValueListModel();
             if (model.toObject(resp.toString())) {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ public class ProfileFragment extends Fragment {
     TextView name_tv, therapist_tv, update_button, email_ev;
     TextView first_name_etv, last_name_etv, mobile_etv, email_etv, password_etv, confirm_password_etv;
     CircleImageView profile_image;
-
+    Button edit_profile;
     View view;
     ProfileModel detail = null;
 
@@ -82,15 +83,16 @@ public class ProfileFragment extends Fragment {
         last_name_etv =  view.findViewById( R.id.tv_lastName );
         mobile_etv =  view.findViewById( R.id.tv_mobileNumber );
         email_etv = view.findViewById( R.id.tv_emailId );
-        //email_ev = view.findViewById( R.id.email_ev );
+        edit_profile = view.findViewById( R.id.btn_editProfile );
      /*   password_etv = ( EditText ) view.findViewById( R.id.password_etv );
         confirm_password_etv = ( EditText ) view.findViewById( R.id.confirm_password_etv );*/
 
         profile_image = ( CircleImageView ) view.findViewById( R.id.ivProfimeImage );
+        mainView=first_name_etv;
+
 
 
         getProfile();
-        mainView=first_name_etv;
 
 
 
@@ -154,20 +156,31 @@ public class ProfileFragment extends Fragment {
 
                 Log.d( "heckDetail",""+ detail );
 
-               // String fullName = detail.getFirstName() + " " + detail.getLastName();
                // name_tv.setText( fullName );
                 first_name_etv.setText( detail.getFirstName() );
                 last_name_etv.setText( detail.getLastName() );
                 mobile_etv.setText( detail.getPhone() );
                 email_etv.setText( detail.getEmail() );
-//                email_ev.setText( detail.getEmail() );
+
 
                 try {
                     if (detail.getProfileImg() != null || !detail.getProfileImg().equals( "null" ) || !detail.getProfileImg().equalsIgnoreCase( "" )) {
-                        Picasso.with( context ).load( detail.getProfileImg() ).placeholder( R.drawable.ic_baseline_person_24 ).into( profile_image );
+                        Picasso.with( context ).load( detail.getProfileImg() ).placeholder( R.drawable.layout_bg ).into( profile_image );
                     }
                 } catch (Exception e) {
                 }
+
+                edit_profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        activity.startActivity(new Intent(activity,EditProfileActivity.class));
+
+
+                    }
+                });
+
+
+
             }
         }
     }

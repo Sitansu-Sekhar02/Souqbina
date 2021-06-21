@@ -119,11 +119,8 @@ public class ProfileMainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
 //        toolbar.setPadding(0, GlobalFunctions.getStatusBarHeight(context), 0, 0);
         //  toolbar.setNavigationIcon(R.drawable.ic_logo);
-        toolbar.setContentInsetsAbsolute(0, 0);
-        toolbar_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        toolbar_logo = (ImageView) toolbar.findViewById(R.id.tool_bar_logo);
 
-        mainView = toolbar;
+
 
 
         setSupportActionBar(toolbar);
@@ -179,7 +176,7 @@ public class ProfileMainActivity extends AppCompatActivity {
         }
 */
 
-        //setTitle(getString(R.string.my_profile), 0, 0);
+        setTitle(getString(R.string.my_profile), 0, 0);
 
 
         Fragment profileFragment = null;
@@ -194,7 +191,7 @@ public class ProfileMainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        setTitleResourseID(0);
+        //setTitleResourseID(0);
         super.onResume();
     }
 
@@ -210,19 +207,29 @@ public class ProfileMainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void setTitle(String title, int titleImageID, int backgroundResourceID){
+    /*ublic void setTitle(String title, int titleImageID, int backgroundResourceID){
         mTitle = title;
         if(backgroundResourceID!=0){mResourceID = backgroundResourceID;}else{mResourceID = 0;}
         if(titleImageID!=0){titleResourseID = titleImageID;}else{titleResourseID = 0;}
         restoreToolbar();
-    }
+    }*/
 
     public int getTitleResourseID() {
         return titleResourseID;
     }
 
-    public void setTitleResourseID(int titleResourseID) {
-        this.titleResourseID = titleResourseID;
+    public static void setTitle (String title,int titleImageID, int backgroundResourceID){
+        mTitle = title;
+        if (backgroundResourceID != 0) {
+            mResourceID = backgroundResourceID;
+        } else {
+            mResourceID = 0;
+        }
+        if (titleImageID != 0) {
+            titleResourseID = titleImageID;
+        } else {
+            titleResourseID = 0;
+        }
         restoreToolbar();
     }
 
@@ -384,24 +391,15 @@ public class ProfileMainActivity extends AppCompatActivity {
 
     private static void restoreToolbar() {
         //toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        //toolbar = (Toolbar) findViewById(R.id.tool_bar);
         Log.d(TAG, "Restore Tool Bar");
         if (actionBar != null) {
             Log.d(TAG, "Restore Action Bar not Null");
             Log.d(TAG, "Title : " + mTitle);
-            if (titleResourseID != 0) {
-               // toolbar_logo.setVisibility(View.VISIBLE);
-                toolbar_title.setVisibility(View.GONE);
-                //toolbar_logo.setImageResource(titleResourseID);
-            } else {
-              //  toolbar_logo.setVisibility(View.GONE);
-                toolbar_title.setVisibility(View.VISIBLE);
-                toolbar_title.setText(mTitle);
-            }
-
-
+            toolbar_title.setText(mTitle);
             if (mResourceID != 0) toolbar.setBackgroundResource(mResourceID);
-           // actionBar.setTitle("");
-           //actionBar.setDisplayHomeAsUpEnabled(true);
+            //actionBar.setTitle("");
+            // actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
     }

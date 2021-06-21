@@ -14,7 +14,7 @@
     <string name="english">English</string>
     <string name="order">Order Delivered</string>
     <string name="logout">Logout</string>
-    <string name="oder_number">5 Orders</string>
+    <string name="oder_number">Orders</string>
     <string name="no_ongoing_order">No On Going Orders</string>
     <string name="first_name">First Name</string>
     <string name="abdul">Abdul</string>
@@ -56,7 +56,7 @@
     <string name="completed_order_details">Completed Order details</string>
     <string name="are_you_sre">Logout of SouqBina Driver</string>
     <string name="cancel">Cancel</string>
-    <string name="phn_erro">Contact number Required</string>
+    <string name="phn_erro"> Please enter mobile number</string>
     <string name="password_error">Password Required</string>
     <string name="CannotconnecttoInternet">Check your internet connection</string>
     <string name="Theservercouldnotbefound">There is a problem connecting to servers, please try again later</string>
@@ -331,5 +331,22 @@
     <string name="no_internet">No Internet</string>
     <string name="no_google_playservice_available">No google play services available</string>
     <string name="permission_rationale">Please grant location permission to start the service</string>
-
+    <string name="number">+91</string>
+    <string name="please_enetr_valid_number">Please enetr a valid number</string>
+    <string name="no_upcoming_order">"No upcoming Orders "</string>
+    <string name="order_id">ORDER ID:</string>
+    <string name="save_and_update"><![CDATA[Save & Update]]></string>
+    <string name="basic_info">Basic info</string>
+    <string name="enter_mendatory_field">Please enter mandatory field</string>
+    <string name="uploading_image">Uploading image...</string>
+    <string name="failed_upload_image">Failed to upload</string>
+    <string name="toast_image_intent_null" />
+    <string name="select_image">Select Image</string>
+    <string name="lbl_take_camera_picture">Take from camera</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="something_went_wrong_message">Something wenr wrong! Please try againg later</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="updating_profile">Updating profile...</string>
 </resources>

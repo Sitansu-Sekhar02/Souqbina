@@ -42,14 +42,15 @@ public class CompletedOrderListAdapter extends RecyclerView.Adapter<CompletedOrd
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final OrderModel model = mModel.get(position);
-            String order_id=mModel.get(position).getOrder_id();
-            Log.e("order_id","orderId"+order_id);
 
             if (model.getScheduled_for() != null) {
                 holder.scheduled_datetime.setText(model.getScheduled_for());
             }
             if (model.getPickup_address() != null) {
                 holder.tv_Address.setText((model.getDrop_address()));
+            }
+            if (model.getOrder_id() != null) {
+                holder.order_id.setText("#"+model.getOrder_id());
             }
 
 
@@ -59,12 +60,7 @@ public class CompletedOrderListAdapter extends RecyclerView.Adapter<CompletedOrd
 
                     Intent intent = CompletedOrderDetailsActivity.newInstance( activity, model );
                     activity.startActivity( intent );
-                    //  replaceFragmentWithAnimation(new UpcomingOrderDetailsFragment(),order_id);
 
-                  /*  Fragment upcomingOrderDetails=new UpcomingOrderDetailsFragment();
-                    replaceFragment( upcomingOrderDetails, UpcomingOrderDetailsFragment.TAG, getString( R.string.app_name ), 0, 0 );*/
-                  /*  Intent intent = SearchPlaceOnMapActivity.newInstance( activity, model );
-                    activity.startActivity( intent );*/
                 }
             });
 
@@ -78,13 +74,14 @@ public class CompletedOrderListAdapter extends RecyclerView.Adapter<CompletedOrd
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView scheduled_datetime;
-            TextView tv_Address;
+            TextView tv_Address,order_id;
             LinearLayout item_Click;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 scheduled_datetime = itemView.findViewById(R.id.tv_Schedule_date_time);
                 tv_Address = itemView.findViewById(R.id.tv_drop_address);
+                order_id = itemView.findViewById(R.id.tv_order_id);
                 item_Click = itemView.findViewById(R.id.CompletedButton);
             }
         }

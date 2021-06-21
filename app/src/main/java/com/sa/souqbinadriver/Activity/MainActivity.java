@@ -50,6 +50,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.sa.souqbinadriver.Fragments.FragmentAllProcess;
+import com.sa.souqbinadriver.completedorder.CompletedOrderFragment;
 import com.sa.souqbinadriver.fcm.analytics.AnalyticsReport;
 import com.sa.souqbinadriver.global.GlobalFunctions;
 import com.sa.souqbinadriver.global.GlobalVariables;
@@ -62,6 +63,7 @@ import com.sa.souqbinadriver.services.model.CountryModel;
 import com.sa.souqbinadriver.services.model.KeyValueModel;
 import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NotificationModel;
+import com.sa.souqbinadriver.services.model.OrderModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.sa.souqbinadriver.services.model.PushNotificationModel;
 import com.sa.souqbinadriver.services.model.StatusMainModel;
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     public static NavigationView navigationView;
     public static TextView tvHeaderText;
-    public static TextView tvCount;
+    public static TextView tvCount,header_completed_order;
     LinearLayout nav_header;
     public static TextView iv_Notification;
     TextView Logout;
@@ -460,12 +462,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (navigationHeaderView != null && mainContext != null) {
             TextView
                     header_name_tv = ( TextView ) navigationHeaderView.findViewById( R.id.nav_tvUsefullname ),
+                    header_tv_counrty_code = ( TextView ) navigationHeaderView.findViewById( R.id.nav_tv_country_code ),
                     header_email_tv = ( TextView ) navigationHeaderView.findViewById( R.id.nav_tvEmail );
               TextView
                       header_phone_tv = ( TextView ) navigationHeaderView.findViewById( R.id.nav_tv_userNumber );
 
               LinearLayout
-                     nav_header=navigationHeaderView.findViewById(R.id.Profilebutton);
+                     nav_header=navigationHeaderView.findViewById(R.id.Profilebutton),
+                     nav_header_orders=navigationHeaderView.findViewById(R.id.LinearOrders);
+
+
+                    header_completed_order = ( TextView ) navigationHeaderView.findViewById( R.id.tv_total_completed_order );
+
+                    nav_header_orders.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                             // Fragment completedOrderFragment=new CompletedOrderFragment();
+                             // replaceFragment( completedOrderFragment, CompletedOrderFragment.TAG, getString( R.string.app_name ), 0, 0 );
+                             //  replaceFragmentWithAnimation(new CompletedOrderFragment());
+                        }
+                    });
+
 
               TextView
                       logout=navigationHeaderView.findViewById(R.id.Logout);
@@ -538,7 +556,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             fullName = profileModel.getFirstName() + " " + profileModel.getLastName();
                             header_name_tv.setText( fullName != null ? fullName : getString( R.string.guest ) );
                            header_email_tv.setText( profileModel.getEmail() != null ? profileModel.getEmail() : getString( R.string.email ) );
+                           header_tv_counrty_code.setText( profileModel.getCountry_code() != null ? profileModel.getCountry_code() : getString( R.string.number ) );
                            header_phone_tv.setText( profileModel.getPhone() != null ? profileModel.getPhone() : getString( R.string.mobile_no) );
+                           header_completed_order.setText(profileModel.getOrders()!=null ?profileModel.getOrders() :"0");
 
                     try {
                         if (profileModel.getProfileImg() != null || !profileModel.getProfileImg().equals( "null" ) || !profileModel.getProfileImg().equalsIgnoreCase( "" )) {

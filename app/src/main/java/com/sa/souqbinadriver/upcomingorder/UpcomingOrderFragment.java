@@ -162,7 +162,7 @@ public class UpcomingOrderFragment extends Fragment {
     private void showEmptyPage() {
         if (progressActivity != null) {
             progressActivity.showEmpty(getResources().getDrawable(R.drawable.ic_group_no_order), getString(R.string.emptyList),
-                    getString(R.string.no_ongoing_order));
+                    getString(R.string.no_upcoming_order));
         }
     }
 

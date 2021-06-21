@@ -82,7 +82,7 @@ public class UpcomingOrderDetailsActivity extends AppCompatActivity  implements 
     TextView product_title, product_quantity;
 
 
-    TextView tvSchedule_date;
+    TextView tvSchedule_date,order_id;
     TextView tv_statusTitle;
     TextView tv_VendorName, tv_vendorMMobile, tv_vendorCall;
     TextView tv_CustomerName, tv_CustomerMMobile, tv_CustomerCall;
@@ -147,6 +147,7 @@ public class UpcomingOrderDetailsActivity extends AppCompatActivity  implements 
         layoutInflater = activity.getLayoutInflater();
 
         tvSchedule_date = findViewById(R.id.tv_Schedule_date_time);
+        order_id = findViewById(R.id.tv_order_id);
         tv_VendorName = findViewById(R.id.tv_vendor_name);
         tv_vendorMMobile = findViewById(R.id.tv_vendor_mobile);
         tv_vendorCall = findViewById(R.id.tv_vendor_call);
@@ -547,7 +548,9 @@ public class UpcomingOrderDetailsActivity extends AppCompatActivity  implements 
             }
 
             if (GlobalFunctions.isNotNullValue(orderModel.getScheduled_for())) {
-                tvSchedule_date.setText(GlobalFunctions.getDateFormat(orderModel.getScheduled_for()));
+                tvSchedule_date.setText(GlobalFunctions.getDateTimeFormat(orderModel.getScheduled_for()));
+            } if (GlobalFunctions.isNotNullValue(orderModel.getOrder_id())) {
+                order_id.setText("#"+orderModel.getOrder_id());
             }
 
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_image())) {

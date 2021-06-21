@@ -45,6 +45,7 @@ import com.sa.souqbinadriver.Login.LoginActivity;
 import com.sa.souqbinadriver.R;
 import com.sa.souqbinadriver.addon.PasswordValidator;
 import com.sa.souqbinadriver.navigation.NavigationDrawerFragment;
+import com.sa.souqbinadriver.profile.EditProfileActivity;
 import com.sa.souqbinadriver.profile.ProfileFragment;
 import com.sa.souqbinadriver.profile.ProfileMainActivity;
 import com.sa.souqbinadriver.services.model.AddressModel;
@@ -121,7 +122,19 @@ public class GlobalFunctions {
         try {
             SimpleDateFormat spf = new SimpleDateFormat(GlobalVariables.DATE_TIME_SERVER_FORMAT);
             Date newDate = spf.parse(date1);
-            spf = new SimpleDateFormat("dd MMM yyyy");
+            spf = new SimpleDateFormat("dd MMM yyyy ");
+            date = spf.format(newDate);
+            System.out.println(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
+    } public static String getDateTimeFormat(String date1) {
+        String date = null;
+        try {
+            SimpleDateFormat spf = new SimpleDateFormat(GlobalVariables.DATE_TIME_SERVER_FORMAT);
+            Date newDate = spf.parse(date1);
+            spf = new SimpleDateFormat("dd MMM yyyy HH:mm:ss ");
             date = spf.format(newDate);
             System.out.println(date);
         } catch (Exception e) {
@@ -129,7 +142,6 @@ public class GlobalFunctions {
         }
         return date;
     }
-
 
     public static int getNavigationSelectedPosition(){
         return navigationSelectedPosition;
@@ -1134,6 +1146,7 @@ public class GlobalFunctions {
     public static void closeAllActivities(){
         LoginActivity.closeThisActivity();
         ProfileMainActivity.closeThisActivity();
+        //EditProfileActivity.closeThisActivity();
         MainActivity.closeThisActivity();
       //  CitySelectingActivity.closeThisActivity();
 

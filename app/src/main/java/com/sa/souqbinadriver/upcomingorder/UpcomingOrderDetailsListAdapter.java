@@ -45,10 +45,12 @@ public class UpcomingOrderDetailsListAdapter extends RecyclerView.Adapter<Upcomi
             final OrderModel model = mModel.get(position);
 
             if (GlobalFunctions.isNotNullValue(model.getScheduled_for() )) {
-                holder.scheduled_datetime.setText(GlobalFunctions.getDateFormat(model.getScheduled_for()));
+                holder.scheduled_datetime.setText(GlobalFunctions.getDateTimeFormat(model.getScheduled_for()));
             }
             if (GlobalFunctions.isNotNullValue(model.getPickup_address() )) {
                 holder.tv_Address.setText((model.getPickup_address()));
+            }if (GlobalFunctions.isNotNullValue(model.getOrder_id() )) {
+                holder.order_id.setText("#"+model.getOrder_id());
             }
 
 
@@ -73,13 +75,14 @@ public class UpcomingOrderDetailsListAdapter extends RecyclerView.Adapter<Upcomi
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView scheduled_datetime;
-            TextView tv_Address;
+            TextView tv_Address,order_id;
             LinearLayout item_Click;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 scheduled_datetime = itemView.findViewById(R.id.tv_Schedule_date_time);
                 tv_Address = itemView.findViewById(R.id.tv_address);
+                order_id = itemView.findViewById(R.id.tv_order_id);
                 item_Click = itemView.findViewById(R.id.UpcomingButton);
             }
         }

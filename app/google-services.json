@@ -1,23 +1,67 @@
 {
   "project_info": {
-    "project_number": "940339193431",
-    "project_id": "souqbina-driver",
-    "storage_bucket": "souqbina-driver.appspot.com"
+    "project_number": "172892305349",
+    "project_id": "souqbina-db6c0",
+    "storage_bucket": "souqbina-db6c0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:940339193431:android:a1c272e699a0153eebe512",
+        "mobilesdk_app_id": "1:172892305349:android:93d47afe8c5f25f5cbbdac",
         "android_client_info": {
           "package_name": "com.sa.souqbinadriver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "940339193431-05bg09nk6jc3b5fgjkrr3vscgvs49g8n.apps.googleusercontent.com",
-          "client_type": 3,
+          "client_id": "172892305349-uhdk3on0jtduj9dj5ouiio8eu2brunga.apps.googleusercontent.com",
+          "client_type": 1,
           "android_info": {
-            "package_name": "com.sa.driver.souqbina",
+            "package_name": "com.sa.souqbinadriver",
+            "certificate_hash": "c29c00e158be166dff1170d33db9f6de74a0adfa"
+          }
+        },
+        {
+          "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU9GwkAwm3ao2rMlwnDhEWPPsT3Ux0rDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172892305349-1f1bj9nslco1tiq0oji12vil88633of3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.souqbina.driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172892305349:android:f50b43c60205a32bcbbdac",
+        "android_client_info": {
+          "package_name": "com.sa.user.souqbina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172892305349-0n4s6q81dqku6573ej3hah7si3un4dvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sa.user.souqbina",
             "certificate_hash": "cf06d32dbac3855db10c0dbc02bd071af915c879"
           }
         },
@@ -28,21 +72,57 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDg2ac9OmcYfUgjVj9wpXDoouPZnF_D20M"
+          "current_key": "AIzaSyBU9GwkAwm3ao2rMlwnDhEWPPsT3Ux0rDc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "940339193431-05bg09nk6jc3b5fgjkrr3vscgvs49g8n.apps.googleusercontent.com",
+              "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "172892305349-hggre0i2q4g07noa7qoqf3ib65ol2jcf.apps.googleusercontent.com",
+              "client_id": "172892305349-1f1bj9nslco1tiq0oji12vil88633of3.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.sb.souqbinauser"
+                "bundle_id": "com.souqbina.driver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172892305349:android:b9ad2f5c5e05d9a3cbbdac",
+        "android_client_info": {
+          "package_name": "com.saudi.vendor.souqbina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU9GwkAwm3ao2rMlwnDhEWPPsT3Ux0rDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172892305349-agu817m1vkpar8on7gdv20k9stg1q3jj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172892305349-1f1bj9nslco1tiq0oji12vil88633of3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.souqbina.driver"
               }
             }
           ]

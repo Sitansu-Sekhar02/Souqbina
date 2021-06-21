@@ -24,6 +24,34 @@
     <dimen name="loader_width">85dp</dimen>
 
 
+    <dimen name="profile_pic_size_increased">@dimen/_100sdp</dimen>
+    <dimen name="profile_pic_size_reduced">@dimen/_80sdp</dimen>
+    <dimen name="profile_pic_size">@dimen/_90sdp</dimen>
+    <dimen name="profile_pic_size_smoothly_reduced">@dimen/_70sdp</dimen>
+    <dimen name="profile_pic_size_gently_reduced">@dimen/_60sdp</dimen>
+    <dimen name="sub_category_image_height">@dimen/_50sdp</dimen>
+
+    <dimen name="two_way_view_height_increased_more">@dimen/_130sdp</dimen>
+    <dimen name="service_view_width">@dimen/_180sdp</dimen>
+
+    <dimen name="custom_map_height">@dimen/_150sdp</dimen>
+
+    <dimen name="app_logo_height">@dimen/_160sdp</dimen>
+    <dimen name="app_logo_height_reduced">@dimen/_140sdp</dimen>
+    <dimen name="slider_height">@dimen/_140sdp</dimen>
+    <dimen name="slider_height_large">@dimen/_200sdp</dimen>
+
+    <dimen name="font_size_smallMedium">@dimen/_12sdp</dimen>
+    <dimen name="font_size_smallest">@dimen/_8sdp</dimen>
+
+    <dimen name="action_icon_width">@dimen/_40sdp</dimen>
+    <dimen name="action_icon_count_margin">@dimen/_2sdp</dimen>
+    <dimen name="action_badge_text">@dimen/_16sdp</dimen>
+
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
     <dimen name="text_size_header">20dp</dimen>
 
 
