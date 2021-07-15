@@ -50,6 +50,8 @@ import com.sa.souqbinadriver.services.model.SessionTypeTimingsListModel;
 import com.sa.souqbinadriver.services.model.StatusMainModel;
 import com.sa.souqbinadriver.services.model.StatusModel;
 import com.sa.souqbinadriver.services.model.UploadImageModel;
+import com.sa.souqbinadriver.services.model.UtilityMainModel;
+import com.sa.souqbinadriver.services.model.UtilityModel;
 import com.sa.souqbinadriver.services.model.registration.OtpModel;
 
 import org.json.JSONObject;
@@ -362,6 +364,13 @@ public class ServicesMethodsManager {
             } else {
                 mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
             }
+        } else if (obj instanceof UtilityModel) {
+            UtilityMainModel model = new UtilityMainModel();
+            if (model.toObject(resp.toString())) {
+                mUiCallBack.OnSuccessFromServer(model);
+            } else {
+                mUiCallBack.OnError(context.getString(R.string.ErrorResponseData));
+            }
         }/* else if (obj instanceof AppointmentListModel) {
             AppointmentListModel model = new AppointmentListModel();
             if (model.toObject(resp.toString())) {
@@ -512,6 +521,12 @@ public class ServicesMethodsManager {
     public void getAddress(Context context, ServerResponseInterface mCallInterface, String TAG) {
         setCallbacks(mCallInterface);
         getData(context, new AddressListModel(), ServerConstants.URL_GetAddress, null, TAG);
+    }
+
+    public void getSupport(Context context, ServerResponseInterface mCallInterface, String TAG) {
+        setCallbacks(mCallInterface);
+        String query = null;
+        getData(context, new UtilityModel(), ServerConstants.URL_GetSupport, query, TAG);
     }
 
     public void loginUser(Context context, LoginModel loginModel, ServerResponseInterface mCallInterface, String TAG) {

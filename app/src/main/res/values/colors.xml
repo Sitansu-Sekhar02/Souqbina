@@ -77,4 +77,5 @@
     <color name="button_bg_color">@color/colorAccent</color>
 
     <color name="yellow_bright">#FDD303</color>
+    <color name="yellow_light">#F8DF65</color>
 </resources>

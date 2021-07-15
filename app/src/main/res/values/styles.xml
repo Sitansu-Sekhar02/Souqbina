@@ -14,13 +14,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="TextInputLayoutStyle"
+   <!-- <style name="TextInputLayoutStyle"
         parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/yellow</item>
         <item name="boxStrokeWidth">1sp</item>
         <item name="errorEnabled">true</item>
         <item name="hintTextColor">@color/app_fontColor</item>
-    </style>
+    </style>-->
     <style name="SmallMediumSizeText" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">@dimen/font_size_smallMedium</item>
         <item name="android:typeface">normal</item>

@@ -278,11 +278,15 @@ public class EditProfileActivity extends AppCompatActivity implements UploadList
                 if (profileModel == null) {
                     profileModel = new ProfileModel();
                 }
+
+                profileModel=GlobalFunctions.getProfile(activity);
+
                 profileModel.setFirstName( firstname );
                 profileModel.setLastName( lastname );
                 profileModel.setEmail( email );
                 profileModel.setPhone( mobileNo );
                 profileModel.setCountry_code( selected_country_code );
+
                 if (profileImageList.size()>0){
                     uploadImage(GlobalVariables.UPLOAD_PROFILE_PHOTO_PATH_CODE);
 

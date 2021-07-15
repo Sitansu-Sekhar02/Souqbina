@@ -74,16 +74,17 @@
                     android:id="@+id/number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_border"
                     android:layout_gravity="bottom">
 
                     <com.hbb20.CountryCodePicker
                         android:id="@+id/country_code_picker"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_height="@dimen/_41sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
                         app:ccp_autoDetectCountry="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/bg_button_color_grey"
                         app:ccp_autoDetectLanguage="true"
                         app:ccp_contentColor="@color/login_text"
                         app:ccp_textSize="@dimen/_12sdp" />
@@ -95,6 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColorHint="#B5B5B5"
+                        android:layout_marginLeft="@dimen/_4sdp"
                         android:layout_toRightOf="@id/country_code_picker"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent">

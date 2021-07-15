@@ -445,9 +445,7 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
                     mAlreadyStartedService = false;
                 }
             }
-
         }
-
 
     }
 
@@ -470,35 +468,40 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
     }
 
     private void tackDropLocation() {
-        try {
-            Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + "" + "/" + orderModel.getDrop_address());
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setPackage("com.google.android.apps.maps");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        if (GlobalFunctions.isNotNullValue(orderModel.getDrop_address())) {
+            try {
+                Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + "" + "/" + orderModel.getDrop_address());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
+            }
         }
     }
 
     private void tackPickLocation() {
-        try {
-            Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + "" + "/" + orderModel.getPickup_address());
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setPackage("com.google.android.apps.maps");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        } catch (ActivityNotFoundException e) {
-            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+        if (GlobalFunctions.isNotNullValue(orderModel.getPickup_address())){
+            try {
+                Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + "" + "/" + orderModel.getPickup_address());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps,maps");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
 
+            }
         }
+
 
     }
 

@@ -117,7 +117,7 @@ public class UpcomingOrderFragment extends Fragment {
         servicesMethodsManager.getOrderList( context,index,GlobalVariables.LIST_REQUEST_SIZE,GlobalVariables.ORDER_TYPE_UPCOMING, new ServerResponseInterface() {
             @Override
             public void OnSuccessFromServer(Object arg0) {
-                GlobalFunctions.hideProgress();
+                //GlobalFunctions.hideProgress();
                 if (swipe_container.isRefreshing()) {
                     swipe_container.setRefreshing( false );
                 }
@@ -130,7 +130,7 @@ public class UpcomingOrderFragment extends Fragment {
 
             @Override
             public void OnFailureFromServer(String msg) {
-                GlobalFunctions.hideProgress();
+              // GlobalFunctions.hideProgress();
                 if (swipe_container.isRefreshing()) {
                     swipe_container.setRefreshing( false );
                 }
@@ -140,7 +140,7 @@ public class UpcomingOrderFragment extends Fragment {
 
             @Override
             public void OnError(String msg) {
-                GlobalFunctions.hideProgress();
+               // GlobalFunctions.hideProgress();
                 if (swipe_container.isRefreshing()) {
                     swipe_container.setRefreshing( false );
                 }

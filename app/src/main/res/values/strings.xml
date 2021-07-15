@@ -150,7 +150,7 @@
     <string name="pickup_location">Pickup Location</string>
     <string name="drop_location">Drop Location</string>
 
-    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the    .</string>
     <string name="location_permission_denied">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'YIN\'.</string>
     <string name="permission_required_toast">Location permission is required for this demo.</string>
 
@@ -332,9 +332,9 @@
     <string name="no_google_playservice_available">No google play services available</string>
     <string name="permission_rationale">Please grant location permission to start the service</string>
     <string name="number">+91</string>
-    <string name="please_enetr_valid_number">Please enetr a valid number</string>
+    <string name="please_enetr_valid_number">Please enter a valid number</string>
     <string name="no_upcoming_order">"No upcoming Orders "</string>
-    <string name="order_id">ORDER ID:</string>
+    <string name="order_id">ORDER NO:</string>
     <string name="save_and_update"><![CDATA[Save & Update]]></string>
     <string name="basic_info">Basic info</string>
     <string name="enter_mendatory_field">Please enter mandatory field</string>
@@ -344,9 +344,10 @@
     <string name="select_image">Select Image</string>
     <string name="lbl_take_camera_picture">Take from camera</string>
     <string name="lbl_choose_from_gallery">Choose from gallery</string>
-    <string name="something_went_wrong_message">Something wenr wrong! Please try againg later</string>
+    <string name="something_went_wrong_message">Something went wrong! Please try again later</string>
     <string name="dialog_permission_title">Grant Permissions</string>
     <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
     <string name="go_to_settings">GOTO SETTINGS</string>
     <string name="updating_profile">Updating profile...</string>
+    <string name="lang_change">Application will be restarted to apply changes</string>
 </resources>

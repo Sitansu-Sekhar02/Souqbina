@@ -24,6 +24,7 @@ public class ServerConstants {
 
     public static final String URL_UpdateProfile        = BASE_URL + "get_profile.php";
     public static final String URL_GetProfile           = SERVER_URL + "get_profile.php";
+    public static final String URL_GetSupport           = SERVER_URL + "utility.php";
     public static final String URL_GetCityList          = BASE_URL + "city_list.php";
     public static final String URL_GetNewsList          = BASE_URL + "news_list.php";
     public static final String URL_GetMyCarsList        = BASE_URL + "my_cars.php";

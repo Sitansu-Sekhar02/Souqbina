@@ -63,11 +63,15 @@ import com.sa.souqbinadriver.services.model.CountryModel;
 import com.sa.souqbinadriver.services.model.KeyValueModel;
 import com.sa.souqbinadriver.services.model.LogoutModel;
 import com.sa.souqbinadriver.services.model.NotificationModel;
+import com.sa.souqbinadriver.services.model.OrderListModel;
+import com.sa.souqbinadriver.services.model.OrderMainModel;
 import com.sa.souqbinadriver.services.model.OrderModel;
 import com.sa.souqbinadriver.services.model.ProfileModel;
 import com.sa.souqbinadriver.services.model.PushNotificationModel;
 import com.sa.souqbinadriver.services.model.StatusMainModel;
 import com.sa.souqbinadriver.services.model.StatusModel;
+import com.sa.souqbinadriver.services.model.UtilityMainModel;
+import com.sa.souqbinadriver.services.model.UtilityModel;
 import com.sa.souqbinadriver.view.AlertDialog;
 import com.squareup.picasso.Picasso;
 
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static TextView tvCount,header_completed_order;
     LinearLayout nav_header;
     public static TextView iv_Notification;
+    public static ImageView iv_support;
     TextView Logout;
     private LayoutInflater layoutInflater;
     public static String TAG = "MainActivity";
@@ -112,26 +117,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     View mainView;
     GlobalVariables globalVariables;
     View navigationHeaderView;
-    TextView navigationVersion_tv;
-    ViewPager viewPager;
-    SmartTabLayout viewPagerTab;
-    FragmentPagerItem
-            upComingFragment = null,
-            completedFragment = null;
+
+
+    //Langauge Textview
+    static  TextView arabic_language_tv, english_language_tv;
+
+    static View arabic_language_iv, english_language_iv;
+
     int gravity = 0;
     private NotificationModel notificationModel = null;
     int mToolbarHeight;
-
-    // final int gravity = globalFunctions.getLanguage() == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.END : GravityCompat.START;
-    ValueAnimator mVaActionBar;
     AnalyticsReport analyticsReport;
-    String selected_state_id;
-    int city_selection = -1;
-    CountryModel countryModel;
-    private List<CountryModel> countryList = new ArrayList();
-    private List <String> countryStringList = new ArrayList();
-    private String[] countryArr;
-    private Context context;
+
 
     public static Intent newInstance(Context context, String url) {
         Intent intent = new Intent( context, MainActivity.class );
@@ -216,7 +213,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    TextView tvArabic,tvEnglish;
     public static void setNotification(boolean isNotify) {
         if (notification_layout != null) {
             /*final ImageView tv = (ImageView) notification_layout.findViewById(R.id.actionbar_badge_notification_textview);
@@ -257,6 +253,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        // nav_header=navigationHeaderView.findViewById(R.id.Profilebutton);
 
 
+        arabic_language_tv=findViewById(R.id.arabic_language_tv);
+        english_language_tv=findViewById(R.id.english_language_tv);
+        arabic_language_iv=findViewById(R.id.arabic_language_iv);
+        english_language_iv=findViewById(R.id.english_language_iv);
+        iv_support=findViewById(R.id.iv_support);
         initialize();
 
         //drawer.closeDrawer(GravityCompat.START);
@@ -283,13 +284,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        // actionBar.setHomeAsUpIndicator( navIconDrawable );
         setOptionsMenuVisiblity( false );
 
-        gravity = globalFunctions.getLanguage( context ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
+
+        Drawable navIconDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_group_menu, getTheme());
+        gravity = globalFunctions.getLanguage( mainContext ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
         drawer = ( DrawerLayout ) findViewById( R.id.drawer_layout );
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close );
         toggle.setDrawerIndicatorEnabled( false );
-       // toggle.setHomeAsUpIndicator( navIconDrawable );
-       /* toggle.setToolbarNavigationClickListener( new View.OnClickListener() {
+        toggle.setHomeAsUpIndicator( navIconDrawable );
+        toggle.setToolbarNavigationClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (drawer.isDrawerVisible( gravity )) {
@@ -298,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     drawer.openDrawer( gravity );
                 }
             }
-        } );*/
+        } );
         drawer.addDrawerListener( toggle );
         toggle.syncState();
 
@@ -329,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         accessPermissions( this );
 
-        gravity = globalFunctions.getLanguage( context ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
+        gravity = globalFunctions.getLanguage( mainContext ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
 
 
 
@@ -347,6 +350,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } );
 
 
+        getUtility();
+
 
        // replaceFragmentWithAnimation(new FragmentAllProcess());
         Fragment AllFragment=new FragmentAllProcess();
@@ -354,6 +359,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+    }
+
+    private void getUtility() {
+        //GlobalFunctions.showProgress( context, getString( R.string.loading ));
+        ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
+        servicesMethodsManager.getSupport( mainContext, new ServerResponseInterface() {
+            @Override
+            public void OnSuccessFromServer(Object arg0) {
+                //GlobalFunctions.hideProgress();
+                Log.d( TAG, "Response : " + arg0.toString());
+                UtilityMainModel utilityMainModel = (UtilityMainModel) arg0;
+                UtilityModel utilityModel = utilityMainModel.getUtilityModel();
+                setUpPage( utilityModel );
+
+            }
+            @Override
+            public void OnFailureFromServer(String msg) {
+               // GlobalFunctions.hideProgress();
+                Log.d( TAG, "Failure : " + msg );
+                GlobalFunctions.displayMessaage( mainContext, mainView, msg );
+            }
+
+            @Override
+            public void OnError(String msg) {
+               // GlobalFunctions.hideProgress();
+                Log.d( TAG, "Error : " + msg );
+                GlobalFunctions.displayMessaage( mainContext, mainView, msg );
+            }
+        }, "Utility" );
+    }
+
+    private void setUpPage(UtilityModel utilityModel) {
+        if (utilityModel != null) {
+            if (GlobalFunctions.isNotNullValue(utilityModel.getContact_number())) {
+                iv_support.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GlobalFunctions.callPhone(activity, utilityModel.getContact_number());
+                    }
+                });
+            }
+        }
     }
 
     private void replaceFragment(@Nullable Fragment allFragment,@Nullable String tag,@Nullable String title, int titleImageID,@Nullable int bgResID) {
@@ -409,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void sendPushNotificationID(Context mainContext, PushNotificationModel pushNotificationModel) {
         if (globalFunctions.getSharedPreferenceString( globalVariables.SHARED_PREFERENCE_COOKIE ) != null) {
             ServicesMethodsManager servicesMethodsManager = new ServicesMethodsManager();
-            servicesMethodsManager.sendPushNotificationID( context, pushNotificationModel, new ServerResponseInterface() {
+            servicesMethodsManager.sendPushNotificationID( mainContext, pushNotificationModel, new ServerResponseInterface() {
                 @Override
                 public void OnSuccessFromServer(Object arg0) {
                     Log.d( TAG, "Response : " + arg0.toString() );
@@ -485,6 +532,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     });
 
 
+            if (globalFunctions.getLanguage(mainContext) == GlobalVariables.LANGUAGE.ENGLISH) {
+                english_language_iv.setVisibility(View.VISIBLE);
+                arabic_language_iv.setVisibility(View.GONE);
+            } else {
+                english_language_iv.setVisibility(View.GONE);
+                arabic_language_iv.setVisibility(View.VISIBLE);
+            }
+
+            arabic_language_tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (globalFunctions.getLanguage(mainContext) == GlobalVariables.LANGUAGE.ENGLISH) {
+                        LanguageChange(mainContext);
+//                    RestartEntireApp(mainContext, true);
+                    } else {
+                        ///nothing...
+                    }
+                    drawer.closeDrawer(gravity);
+                }
+            });
+
+            english_language_tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (globalFunctions.getLanguage(mainContext) == GlobalVariables.LANGUAGE.ENGLISH) {
+                        //nothing
+                    } else {
+                        LanguageChange(mainContext);
+//                    RestartEntireApp(mainContext, true);
+                    }
+                    drawer.closeDrawer(gravity);
+                }
+            });
+
+
               TextView
                       logout=navigationHeaderView.findViewById(R.id.Logout);
 
@@ -548,7 +631,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
 
 
-            ProfileModel profileModel = globalFunctions.getProfile( context );
+            ProfileModel profileModel = globalFunctions.getProfile( mainContext );
             if (profileModel != null && mainContext != null) {
                 try {
 
@@ -627,6 +710,64 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 */
         }
     }
+
+    private void LanguageChange(Context mainContext) {
+        ShowPopUpLanguage(mainContext);
+
+    }
+
+    private void ShowPopUpLanguage(Context mainContext) {
+        final AlertDialog alertDialog = new AlertDialog(activity);
+        alertDialog.setCancelable(false);
+        alertDialog.setIcon(R.mipmap.app_icon);
+        alertDialog.setTitle(activity.getString(R.string.app_name));
+        alertDialog.setMessage(activity.getString(R.string.lang_change));
+        alertDialog.setPositiveButton(activity.getString(R.string.ok), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                RestartEntireAppForChange(mainContext, true);
+            }
+        });
+
+        alertDialog.setNegativeButton(activity.getString(R.string.cancel), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private void RestartEntireAppForChange(Context mainContext, boolean isLanguageChange) {
+        if (isLanguageChange) {
+            SharedPreferences shared_preference = PreferenceManager.getDefaultSharedPreferences(this
+                    .getApplicationContext());
+
+            String mCustomerLanguage = shared_preference.getString(
+                    globalVariables.SHARED_PREFERENCE_SELECTED_LANGUAGE, "null");
+            String mCurrentlanguage;
+            if ((mCustomerLanguage.equalsIgnoreCase("en"))) {
+                globalFunctions.setLanguage(mainContext, GlobalVariables.LANGUAGE.ARABIC);
+
+                mCurrentlanguage = "ar";
+            } else {
+                mCurrentlanguage = "en";
+                globalFunctions.setLanguage(mainContext, GlobalVariables.LANGUAGE.ENGLISH);
+
+            }
+            SharedPreferences.Editor editor = shared_preference.edit();
+            editor.putString(globalVariables.SHARED_PREFERENCE_SELECTED_LANGUAGE, mCurrentlanguage);
+            editor.commit();
+        }
+        globalFunctions.closeAllActivities();
+        Intent i = new Intent(this, SplashActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+        System.exit(0);
+    }
+
     public void RestartEntireApp(Context context, boolean isLanguageChange) {
         if (isLanguageChange) {
             SharedPreferences shared_preference = PreferenceManager.getDefaultSharedPreferences( this
@@ -678,10 +819,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_home=findViewById(R.id.ivHome);
         iv_Notification=findViewById(R.id.ivNotification);
         tvHeaderText = findViewById(R.id.tvHeaderText);
-        tvArabic=findViewById(R.id.Tvlang_arabic);
-
-        tvEnglish=findViewById(R.id.Tvlang_english);
-
 
         iv_menu.setOnClickListener(this);
         //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -801,9 +938,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_menu:
+          /*  case R.id.iv_menu:
                 drawer.openDrawer(Gravity.LEFT);
-                break;
+                break;*/
         }
     }
 

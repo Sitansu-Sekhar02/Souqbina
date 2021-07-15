@@ -198,7 +198,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:3.4.1"
 
     implementation "com.github.thekhaeng:recycler-margin:1.2.1"
-    implementation "androidx.core:core-ktx:+"
+    //implementation "androidx.core:core-ktx:+"
 
     implementation 'com.github.sarweshkumar47:Curve-Fit:version_1_1_1'
 
