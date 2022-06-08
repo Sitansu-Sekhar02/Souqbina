@@ -80,6 +80,8 @@ public  class LoginActivity extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.login_activity);
 
+        context = this;
+        activity = this;
 
         login=findViewById(R.id.BtnLogin);
         etMobile=findViewById(R.id.etMobile);
@@ -97,8 +99,6 @@ public  class LoginActivity extends AppCompatActivity {
 
         country_code_picker.registerCarrierNumberEditText(etMobile);
 
-        context = this;
-        activity = this;
 
         globalFunctions = AppController.getInstance().getGlobalFunctions();
         globalVariables = AppController.getInstance().getGlobalVariables();

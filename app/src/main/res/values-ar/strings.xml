@@ -1,0 +1,352 @@
+<resources>
+    <string name="app_name">Souqbina Driver</string>
+    <string name="app_names">SouqBina Driver App</string>
+    <string name="sign_in">قم بتسجيل الدخول إلى حسابك</string>
+    <string name="mobile_no">رقم الهاتف</string>
+    <string name="password">كلمه السر</string>
+    <string name="login_account">دخول</string>
+    <string name="upcoming">القادم </string>
+    <string name="ongoing">سارية</string>
+    <string name="completed">اكتمل</string>
+    <string name="mail">sitansu@gmail.com</string>
+    <string name="name">Sitansu</string>
+    <string name="arabic">عربي</string>
+    <string name="english">English</string>
+    <string name="order">تم توصيل الطلب</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="oder_number">الطلبات</string>
+    <string name="no_ongoing_order">لا توجد أوامر جارية</string>
+    <string name="first_name">الأسم الأول</string>
+    <string name="last_name">الأسم الأخير</string>
+    <string name="email">عنوان الايميل</string>
+    <string name="edit_profile">تعديل الحساب</string>
+    <string name="schedule">مجدول في</string>
+    <string name="scld_date">6th Sept 2020</string>
+    <string name="pickup">استلام </string>
+    <string name="address">8228 King Abdul Aziz Road, Riyadh - 2121, Saudi Arabia</string>
+    <string name="vender_details">تفاصيل البائع </string>
+    <string name="construction_name">Hafiz Construction Service</string>
+    <string name="mobile">رقم الجوال :</string>
+    <string name="get_direction">الاتجاه</string>
+    <string name="drop">تسليم </string>
+    <string name="customer_details">تفاصيل العميل</string>
+    <string name="order_desc">وصف الطلب</string>
+    <string name="status">حالة العمل</string>
+    <string name="order_place">Order Placed</string>
+    <string name="update_status">تحديث الحالة </string>
+    <string name="item_name">PVC Pipes 30cm X 20 Feet</string>
+    <string name="qty">الكمية . : </string>
+    <string name="delivered_on">تم التوصيل في  </string>
+    <string name="delivery">تم التوصيل في </string>
+    <string name="order_picked">Order picked</string>
+    <string name="select_status">Select Status</string>
+    <string name="undo_lastaction"><u>Undo Last action</u></string>
+    <string name="order_pickedup">Order Picked up</string>
+    <string name="on_theway">On the Way</string>
+    <string name="select"><u>حدد </u></string>
+    <string name="order_delivered">تم توصيل الطلب</string>
+    <string name="help">Help</string>
+    <string name="orderDesc">PVC Pipes 30cm X 20 Feet, Construction block and 3 more</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="my_profile">ملفي الشخصي</string>
+    <string name="upcoming_order_details">تفاصي الطلبات القادمة </string>
+    <string name="completed_order_details">تفاصيل الطلبات المكتملة </string>
+    <string name="are_you_sre">هل تريد تسجيل الخروج </string>
+    <string name="cancel">إلغاء</string>
+    <string name="phn_erro">الرجاء ادخال رقم جوال</string>
+    <string name="password_error">Password Required</string>
+    <string name="CannotconnecttoInternet">Check your internet connection</string>
+    <string name="Theservercouldnotbefound">There is a problem connecting to servers, please try again later</string>
+    <string name="Parsingerror">Parsing error!</string>
+    <string name="ConnectionTimeOut">Connection TimeOut!</string>
+    <string name="pleasewait">Please wait... <br>while we load your data</br></string>
+    <string name="loading">الإنتظار</string>
+    <!--Network Static messages-->
+    <string name="NetworkError">No Network Available</string>
+    <string name="ServerError">Server Response Timeout</string>
+    <string name="ServerInternalError">Server Internal Error</string>
+    <string name="AuthFailedError">Server Authentication Failed</string>
+    <string name="ParseError">Parsing Error</string>
+    <string name="NoConnectionError">No Connection available to Host</string>
+    <string name="TimeOutError">Server Timeout Error</string>
+    <string name="ErrorResponseData">Error Response Data</string>
+    <string name="UnknownError">Unknown Error Response</string>
+    <string name="UnexpectedResponse">Unexpected response</string>
+
+    <string name="emailNotValid">Email_ID not VALID</string>
+
+<!--
+    <string name="email">Email</string>
+-->
+<!--
+    <string name="mobile">Mobile</string>
+-->
+    <string name="locationResponseFailure">Location Response Failure</string>
+
+    <string name="not_available">Not Available</string>
+
+    <string name="for_registering">For Registering with us!</string>
+    <string name="registration_successful">Registration Successful!</string>
+    <string name="one_of_our_experts_will_come">One of our experts will come and</string>
+    <string name="visit_you">visit you shortly!</string>
+
+    <string name="otp">OTP</string>
+
+    <string name="reject">Reject</string>
+    <string name="reject_booking">Reject Booking</string>
+
+    <string name="profile">حساب</string>
+
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+<!--
+    <string name="cancel">Cancel</string>
+-->
+
+    <string name="view_details">View Details</string>
+
+
+    <string name="mobile_number_country_code_error_message">Kindly enter a valid </string>
+    <string name="mobile_number_digit_error_message">Digit mobile number</string>
+
+    <string name="mobile_number_error_message">Kindly enter a valid mobile number</string>
+    <string name="pleaseFillMandatoryDetails">*Please fill mandatory fields</string>
+    <string name="pleaseFillpassword">*Please Give Password</string>
+    <string name="pleaseFillmobileNo">*Please Give Mobile Number</string>
+<!--
+    <string name="name">Name</string>
+-->
+    <string name="massage_type">Massage_Type</string>
+    <string name="digit_mobile_number">الرجاء ادخال رقم جوال صحيح</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="city">City</string>
+    <string name="change">Change</string>
+    <string name="changePassword">Change password</string>
+<!--
+    <string name="password">Password</string>
+-->
+    <string name="confirm_password">Confirm Password</string>
+    <string name="passwordNotMatched">Password entered mismatched </string>
+    <!-- <string name="passwordContainsError">*Password Should be minimum 6 characters length. Contains no special characters. Case Sensitive</string>-->
+    <string name="passwordContainsError">*Password Should be minimum 6 characters length.</string>
+    <string name="phoneNONotValid">*Phone no Not Valid</string>
+    <string name="check_terms_and_condition">*please check terms and conditions to proceed</string>
+
+    <string name="your_old_password">Your Old Password</string>
+
+    <string name="want_to_change_password">On changing password you will be logged out from all the devices. Do you want to continue ?</string>
+
+
+    <string name="user">User</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="others">Others</string>
+
+    <string name="select_location">Select location</string>
+    <string name="pickup_location">Pickup Location</string>
+    <string name="drop_location">Drop Location</string>
+
+    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the    .</string>
+    <string name="location_permission_denied">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'YIN\'.</string>
+    <string name="permission_required_toast">Location permission is required for this demo.</string>
+
+    <string name="image_convertion_error">Selected image cannot be converted.</string>
+
+    <string name="update">Update</string>
+    <string name="confirm">Confirm</string>
+    <string name="send">Send</string>
+    <string name="logingin">Logging in...</string>
+<!--
+    <string name="logout">Logout</string>
+-->
+    <string name="logingout">تسجيل الخروج</string>
+    <string name="registering">Signing up...</string>
+    <string name="getting_profile">جاري استرداد ملف التعريف ...</string>
+    <string name="updatingProfile">تحديث الحساب</string>
+    <string name="updatingCity">Updating city...</string>
+    <string name="forgotPassword">forgot password</string>
+    <string name="firstName">الاسم الاول</string>
+    <string name="lastName">اسم العائلة </string>
+
+    <string name="acceptable_inputs_for_name_field">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ,.-</string>
+
+    <string name="appExitText">Do you  want to exit ?</string>
+    <string name="appProfileUpdatedText">Profile Updated successfully</string>
+    <string name="cityUpdatedText">City Updated successfully</string>
+
+    <string name="appLogoutText">هل أنت متأكد ؟ تريد تسجيل الخروج ؟</string>
+
+    <string name="ok">حسناً</string>
+
+
+    <string name="otp_length_error">Kindly fill your OTP which you received</string>
+    <string name="error">Error</string>
+
+    <!--Exception Message-->
+    <string name="not_valid_model">Not a valid Model</string>
+
+    <!--Ratting Strings-->
+
+    <!--Loading Text-->
+<!--
+    <string name="loading">Loading...</string>
+-->
+    <string name="updatingPassword">Updating password...</string>
+
+    <!--Loader Messages-->
+    <string name="noConnection">No Connection</string>
+    <string name="noConnectionErrorMessage">We could not establish a connection with our servers. Try again when you are connected to the internet.</string>
+    <string name="tryAgain">Try Again</string>
+    <string name="emptyList">قائمة فارغة</string>
+    <string name="emptyListMessage">No records to display.</string>
+    <string name="no_completed_order">لا توجد أوامر مكتملة.</string>
+
+    <string name="customer">Customer</string>
+    <string name="theripast">Therapist</string>
+    <string name="location">Location</string>
+<!--
+    <string name="pickup">Pickup</string>
+-->
+    <string name="customer_request_list">Customer Request List</string>
+    <string name="mobileNoNotValid">*Mobile Number Not Valid</string>
+
+    <!--City Selection Strings-->
+    <string name="guest">Guest</string>
+
+    <!--AWS Credentials-->
+    <string name="AWSAccessKeyId">AKIAJHTRLSWFV7ZBMCEA</string>
+    <string name="AWSSecretKey">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</string>
+    <string name="AWSBucket">profilePicture</string>
+
+    <!--CCAvenue Credentials-->
+
+    <!--Google API Keys-->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="singleCar">Single Car</string>
+    <string name="multipleCar">Multiple Car</string>
+    <string name="apartment">Apartment</string>
+    <string name="independent_house">Independent House</string>
+    <string name="service_time">Service time:</string>
+
+    <string name="order_received">Order Placed</string>
+    <string name="payment_received">Payment Received</string>
+    <string name="order_packed">Order Packed</string>
+    <string name="order_shipped">Order Shipped</string>
+<!--
+    <string name="order_delivered">Order Delivered</string>
+-->
+
+    <!--Support Status Messages-->
+    <string name="support_status_initiated">Open</string>
+
+
+    <string name="accept_terms_and_condition">accept terms and conditions</string>
+    <string name="enter">Enter</string>
+    <string name="login">دخول</string>
+    <string name="your_new_password">Your New Password</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="login_to_yin">Login to yin</string>
+    <string name="login_with_otp">Login with otp</string>
+    <string name="recent_otp">Resend OTP </string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="new_register_now">New? Register Now!</string>
+    <string name="thank_you">Thank You</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="support">Support</string>
+    <string name="email_us">Email Us</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="customer_id">CUSTOMER ID :</string>
+    <string name="GPS_settings">GPS settings</string>
+    <string name="GPS_settings_unable">GPS is not enabled. Do you want to go to settings menu?</string>
+    <string name="select_services">Select Services</string>
+    <string name="go_to_home">Go To Home</string>
+    <string name="your_password">Your Password</string>
+    <string name="appointment">Appointments</string>
+    <string name="account">Account</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="empty">Empty</string>
+    <string name="emptyAppointmentsDescription">No list to show</string>
+    <string name="total">Total</string>
+    <string name="complete_booking">Complete Booking</string>
+    <string name="completed_bookings">Completed Bookings</string>
+    <string name="cancel_booking">Cancel Booking</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="do_you_want_to_complete_booking">Do you want to complete  this booking ?</string>
+    <string name="do_you_want_to_cancel_booking">Do you want to cancel  this booking ?</string>
+    <string name="do_you_want_to_confirm_booking">Do you want to confirm  this booking ?</string>
+    <string name="emptyBookingsDescription">No bookings to display</string>
+    <string name="select_your_city">Select Your City</string>
+    <string name="select_your_country">Select Your Country</string>
+
+    <string name="empty_services_title">Currently no services available for this category!!</string>
+
+    <string name="empty_services">No services available!!</string>
+
+    <!--weekdays...-->
+    <string name="edit_info">Edit Info</string>
+    <string name="registration_successfull">Success</string>
+    <string name="registration_success">Registration is successful</string>
+    <string name="cancel_city_updation">Cancel city updation ?</string>
+    <string name="select_city">--Select City--</string>
+    <string name="change_your_city">Change Your City</string>
+    <string name="sending_otp">Sending Otp...</string>
+    <string name="no_list_to_display">No list to display</string>
+    <string name="confirm_your_new_password">Confirm Your New Password</string>
+    <string name="alert">Alert</string>
+    <string name="your_mobile_number">Your Mobile Number</string>
+    <string name="select_your_country_code">Select your country code</string>
+    <string name="send_otp">Send Otp</string>
+
+
+    <string name="log_in_to_yin">Log in to yin</string>
+    <string name="countryCodeNONotValid"> Country Code Not Valid </string>
+    <string name="code">Code</string>
+    <string name="enter_email_id">Enter Email Id</string>
+
+
+    <string name="on_the_way">On the way</string>
+    <string name="reached_therapist">Reached Therapist</string>
+    <string name="on_the_way_to_customer">On the way to customer</string>
+    <string name="complete_task">Complete</string>
+<!--
+    <string name="completed">Completed</string>
+-->
+    <string name="please_enter_valid_otp">Please Enter Valid OTP</string>
+    <string name="sorry_u_have_not_register_with_us">Sorry,You Have Not Registered With Us</string>
+    <string name="GoogleAPIKey">AIzaSyB9wXo_mbTsC2XTeJcIMVPwzuLQPxFQ8S0</string>
+    <string name="loading_profile">Loading Profile</string>
+    <string name="loggin">Logging...</string>
+    <string name="no_product">No product found</string>
+
+    <string name="no_internet">No Internet</string>
+    <string name="no_google_playservice_available">No google play services available</string>
+    <string name="permission_rationale">Please grant location permission to start the service</string>
+    <string name="number">+91</string>
+    <string name="please_enetr_valid_number">Please enter a valid number</string>
+    <string name="no_upcoming_order">لا توجد أوامر قادمة</string>
+    <string name="order_id">رقم الطلب:</string>
+    <string name="save_and_update">أحفظ وحدث</string>
+    <string name="basic_info">Basic info</string>
+    <string name="enter_mendatory_field">Please enter mandatory field</string>
+    <string name="uploading_image">تحميل الصورة</string>
+    <string name="failed_upload_image">الفشل في التحميل</string>
+    <string name="toast_image_intent_null" />
+    <string name="select_image">أختار الصورة</string>
+    <string name="lbl_take_camera_picture">التقط صورة</string>
+    <string name="lbl_choose_from_gallery">اختار من معرض الصور</string>
+    <string name="something_went_wrong_message">Something went wrong! Please try again later</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="updating_profile">Updating profile...</string>
+    <string name="lang_change">سيتم إعادة تشغيل التطبيق لتطبيق التغييرات</string>
+    <string name="profile_updated_success">نجاح تحديث الحساب</string>
+    <string name="vendor_copany">شركة البائع :</string>
+
+</resources>

@@ -7,20 +7,19 @@
     android:background="@drawable/ic_group_splash_bg">
 
     <ImageView
-        android:id="@+id/logorezq"
         android:background="@drawable/splash_logo"
         android:layout_centerInParent="true"
-        android:layout_width="144dp"
-        android:layout_height="150dp" />
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_150sdp" />
 
 
     <com.sa.souqbinadriver.view.AppTextView
         android:gravity="center"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:id="@+id/textView"
-        android:textSize="16dp"
+        android:textAppearance="@style/SmallMediumText"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

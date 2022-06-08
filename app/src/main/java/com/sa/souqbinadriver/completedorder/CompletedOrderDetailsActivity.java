@@ -67,7 +67,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
     ImageView vendor_image, customer_image, product_image;
     TextView product_title, product_quantity;
 
-    TextView tvSchedule_date,order_id;
+    TextView tvSchedule_date,order_id,tv_vendor_companyName;
     TextView tv_VendorName, tv_vendorMMobile;
     TextView tv_CustomerName, tv_CustomerMMobile;
     TextView tv_pickAddress, tv_dropAddress, tv_pickDirection, tv_dropDirection;
@@ -126,6 +126,7 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
         customer_image = findViewById(R.id.iv_customer_image);
         tv_pickAddress = findViewById(R.id.tv_pick_address);
         tv_dropAddress = findViewById(R.id.tv_drop_address);
+        tv_vendor_companyName = findViewById(R.id.tv_vendor_companyName);
        // progressActivity =findViewById( R.id.details_progressActivity );
        // swipe_container = findViewById( R.id.swipe_container );
         linearLayoutManager = new LinearLayoutManager( activity );
@@ -159,16 +160,11 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
                 order_vendor_product_id = orderModel.getOrder_vendor_product_id();
             }
         }
-        setTitle(getString(R.string.completed_order_details), 0, 0);
 
-        //set product description in recyclerview
-        //productDescription();
+
 
         //getting order details
         getOrderDetails();
-
-        //set product description in recyclerview
-       // productDescription();
 
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
@@ -249,7 +245,6 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_image())) {
                 Picasso.with(context).load(orderModel.getVendor_image()).placeholder(R.drawable.ic_baseline_person_24).into(vendor_image);
 
-
             }
             if (GlobalFunctions.isNotNullValue(orderModel.getVendor_fname())) {
                 String VendorfullName = orderModel.getVendor_fname();
@@ -300,6 +295,9 @@ public class CompletedOrderDetailsActivity extends AppCompatActivity implements 
             }
             if (GlobalFunctions.isNotNullValue(orderModel.getProduct_title())) {
                 product_title.setText(orderModel.getProduct_title());
+            }
+            if (GlobalFunctions.isNotNullValue(orderModel.getCompany_name())) {
+                tv_vendor_companyName.setText(orderModel.getCompany_name());
             }
             if (GlobalFunctions.isNotNullValue(orderModel.getQuantity())) {
                 product_quantity.setText(orderModel.getQuantity());

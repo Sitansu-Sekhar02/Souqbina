@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/tvAlertMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/select_status"
+                android:textColor="#A8A8A8"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="25dp"
+                android:gravity="center"
+                android:text="@string/undo_lastaction"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/circle_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_group_cirle_yellow" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="2dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/image_circle"
+                android:layout_marginRight="8dp"
+                android:background="@color/grey" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/orderRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/circle_image">
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:gravity="center"
+                android:text="@string/order_pickedup"
+                android:textColor="@color/app_fontBlackColor"
+                android:textSize="14dp" />
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="25dp"
+                android:gravity="center"
+                android:text="@string/select"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

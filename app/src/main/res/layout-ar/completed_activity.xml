@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:progressActivity="http://schemas.android.com/tools"
+    android:background="#F2F2F2"
+    android:layout_height="wrap_content">
+
+    <!-- <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/upcoming_recyclerview"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+     </androidx.recyclerview.widget.RecyclerView>-->
+    <com.vlonjatg.progressactivity.ProgressLinearLayout
+        android:id="@+id/details_progressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:emptyTitleTextColor="@color/green_light"
+        app:errorContentTextColor="@color/app_fontColor"
+        app:errorTitleTextColor="@color/app_fontColor"
+        progressActivity:emptyBackgroundColor="@color/transparent"
+        progressActivity:errorBackgroundColor="@color/transparent"
+        progressActivity:loadingBackgroundColor="@color/transparent"
+        progressActivity:loadingProgressBarColor="@color/green_light">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/completed_recyclerview_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F2F2F2" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </com.vlonjatg.progressactivity.ProgressLinearLayout>
+
+
+</RelativeLayout>

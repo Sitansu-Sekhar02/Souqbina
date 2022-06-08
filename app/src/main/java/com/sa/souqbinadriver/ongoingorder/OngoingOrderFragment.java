@@ -190,19 +190,10 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
 
        // GPSTracker mGPS = new GPSTracker(getActivity());
 
-       /* if (mGPS.canGetLocation()) {
-            mGPS.getLocation();
-            latitute = mGPS.getLatitude();
-            longitute = mGPS.getLongitude();
-            Log.e("Latlong",""+latitute+","+longitute);
-            updateLatlong(latlongModel);
 
-        } else {
-            System.out.println("Unable");
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
-        }*/
+        mainView = tvSchedule_date;
+        loadOngoingOrderDetails();
+
 
         rl_status_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,8 +250,6 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
         } );
 
 */
-        mainView = tvSchedule_date;
-        loadOngoingOrderDetails();
 
         locationintent = new Intent(activity, LocationMonitoringService.class);
 
@@ -412,10 +401,10 @@ public class OngoingOrderFragment extends Fragment implements UpdateStatusInterf
                 String UserfullName = orderModel.getUser_fname();
                 if (GlobalFunctions.isNotNullValue(orderModel.getUser_lname())) {
                     UserfullName = UserfullName + " " + orderModel.getUser_lname();
-                    tv_VendorName.setText(UserfullName);
+                    tv_CustomerName.setText(UserfullName);
 
                 } else {
-                    tv_VendorName.setText(UserfullName);
+                    tv_CustomerName.setText(UserfullName);
                 }
             }
 

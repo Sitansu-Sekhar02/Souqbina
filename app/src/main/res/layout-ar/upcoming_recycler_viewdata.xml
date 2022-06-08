@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/UpcomingButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="19dp"
+                android:src="@drawable/ic_group_a"
+                android:layout_height="23dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp">
+
+            <LinearLayout
+                android:layout_below="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_id"
+                    android:textColor="#5A5A5A"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginRight="6dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tvScld"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/schedule"
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tv_Schedule_date_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="7dp"
+                    android:layout_toLeftOf="@+id/tvScld"
+                    android:text="@string/scld_date"
+                    android:textColor="#000000"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content">
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/tvmember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pickup"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:textSize="12dp" />
+                <com.sa.souqbinadriver.view.AppTextView
+                    android:id="@+id/TvseeProfile"
+                    android:layout_width="6dp"
+                    android:gravity="center"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/ic_path_363"
+                    android:layout_alignParentLeft="true"/>
+            </RelativeLayout>
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_address"
+                android:layout_marginTop="10dp"
+                android:layout_width="231dp"
+                android:textSize="12dp"
+                android:textColor="#5A5A5A"
+                android:layout_height="wrap_content"
+                android:text="@string/address"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

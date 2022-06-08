@@ -55,7 +55,7 @@ public class ProductDescriptionListAdapter extends RecyclerView.Adapter<ProductD
 
             }
             try {
-                if (GlobalFunctions.isNotNullValue(modelList.get(position).getProduct_image())  || ! modelList.get(position).getProduct_image().equals( "null" ) || !modelList.get(position).getProduct_image().equalsIgnoreCase( "" )) {
+                if (GlobalFunctions.isNotNullValue(modelList.get(position).getProduct_image())) {
                     Picasso.with( activity ).load( modelList.get(position).getProduct_image() ).placeholder( R.drawable.ic_baseline_image_24).into( holder.product_image );
                 }
             } catch (Exception e) {

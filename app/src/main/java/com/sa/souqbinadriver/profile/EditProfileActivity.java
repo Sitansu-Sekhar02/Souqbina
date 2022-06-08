@@ -48,6 +48,7 @@ import com.sa.souqbinadriver.services.model.StatusMainModel;
 import com.sa.souqbinadriver.services.model.StatusModel;
 import com.sa.souqbinadriver.upload.UploadImage;
 import com.sa.souqbinadriver.upload.UploadListener;
+import com.sa.souqbinadriver.view.AlertDialog;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -331,11 +332,38 @@ public class EditProfileActivity extends AppCompatActivity implements UploadList
             ProfileMainModel profileMainModel = (ProfileMainModel) arg0;
             ProfileModel profileModel = profileMainModel.getProfileModel();
             GlobalFunctions.setProfile(activity,profileModel);
-            setThisPage(profileModel);
+            if (profileMainModel.isStatus()) {
+                showAlertDialog(profileMainModel);
+            }else {
+                ///
+            }
+           // setThisPage(profileModel);
 
         }
 
     }
+
+    private void showAlertDialog(ProfileMainModel profileMainModel) {
+        final AlertDialog alertDialog = new AlertDialog(context);
+        alertDialog.setCancelable(false);
+        alertDialog.setIcon(R.mipmap.app_icon);
+        alertDialog.setTitle(getString(R.string.app_name));
+        alertDialog.setMessage(activity.getString(R.string.profile_updated_success));
+        alertDialog.setPositiveButton(getString(R.string.ok), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                closeThisActivity();
+               /* if (profileMainModel.isStatus()){
+                    setThisPage(profileMainModel.getProfileModel());
+                }*/
+            }
+        });
+
+        alertDialog.show();
+
+    }
+
     private boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)

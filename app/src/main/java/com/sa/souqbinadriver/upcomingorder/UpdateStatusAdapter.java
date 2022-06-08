@@ -100,7 +100,7 @@ public class UpdateStatusAdapter extends RecyclerView.Adapter<UpdateStatusAdapte
 
         }
 
-        holder.status_title.setOnClickListener(new View.OnClickListener() {
+        holder.tv_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -108,7 +108,6 @@ public class UpdateStatusAdapter extends RecyclerView.Adapter<UpdateStatusAdapte
                     selectedPos = position;
                     updateStatusInterface.OnItemClickListener(item);
                     notifyDataSetChanged();
-
                 }
             }
         });

@@ -260,12 +260,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_support=findViewById(R.id.iv_support);
         initialize();
 
-        //drawer.closeDrawer(GravityCompat.START);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-
-      //  Drawable navIconDrawable = ResourcesCompat.getDrawable( getResources(), R.drawable.ic_group_menu, getTheme() );
 
 
         toolbar = ( Toolbar ) findViewById( R.id.tool_bar ); // Attaching the layout to the toolbar object
@@ -285,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setOptionsMenuVisiblity( false );
 
 
-        Drawable navIconDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_group_menu, getTheme());
+        Drawable navIconDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_menu, getTheme());
         gravity = globalFunctions.getLanguage( mainContext ) == GlobalVariables.LANGUAGE.ARABIC ? GravityCompat.START : GravityCompat.START;
         drawer = ( DrawerLayout ) findViewById( R.id.drawer_layout );
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -525,9 +519,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onClick(View v) {
 
-                             // Fragment completedOrderFragment=new CompletedOrderFragment();
-                             // replaceFragment( completedOrderFragment, CompletedOrderFragment.TAG, getString( R.string.app_name ), 0, 0 );
-                             //  replaceFragmentWithAnimation(new CompletedOrderFragment());
+                            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                            drawer.closeDrawer(GravityCompat.START);
+
+                            Fragment completedOrderFragment=new CompletedOrderFragment();
+                            replaceFragment( completedOrderFragment, CompletedOrderFragment.TAG, getString( R.string.app_name ), 0, 0 );
                         }
                     });
 
@@ -820,7 +816,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_Notification=findViewById(R.id.ivNotification);
         tvHeaderText = findViewById(R.id.tvHeaderText);
 
-        iv_menu.setOnClickListener(this);
+       // iv_menu.setOnClickListener(this);
         //drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = ( NavigationView ) findViewById( R.id.nav_view );
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

@@ -350,4 +350,7 @@
     <string name="go_to_settings">GOTO SETTINGS</string>
     <string name="updating_profile">Updating profile...</string>
     <string name="lang_change">Application will be restarted to apply changes</string>
+    <string name="profile_updated_success">Profile Updated Successfully</string>
+    <string name="vendor_copany">Vendor Company :</string>
+
 </resources>

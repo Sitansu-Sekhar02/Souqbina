@@ -147,7 +147,6 @@
                     android:layout_height="48dp"
                     android:layout_below="@id/pass"
                     android:layout_marginTop="32dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/button_bg"
                     android:text="@string/login_account"

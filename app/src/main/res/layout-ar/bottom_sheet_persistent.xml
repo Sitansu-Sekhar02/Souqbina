@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/rl_status_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tvjob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/status"
+                android:textColor="#A8A8A8"
+                android:textSize="14dp" />
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_update_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textColor="#FFC200"
+                android:textStyle="bold"
+                android:text="@string/update_status"
+                android:textAllCaps="true"
+                android:layout_alignParentLeft="true"/>
+
+            <com.sa.souqbinadriver.view.AppTextView
+                android:id="@+id/tv_statusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/tvjob"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:text="" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+<include layout="@layout/status_recyclerview" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

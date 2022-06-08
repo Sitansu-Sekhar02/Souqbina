@@ -92,7 +92,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-        getProfile();
+       // getProfile();
 
 
 
@@ -187,7 +187,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onResume() {
-        /* getProfile();*/
+         getProfile();
         // MainActivity.setTitleResourseID(0);
         (( ProfileMainActivity ) activity).setTitle( getString( R.string.my_profile ), R.mipmap.app_icon, 0 );
         super.onResume();

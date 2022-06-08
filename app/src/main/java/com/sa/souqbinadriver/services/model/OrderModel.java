@@ -32,7 +32,6 @@ public class OrderModel implements Serializable {
                     VENDOR_LASTNAME              = "vendor_lname",
                     VENDOR_FULLNAME              = "vendor_fullname",
                     CALL_VENDOR                    = "call_vendor",
-
                     USER_IMAGE                   = "user_image",
                     USER_NUMBER                  = "user_number",
                     USER_FIRSTNAME               = "user_fname",
@@ -49,6 +48,8 @@ public class OrderModel implements Serializable {
                     QUANTITY                     = "quantity",
                     PRODUCT_IMAGE                = "product_image",
                     DELIVERY_ON                 = "delivery_on",
+                    COMPANY_NAME                 = "company_name",
+
                     ORDER_STATUS_HISTORY        = "order_status_history";
 
 
@@ -87,6 +88,7 @@ public class OrderModel implements Serializable {
             product_title       = null,
             quantity             = null,
             product_image        = null,
+            company_name        = null,
             delivery_on          = null;
 
 
@@ -325,6 +327,14 @@ public class OrderModel implements Serializable {
         this.quantity = quantity;
     }
 
+    public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
     public String getProduct_image() {
         return product_image;
     }
@@ -446,7 +456,7 @@ public class OrderModel implements Serializable {
             }if (json.has(VENDOR_NUMBER)) {
                 vendor_number = json.getString(VENDOR_NUMBER);
             }if (json.has(VENDOR_FIRSTNAME)) {
-                user_fname = json.getString(VENDOR_FIRSTNAME);
+                vendor_fname = json.getString(VENDOR_FIRSTNAME);
             }if (json.has(VENDOR_LASTNAME)) {
                 vendor_lname = json.getString(VENDOR_LASTNAME);
             }if (json.has(USER_IMAGE)) {
@@ -486,6 +496,9 @@ public class OrderModel implements Serializable {
             }
             if (json.has(CALL_USER)) {
                 call_user =json.getString(CALL_USER);
+            }
+            if (json.has(COMPANY_NAME)) {
+                company_name =json.getString(COMPANY_NAME);
             }
             if (json.has(STATUS)) {
                 status =json.getString(STATUS);
@@ -548,6 +561,7 @@ public class OrderModel implements Serializable {
             jsonMain.put(DELIVERY_ON,delivery_on);
             jsonMain.put(CALL_VENDOR,call_vendor);
             jsonMain.put(USER_FULLNAME,user_fullname);
+            jsonMain.put(COMPANY_NAME,company_name);
             jsonMain.put(CALL_USER,call_user);
 
 
